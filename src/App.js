@@ -1,6 +1,15 @@
 import "./App.css";
-import Header from "./components/Header";
+
 import Main from "./components/Main";
+import Header from "./components/Header";
+import Strategy from "./components/Strategy"
+import HiddenRoles from "./components/HiddenRoles"
+import Dexterity from "./components/Dexterity"
+import PushYourLuck from "./components/PushYourLuck"
+import RollAndWrite from "./components/RollAndWrite"
+import DeckBuilding from "./components/DeckBuilding"
+import EngineBuilding from "./components/EngineBuilding"
+
 import CategoryChosenOption from "./components/CategoryChosenOption";
 import CategoryList from "./components/CategoryList";
 import CategoryOption from "./components/CategoryOption";
