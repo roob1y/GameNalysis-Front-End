@@ -8,8 +8,8 @@ import { useState } from "react";
 const Strategy = () => {
   const [strategyReviews, setStrategyReviews] = useState([]);
   getAllReviews().then(({ reviews }) => {
-    const strategyReviews = reviews.filter((review) => review.category === 'strategy');
-    setStrategyReviews(strategyReviews);
+    const filteredStrategyReviews = reviews.filter((review) => review.category === 'strategy');
+    setStrategyReviews(filteredStrategyReviews);
   });
   return (
     <>
