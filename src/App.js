@@ -35,6 +35,13 @@ function App() {
       </CategoryList>
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="/strategy" element={<Main />} />
+        <Route path="/hidden-roles" element={<Main />} />
+        <Route path="/dexterity" element={<Main />} />
+        <Route path="/push-your-luck" element={<Main />} />
+        <Route path="/roll-and-write" element={<Main />} />
+        <Route path="/deck-building" element={<Main />} />
+        <Route path="/engine-building" element={<Main />} />
       </Routes>
     </div>
   );
