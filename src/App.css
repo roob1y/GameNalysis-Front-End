@@ -37,11 +37,26 @@
   }
 }
 
+.grid {
+  display: grid;
+  grid-template-areas: 
+    "title"
+    "designer"
+    "gameImg"
+    "owner"
+    "created_at votes";
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 2fr 1fr 1fr;
+  align-items: center;
+}
+
+
+
 .reviewCards {
   border: solid 1px rgb(150, 150, 150);
   margin: 10px 10px;
-  width: 35%;
-  gap: 20px;
+  width: 45%;
+  height: 60vh;
 }
 
 .reviewList {
@@ -52,8 +67,28 @@
 }
 
 .gameImg {
-  width: 60%;
-  height: auto;
+  max-width: 70%;
+}
+
+.g1,
+  .g2 {
+    padding: 20px;
+    grid-column: 1/3;
+  }
+
+.g3 {
+  grid-column: 1/3;
+  display: flex;
+  justify-content: center;
+  height: 200px;
+}
+
+.g4 {
+  grid-column: 1/3;
+}
+
+.owner {
+  grid-column: 1/3;
 }
 
 ul {
@@ -72,6 +107,6 @@ h2 {
 
 @media screen and (max-width: 1232px) {
   .reviewCards {
-    width: 50%;
+    width: 70%;
   }
 }
