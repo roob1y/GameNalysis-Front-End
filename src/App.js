@@ -35,13 +35,13 @@ function App() {
       </CategoryList>
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/strategy" element={<Main />} />
-        <Route path="/hidden-roles" element={<Main />} />
-        <Route path="/dexterity" element={<Main />} />
-        <Route path="/push-your-luck" element={<Main />} />
-        <Route path="/roll-and-write" element={<Main />} />
-        <Route path="/deck-building" element={<Main />} />
-        <Route path="/engine-building" element={<Main />} />
+        <Route path="/strategy" element={<Strategy />} />
+        <Route path="/hidden-roles" element={<HiddenRoles />} />
+        <Route path="/dexterity" element={<Dexterity />} />
+        <Route path="/push-your-luck" element={<PushYourLuck />} />
+        <Route path="/roll-and-write" element={<RollAndWrite />} />
+        <Route path="/deck-building" element={<DeckBuilding />} />
+        <Route path="/engine-building" element={<EngineBuilding />} />
       </Routes>
     </div>
   );
