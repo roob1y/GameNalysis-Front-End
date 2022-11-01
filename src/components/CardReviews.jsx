@@ -1,5 +1,4 @@
 const CardReviews = ({review}) => {
-  console.log(review);
   return (
     <li className="reviewCards grid">
       <div className="gridItem g1">
