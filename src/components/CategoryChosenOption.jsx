@@ -1,6 +1,8 @@
-const CategoryChosenOption = () => {
+const CategoryChosenOption = ({displayValue}) => {
   return (
-    <div>CategoryOption</div>
+    <>
+      <h2>{displayValue}</h2>
+    </>
   )
 }
 

@@ -11,5 +11,11 @@ export function getAllReviews () {
   })
 }
 
+export function getCategories () {
+  return ncgamesApi.get(`/categories`).then((res) => {
+    return res.data;
+  })
+}
+
 
 export default ncgamesApi;

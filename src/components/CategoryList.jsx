@@ -1,7 +1,5 @@
-const CategoryList = () => {
-  return (
-    <div>CategoryList</div>
-  )
-}
+const CategoryList = ({ children }) => {
+  return <ul>{children}</ul>;
+};
 
 export default CategoryList;

@@ -1,5 +1,11 @@
-export const CategoryOption = () => {
+export const CategoryOption = ({handleClick, optionVal}) => {
   return (
-    <div>CategoryOption</div>
+    <li>
+      <button onClick={() => handleClick(optionVal)}>
+        {optionVal}
+      </button>
+    </li>
   )
 }
+
+export default CategoryOption;
