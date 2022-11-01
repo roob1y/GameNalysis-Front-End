@@ -45,13 +45,14 @@
 }
 
 .reviewList {
+  margin-top: 3vh;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
 .gameImg {
-  max-width: 30%;
+  width: 60%;
   height: auto;
 }
 
@@ -60,7 +61,17 @@ ul {
   list-style: none;
 }
 
+h2 {
+  margin-top: 10vh;
+}
+
 .main {
   max-width: 80%;
   margin: 0 auto;
+}
+
+@media screen and (max-width: 1232px) {
+  .reviewCards {
+    width: 50%;
+  }
 }
