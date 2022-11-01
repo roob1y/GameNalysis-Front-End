@@ -36,3 +36,31 @@
     transform: rotate(360deg);
   }
 }
+
+.reviewCards {
+  border: solid 1px rgb(150, 150, 150);
+  margin: 10px 10px;
+  width: 35%;
+  gap: 20px;
+}
+
+.reviewList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.gameImg {
+  max-width: 30%;
+  height: auto;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+.main {
+  max-width: 80%;
+  margin: 0 auto;
+}
