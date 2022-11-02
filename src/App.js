@@ -2,7 +2,7 @@ import "./App.css";
 
 import Main from "./components/Main";
 import Header from "./components/Header";
-import ListReviews from "./components/ListReviews"
+import CategoryList from "./components/CategoryList"
 
 import { Routes, Route } from "react-router-dom";
 

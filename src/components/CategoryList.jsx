@@ -1,23 +1,36 @@
 import { Link } from "react-router-dom";
 
+import { useEffect, useState } from 'react'
+
+import { getAllCategories } from "../utils/api";
+
 const CategoryList = () => {
-  const categoryOptions = [
-    "strategy",
-    "hidden-roles",
-    "dexterity",
-    "push-your-luck",
-    "roll-and-write",
-    "deck-building",
-    "engine-building",
-  ];
-  return (
-      <ul>
-        <h3>Categories</h3>
-        {categoryOptions.map((category) => {
-          return <Link to={`/${category}`} key={category}><li>{category}</li></Link>;
-        })}
-      </ul>
-  );
+  const [categoryItems, setCategoryItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(true)
+    useEffect(() => {
+      setIsLoading(true);
+    getAllCategories().then(({categories}) => {
+      // console.log('categories: ', categories);
+      setCategoryItems(categories)
+      setIsLoading(false);
+    })}, [])
+    if(!isLoading) {
+      return categoryItems.map((category) => {
+        return (
+          <ul>
+              <nav>
+                <Link to={`/${category.slug}`} key={category.slug}>
+                  <li>{category.slug}</li>
+                </Link>
+              </nav>
+          </ul>
+        );
+      })
+    } else {
+      return <p>is loading...</p>
+
+    }
+  // })
 };
 
 export default CategoryList;

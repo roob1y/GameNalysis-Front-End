@@ -1,11 +1,13 @@
-import ListReviews from "./ListReviews";
-import CategoryList from "./CategoryList";
+import ListReviews from "./ListReviews"
 
 import { getAllReviews } from "../utils/api";
 
 import { useParams } from "react-router-dom";
 
 import { useState } from "react";
+
+import CategoryList from "./CategoryList";
+
 
 const Main = () => {
   const { category } = useParams();
@@ -23,8 +25,10 @@ const Main = () => {
   return (
     <>
       <main className="main">
+        <h3>Categories</h3>
+        <CategoryList />
         <h2>Reviews</h2>
-        <CategoryList categoryOptions />
+
         <ListReviews allReviews={allReviews} />
       </main>
     </>
