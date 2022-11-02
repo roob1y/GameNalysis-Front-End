@@ -15,13 +15,17 @@ const CategoryList = () => {
     });
   }, []);
   if (!isLoading) {
-    return categoryItems.map((category) => {
-      return (
-        <Link to={`/${category.slug}`} key={category.slug}>
-          <li>{category.slug}</li>
-        </Link>
-      );
-    });
+    return (
+      <ul>
+      {categoryItems.map((category) => {
+        return (
+          <Link to={`/${category.slug}`} key={category.slug}>
+            <li>{category.slug}</li>
+          </Link>
+        )
+      })}
+      </ul>
+    )
   } else {
     return <p>is loading...</p>;
   }

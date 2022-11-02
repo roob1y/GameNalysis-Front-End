@@ -16,10 +16,10 @@ const UserReview = () => {
   }, [reviewId]);
   if (!isLoading) {
     return (
-      <>
-      <h2>Reviewed By {userReview.owner}</h2>
+      <main className="main">
+        <h2>Reviewed By {userReview.owner}</h2>
         <UserCardReview userReview={userReview} />
-      </>
+      </main>
     );
   } else {
     return <p>is loading...</p>;
