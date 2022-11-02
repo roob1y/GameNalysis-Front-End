@@ -26,9 +26,12 @@ const Main = () => {
     <>
       <main className="main">
         <h3>Categories</h3>
-        <CategoryList />
+          <nav>
+            <ul>
+              <CategoryList />
+            </ul>
+          </nav>
         <h2>Reviews</h2>
-
         <ListReviews allReviews={allReviews} />
       </main>
     </>
