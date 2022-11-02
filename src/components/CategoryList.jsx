@@ -11,11 +11,12 @@ const CategoryList = () => {
     "engine-building",
   ];
   return (
-    <ul>
-      {categoryOptions.map((category) => {
-        return <Link to={`/${category}`} key={category}>{category}</Link>;
-      })}
-    </ul>
+      <ul>
+        <h3>Categories</h3>
+        {categoryOptions.map((category) => {
+          return <Link to={`/${category}`} key={category}><li>{category}</li></Link>;
+        })}
+      </ul>
   );
 };
 
