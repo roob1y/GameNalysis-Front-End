@@ -1,22 +1,38 @@
-import ListReviews from './ListReviews'
-import { getAllReviews } from '../utils/api'
+import ListReviews from "./ListReviews"
 
-import { useState } from 'react'
+import { getAllReviews } from "../utils/api";
+
+import { useParams } from "react-router-dom";
+
+import { useState } from "react";
+
+import CategoryList from "./CategoryList";
 
 
 const Main = () => {
-  const [reviews, setReviews] = useState([])
-  getAllReviews().then(({reviews}) => {
-    setReviews(reviews);
-  })
+  const { category } = useParams();
+  const [allReviews, setAllReviews] = useState([]);
+  getAllReviews().then(({ reviews }) => {
+    if (category) {
+      const filteredReviews = reviews.filter(
+        (review) => review.category === category
+      );
+      setAllReviews(filteredReviews);
+    } else {
+      setAllReviews(reviews);
+    }
+  });
   return (
     <>
-      <div className='main'>
-      <h2>Reviews</h2>
-      <ListReviews reviews={reviews}/>
-    </div>
+      <main className="main">
+        <h3>Categories</h3>
+        <CategoryList />
+        <h2>Reviews</h2>
+
+        <ListReviews allReviews={allReviews} />
+      </main>
     </>
-  )
-}
+  );
+};
 
 export default Main;
