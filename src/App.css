@@ -113,6 +113,30 @@ h2 {
   justify-content: center;
 }
 
+.upvote {
+  color: green;
+}
+
+.upvoteEnable {
+  color: rgb(1, 79, 1);
+}
+
+.downvote {
+  color: red;
+}
+
+.downvoteEnable {
+  color: rgb(133, 0, 0)
+}
+
+.upvote,
+  .downvote,
+    .upvoteEnable,
+      .downvoteEnable {
+  width: 6em;
+  height: 6em;
+}
+
 @media screen and (max-width: 1232px) {
   .reviewCards {
     width: 70%;

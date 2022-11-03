@@ -1,10 +1,11 @@
 import { AiFillUpSquare, AiFillDownSquare } from "react-icons/ai";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const Votes = ({ review_id, votes }) => {
   const [vote, setVote] = useState(0);
 
   const [likeActive, setLikeActive] = useState(false)
+
   const [dislikeActive, setDislikeActive] = useState(false)
 
   const handleLikeChange = () => {
@@ -17,7 +18,7 @@ const Votes = ({ review_id, votes }) => {
       setVote(vote + 1)
     } if (dislikeActive) {
       setDislikeActive(false)
-      setVote(vote)
+      setVote(vote + 2)
     }
     // Patch Request
   }
@@ -31,10 +32,20 @@ const Votes = ({ review_id, votes }) => {
       setVote(vote - 1)
     } if (likeActive) {
       setLikeActive(false)
-      setVote(vote)
+      setVote(vote - 2)
     }
     // Patch Request
   }
+  let upvoteClassName = 'upvote';
+  if (likeActive) {
+    upvoteClassName += ' upvoteEnable';
+  }
+
+  let downvoteClassName = 'downvote';
+  if (dislikeActive) {
+    downvoteClassName += ' downvoteEnable';
+  }
+
   return (
     <>
       <div className="">
@@ -42,12 +53,12 @@ const Votes = ({ review_id, votes }) => {
       </div>
       <div>
         <button onClick={handleLikeChange}>
-          <AiFillUpSquare size="6em" color="green" />
+          <AiFillUpSquare className={upvoteClassName}/>
         </button>
       </div>
       <div>
         <button onClick={handleDislikeChange}>
-          <AiFillDownSquare size="6em" color="red"/>
+          <AiFillDownSquare className={downvoteClassName} />
         </button>
       </div>
     </>
