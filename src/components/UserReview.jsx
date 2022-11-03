@@ -3,7 +3,6 @@ import { getUserReview } from "../utils/api";
 import { useState, useEffect } from "react";
 import { BsChevronLeft } from "react-icons/bs";
 
-
 import UserCardReview from "./UserCardReview";
 
 const UserReview = () => {
@@ -27,6 +26,7 @@ const UserReview = () => {
         <main className="main">
           <h2>Reviewed By {userReview.owner}</h2>
           <UserCardReview userReview={userReview} />
+          
         </main>
       </>
     );

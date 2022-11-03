@@ -108,10 +108,9 @@ h2 {
   margin: 0 auto;
 }
 
-.votes-overlay {
+.votes {
   display: flex;
-  position: relative;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 @media screen and (max-width: 1232px) {

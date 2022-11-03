@@ -1,7 +1,5 @@
 import CardReviews from "./CardReviews";
 import CategoryList from "./CategoryList";
-import Votes from "./Votes";
-
 
 import { getAllReviews } from "../utils/api";
 import { useState, useEffect } from "react";
@@ -31,12 +29,7 @@ const ListReviews = ({reviews}) => {
       <h2>Reviews</h2>
       <ul className="reviewList">
         {reviewsData.map((review) => (
-          <>
-            <CardReviews key={review.review_id} review={review} />
-            <div className="votes-overlay">
-              <Votes />
-            </div>
-          </>
+          <CardReviews key={review.review_id} review={review} />
         ))}
       </ul>
     </>

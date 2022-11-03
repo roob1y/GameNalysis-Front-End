@@ -1,3 +1,5 @@
+import Votes from "./Votes";
+
 const UserCardReview = ({ userReview }) => {
   return (
     <article className="">
@@ -16,6 +18,9 @@ const UserCardReview = ({ userReview }) => {
           src={userReview.review_img_url}
           alt={userReview.title}
         />
+      </div>
+      <div className="votes">
+        <Votes />
       </div>
       <div className="">
         <p>{userReview.review_body}</p>
