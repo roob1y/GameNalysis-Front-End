@@ -20,13 +20,10 @@ const UserCardReview = ({ userReview }) => {
         />
       </div>
       <div className="votes">
-        <Votes />
+        <Votes votes={userReview.votes} />
       </div>
       <div className="">
         <p>{userReview.review_body}</p>
-      </div>
-      <div className="">
-        <h5>Upvotes: {userReview.votes}</h5>
       </div>
       <div className="">
         <h5>Comments: {userReview.comment_count}</h5>
