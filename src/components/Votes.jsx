@@ -1,63 +1,82 @@
 import { AiFillUpSquare, AiFillDownSquare } from "react-icons/ai";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+import { patchUserReview } from "../utils/api";
 
 const Votes = ({ review_id, votes }) => {
+  
   const [vote, setVote] = useState(0);
+  const [displayCount, setDisplayCount] = useState(0)
 
-  const [likeActive, setLikeActive] = useState(false)
+  // const [err, setErr] = useState(0);
 
-  const [dislikeActive, setDislikeActive] = useState(false)
 
-  const handleLikeChange = () => {
-    // increase likes
+  const [likeActive, setLikeActive] = useState(false);
+
+  const [dislikeActive, setDislikeActive] = useState(false);
+
+  const handleLikeClick = () => {
     if (likeActive) {
-      setLikeActive(false)
-      setVote(vote - 1)
+      setVote(-1);
+      setDisplayCount(0)
+      setLikeActive(false);
     } else {
-      setLikeActive(true)
-      setVote(vote + 1)
-    } if (dislikeActive) {
-      setDislikeActive(false)
-      setVote(vote + 2)
+      setVote(+1);
+      setDisplayCount(+1)
+      setLikeActive(true);
     }
-    // Patch Request
-  }
-  const handleDislikeChange = () => {
+    if (dislikeActive) {
+      setVote(+2);
+      setDisplayCount(+1)
+      setDislikeActive(false);
+    }
+  };
+
+  useEffect(() => {
+    patchUserReview(review_id, vote)
+  })
+
+  const handleDislikeClick = () => {
     // increase likes
     if (dislikeActive) {
-      setDislikeActive(false)
-      setVote(vote + 1)
+      setVote(1);
+      setDisplayCount(0)
+      setDislikeActive(false);
     } else {
-      setDislikeActive(true)
-      setVote(vote - 1)
-    } if (likeActive) {
-      setLikeActive(false)
-      setVote(vote - 2)
+      setVote(-1);
+      setDisplayCount(-1)
+      setDislikeActive(true);
+
     }
-    // Patch Request
-  }
-  let upvoteClassName = 'upvote';
+    if (likeActive) {
+      setVote(-2);
+      setDisplayCount(-1)
+      setLikeActive(false);
+    }
+  };
+  let upvoteClassName = "upvote";
   if (likeActive) {
-    upvoteClassName += ' upvoteEnable';
+    upvoteClassName += " upvoteEnable";
   }
 
-  let downvoteClassName = 'downvote';
+  let downvoteClassName = "downvote";
   if (dislikeActive) {
-    downvoteClassName += ' downvoteEnable';
+    downvoteClassName += " downvoteEnable";
   }
 
   return (
     <>
       <div className="">
-        <h5 aria-label={`vote count ${votes}`}>votes: {votes + vote}</h5>
+        <h5 aria-label={`vote count ${votes}`}>votes: {votes + displayCount}</h5>
+
       </div>
       <div>
-        <button onClick={handleLikeChange}>
-          <AiFillUpSquare className={upvoteClassName}/>
+        <button onClick={handleLikeClick}>
+          <AiFillUpSquare className={upvoteClassName} />
         </button>
       </div>
       <div>
-        <button onClick={handleDislikeChange}>
+        <button onClick={handleDislikeClick}>
           <AiFillDownSquare className={downvoteClassName} />
         </button>
       </div>
