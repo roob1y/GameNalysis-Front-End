@@ -108,6 +108,12 @@ h2 {
   margin: 0 auto;
 }
 
+.votes-overlay {
+  display: flex;
+  position: relative;
+  justify-content: flex-end;
+}
+
 @media screen and (max-width: 1232px) {
   .reviewCards {
     width: 70%;
