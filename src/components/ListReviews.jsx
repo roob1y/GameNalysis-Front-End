@@ -9,8 +9,6 @@ import { useParams } from "react-router-dom";
 const ListReviews = ({reviews}) => {
   const [reviewsData, setReviewsData] = useState([]);
   const {category} = useParams();
-  console.log('category: ', category);
-
   useEffect(() => {
     getAllReviews().then(({ reviews }) => {
       if (category) {
