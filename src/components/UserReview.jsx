@@ -10,23 +10,24 @@ const UserReview = () => {
   const [userReview, setUserReview] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    getUserReview(reviewId).then(({ review }) => {
-      setUserReview(review);
-      setIsLoading(false);
-    });
+    setIsLoading(true);
+    getUserReview(reviewId)
+      .then(({ review }) => {
+        setUserReview(review);
+        setIsLoading(false);
+      })
   }, [reviewId]);
   if (!isLoading) {
     return (
       <>
         <nav>
           <Link to="/">
-            <BsChevronLeft title="Home Button" size='2em'/>
+            <BsChevronLeft title="Home Button" size="2em" />
           </Link>
         </nav>
         <main className="main">
           <h2>Reviewed By {userReview.owner}</h2>
           <UserCardReview userReview={userReview} />
-          
         </main>
       </>
     );

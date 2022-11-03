@@ -20,7 +20,7 @@ const UserCardReview = ({ userReview }) => {
         />
       </div>
       <div className="votes">
-        <Votes votes={userReview.votes} />
+        <Votes review_id={userReview.review_id} votes={userReview.votes} />
       </div>
       <div className="">
         <p>{userReview.review_body}</p>

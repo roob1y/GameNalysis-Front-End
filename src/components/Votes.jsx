@@ -1,7 +1,7 @@
 import { AiFillUpSquare, AiFillDownSquare } from "react-icons/ai";
 import { useState, useEffect } from "react";
 
-const Votes = ({ votes }) => {
+const Votes = ({ review_id, votes }) => {
   return (
     <>
       <div className="">
