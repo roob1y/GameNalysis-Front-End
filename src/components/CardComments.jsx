@@ -1,5 +1,4 @@
 const CardComments = ({comments}) => {
-  console.log(comments);
   return (
     <li className="userCommentCard">
       <h3>{comments.author}</h3>
