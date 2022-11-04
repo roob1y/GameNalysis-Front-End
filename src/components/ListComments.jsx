@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { getCommentsByReviewId } from "../utils/api";
+import CardComments from "./CardComments";
 
-const Comments = ({reviewId}) => {  
+const ListComments = ({reviewId}) => {  
   const [comments, setComments] = useState()
   const [isLoading, setIsLoading] = useState(true);
 
@@ -13,16 +14,18 @@ const Comments = ({reviewId}) => {
       setIsLoading(false)
     })
   }, [reviewId])
+
   if (!isLoading) {
     return (
-      <section>
-      <h2>Comments</h2>
-      
-      </section>
-    )
+      <ul className="commentList">
+        {comments.map(comment => {
+          return <CardComments key={comment.comment_id} comments={comment}/>
+        })}
+      </ul>
+      )
   } else {
     return <p>is loading...</p>
   }
 }
 
-export default Comments;
+export default ListComments;

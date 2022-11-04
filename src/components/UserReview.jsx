@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { BsChevronLeft } from "react-icons/bs";
 
 import UserCardReview from "./UserCardReview";
-import Comments from "./Comments"
+import ListComments from "./ListComments";
 
 const UserReview = () => {
   const { reviewId } = useParams();
@@ -28,9 +28,14 @@ const UserReview = () => {
           </Link>
         </nav>
         <main className="main">
-          <h2>Reviewed By {userReview.owner}</h2>
-          <UserCardReview userReview={userReview} />
-          <Comments reviewId={userReview.review_id} />
+          <section>
+            <h2>Reviewed By {userReview.owner}</h2>
+            <UserCardReview userReview={userReview} />
+          </section>
+          <section>
+          <h2>Comments</h2>
+            <ListComments reviewId={userReview.review_id} />
+          </section>
         </main>
       </>
     );
