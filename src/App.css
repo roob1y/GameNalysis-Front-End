@@ -141,6 +141,11 @@ h2 {
   border: #282c34 1px solid;
 }
 
+.userCommentCard{
+  border: #282c34 1px solid;
+  margin: 1% 2%;
+}
+
 @media screen and (max-width: 1232px) {
   .reviewCards {
     width: 70%;
