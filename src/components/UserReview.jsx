@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { BsChevronLeft } from "react-icons/bs";
 
 import UserCardReview from "./UserCardReview";
+import Comments from "./Comments"
 
 const UserReview = () => {
   const { reviewId } = useParams();
@@ -17,6 +18,7 @@ const UserReview = () => {
         setIsLoading(false);
       })
   }, [reviewId]);
+
   if (!isLoading) {
     return (
       <>
@@ -28,6 +30,7 @@ const UserReview = () => {
         <main className="main">
           <h2>Reviewed By {userReview.owner}</h2>
           <UserCardReview userReview={userReview} />
+          <Comments reviewId={userReview.review_id} />
         </main>
       </>
     );
