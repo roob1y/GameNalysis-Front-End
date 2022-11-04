@@ -3,7 +3,7 @@ import { getCommentsByReviewId } from "../utils/api";
 import CardComments from "./CardComments";
 
 const ListComments = ({reviewId}) => {  
-  const [comments, setComments] = useState()
+  const [comments, setComments] = useState([])
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -12,10 +12,14 @@ const ListComments = ({reviewId}) => {
     .then(({comments}) => {
       setComments(comments)
       setIsLoading(false)
+    }).catch((err) => {
+      if (err.response.status === 404){
+        setIsLoading(false)
+      }
     })
   }, [reviewId])
 
-  if (!isLoading) {
+  if (!isLoading && comments.length > 0) {
     return (
       <ul className="commentList">
         {comments.map(comment => {
@@ -23,6 +27,8 @@ const ListComments = ({reviewId}) => {
         })}
       </ul>
       )
+  } else if (comments.length === 0) {
+    return <p>No Comments</p>
   } else {
     return <p>is loading...</p>
   }
