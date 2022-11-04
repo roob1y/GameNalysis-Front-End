@@ -5,6 +5,7 @@ import { BsChevronLeft } from "react-icons/bs";
 
 import UserCardReview from "./UserCardReview";
 import ListComments from "./ListComments";
+import AddComment from "./AddComment";
 
 const UserReview = () => {
   const { reviewId } = useParams();
@@ -12,11 +13,10 @@ const UserReview = () => {
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     setIsLoading(true);
-    getUserReview(reviewId)
-      .then(({ review }) => {
-        setUserReview(review);
-        setIsLoading(false);
-      })
+    getUserReview(reviewId).then(({ review }) => {
+      setUserReview(review);
+      setIsLoading(false);
+    });
   }, [reviewId]);
 
   if (!isLoading) {
@@ -33,8 +33,11 @@ const UserReview = () => {
             <UserCardReview userReview={userReview} />
           </section>
           <section>
-          <h2>Comments</h2>
+            <h2>Comments</h2>
             <ListComments reviewId={userReview.review_id} />
+          </section>
+          <section>
+            <AddComment />
           </section>
         </main>
       </>
