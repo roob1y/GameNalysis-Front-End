@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 const ncgamesApi = axios.create({
   baseURL:"https://lord-of-board-games.herokuapp.com/api/"
 })
@@ -21,6 +20,10 @@ export function getUserReview (reviewId) {
   return ncgamesApi.get(`/reviews/${reviewId}`).then((res) => {
     return res.data;
   })
+}
+
+export function patchUserReview (id, voteCount) {
+  return ncgamesApi.patch(`/reviews/${id}`, {inc_votes: voteCount});
 }
 
 export default ncgamesApi;

@@ -1,15 +1,14 @@
 import CardReviews from "./CardReviews";
 import CategoryList from "./CategoryList";
+
 import { getAllReviews } from "../utils/api";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 
-const ListReviews = ({reviews}) => {
+const ListReviews = () => {
   const [reviewsData, setReviewsData] = useState([]);
   const {category} = useParams();
-  console.log('category: ', category);
-
   useEffect(() => {
     getAllReviews().then(({ reviews }) => {
       if (category) {
