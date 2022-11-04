@@ -31,7 +31,6 @@ const Votes = ({ review_id, votes }) => {
   };
 
   const handleDislikeClick = () => {
-    // increase likes
     if (dislikeActive) {
       setVote(1);
       setDisplayCount(0);
