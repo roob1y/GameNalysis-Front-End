@@ -4,12 +4,10 @@ import { useEffect, useState } from "react";
 import { patchUserReview } from "../utils/api";
 
 const Votes = ({ review_id, votes }) => {
-  
   const [vote, setVote] = useState(0);
-  const [displayCount, setDisplayCount] = useState(0)
+  const [displayCount, setDisplayCount] = useState(0);
 
-  // const [err, setErr] = useState(0);
-
+  const [err, setErr] = useState(null);
 
   const [likeActive, setLikeActive] = useState(false);
 
@@ -18,39 +16,34 @@ const Votes = ({ review_id, votes }) => {
   const handleLikeClick = () => {
     if (likeActive) {
       setVote(-1);
-      setDisplayCount(0)
+      setDisplayCount(0);
       setLikeActive(false);
     } else {
       setVote(+1);
-      setDisplayCount(+1)
+      setDisplayCount(+1);
       setLikeActive(true);
     }
     if (dislikeActive) {
       setVote(+2);
-      setDisplayCount(+1)
+      setDisplayCount(+1);
       setDislikeActive(false);
     }
   };
-
-  useEffect(() => {
-    patchUserReview(review_id, vote)
-  })
 
   const handleDislikeClick = () => {
     // increase likes
     if (dislikeActive) {
       setVote(1);
-      setDisplayCount(0)
+      setDisplayCount(0);
       setDislikeActive(false);
     } else {
       setVote(-1);
-      setDisplayCount(-1)
+      setDisplayCount(-1);
       setDislikeActive(true);
-
     }
     if (likeActive) {
       setVote(-2);
-      setDisplayCount(-1)
+      setDisplayCount(-1);
       setLikeActive(false);
     }
   };
@@ -64,11 +57,20 @@ const Votes = ({ review_id, votes }) => {
     downvoteClassName += " downvoteEnable";
   }
 
+  useEffect(() => {
+    patchUserReview(review_id, vote).catch((err) => {
+      setErr(err)
+    });
+  }, [review_id, vote]);
+  
+  if (err) return <p>{err.response.data.msg}. please try again...</p>;
+
   return (
     <>
       <div className="">
-        <h5 aria-label={`vote count ${votes}`}>votes: {votes + displayCount}</h5>
-
+        <h5 aria-label={`vote count ${votes}`}>
+          votes: {votes + displayCount}
+        </h5>
       </div>
       <div>
         <button onClick={handleLikeClick}>

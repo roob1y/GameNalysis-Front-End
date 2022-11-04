@@ -23,10 +23,7 @@ export function getUserReview (reviewId) {
 }
 
 export function patchUserReview (id, voteCount) {
-  return ncgamesApi.patch(`/reviews/${id}`, {inc_votes: voteCount}).then(({data}) => {
-    console.log(data.updatedReview.votes);
-
-  })
+  return ncgamesApi.patch(`/reviews/${id}`, {inc_votes: voteCount});
 }
 
 export default ncgamesApi;
