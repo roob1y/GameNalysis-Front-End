@@ -27,8 +27,15 @@ export function patchUserReview(reviewId, voteCount) {
 }
 
 export function getCommentsByReviewId(reviewId) {
-  return ncgamesApi.get(`reviews/${reviewId}/comments`).then(({ data }) => {
+  return ncgamesApi.get(`/reviews/${reviewId}/comments`).then(({ data }) => {
     return data;
+  });
+}
+
+export function postCommentByReviewId(reviewId, newComment) {
+  console.log('newComment: ', newComment);
+  return ncgamesApi.post(`/reviews/${reviewId}/comments`, newComment).then(({ data }) => {
+    console.log(data);
   });
 }
 

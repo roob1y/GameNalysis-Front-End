@@ -37,7 +37,7 @@ const UserReview = () => {
             <ListComments reviewId={userReview.review_id} />
           </section>
           <section>
-            <AddComment />
+            <AddComment reviewId={userReview.review_id}/>
           </section>
         </main>
       </>
