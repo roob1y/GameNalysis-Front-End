@@ -12,6 +12,8 @@ const UserReview = () => {
   const [userReview, setUserReview] = useState(null);
   const [newCommentData, setNewCommentData] = useState(null)
   const [isLoading, setIsLoading] = useState(true);
+  const [idInc, setIdInc] = useState(0)
+  
   useEffect(() => {
     setIsLoading(true);
     getUserReview(reviewId).then(({ review }) => {
@@ -21,6 +23,7 @@ const UserReview = () => {
   }, [reviewId]);
 
   const addCommentRender = (commentData) => {
+    setIdInc(idInc + 1)
     setNewCommentData(commentData);
   }
 
@@ -37,12 +40,12 @@ const UserReview = () => {
             <h2>Reviewed By {userReview.owner}</h2>
             <UserCardReview userReview={userReview} />
           </section>
-          <section>
             <h2>Comments</h2>
-            <ListComments reviewId={userReview.review_id} newCommentData={newCommentData}/>
-          </section>
           <section>
             <AddComment reviewId={userReview.review_id} addCommentRender={addCommentRender} />
+          </section>
+          <section>
+            <ListComments reviewId={userReview.review_id} newCommentData={newCommentData} idInc={idInc}/>
           </section>
         </main>
       </>

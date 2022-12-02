@@ -34,9 +34,7 @@ export function getCommentsByReviewId(reviewId) {
 
 export function postCommentByReviewId(reviewId, newComment) {
   console.log('reviewId: ', reviewId);
-  return ncgamesApi.post(`/reviews/${reviewId}/comments`, newComment).then((data) => {
-    console.log(data);
-  });
+  return ncgamesApi.post(`/reviews/${reviewId}/comments`, newComment)
 }
 
 export default ncgamesApi;
