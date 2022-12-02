@@ -5,19 +5,27 @@ import { BsChevronLeft } from "react-icons/bs";
 
 import UserCardReview from "./UserCardReview";
 import ListComments from "./ListComments";
+import AddComment from "./AddComment";
 
 const UserReview = () => {
   const { reviewId } = useParams();
   const [userReview, setUserReview] = useState(null);
+  const [newCommentData, setNewCommentData] = useState(null)
   const [isLoading, setIsLoading] = useState(true);
+  const [idInc, setIdInc] = useState(0)
+  
   useEffect(() => {
     setIsLoading(true);
-    getUserReview(reviewId)
-      .then(({ review }) => {
-        setUserReview(review);
-        setIsLoading(false);
-      })
+    getUserReview(reviewId).then(({ review }) => {
+      setUserReview(review);
+      setIsLoading(false);
+    });
   }, [reviewId]);
+
+  const addCommentRender = (commentData) => {
+    setIdInc(idInc + 1)
+    setNewCommentData(commentData);
+  }
 
   if (!isLoading) {
     return (
@@ -32,9 +40,12 @@ const UserReview = () => {
             <h2>Reviewed By {userReview.owner}</h2>
             <UserCardReview userReview={userReview} />
           </section>
+            <h2>Comments</h2>
           <section>
-          <h2>Comments</h2>
-            <ListComments reviewId={userReview.review_id} />
+            <AddComment reviewId={userReview.review_id} addCommentRender={addCommentRender} />
+          </section>
+          <section>
+            <ListComments reviewId={userReview.review_id} newCommentData={newCommentData} idInc={idInc}/>
           </section>
         </main>
       </>

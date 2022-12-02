@@ -1,5 +1,4 @@
-const CardComments = ({comments}) => {
-  console.log(comments);
+const CardComments = ({ comments }) => {
   return (
     <li className="userCommentCard">
       <h3>{comments.author}</h3>
@@ -7,6 +6,6 @@ const CardComments = ({comments}) => {
       <p>votes: {comments.votes}</p>
       <p>posted: {new Date(comments.created_at).toLocaleDateString()}</p>
     </li>
-  )
-}
+  );
+};
 export default CardComments;
