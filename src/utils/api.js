@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const ncgamesApi = axios.create({
-  baseURL: "https://lord-of-board-games.herokuapp.com/api/",
+  baseURL: "https://nc-reviews-games.cyclic.app/api",
 });
 
 export function getAllReviews() {
@@ -33,8 +33,8 @@ export function getCommentsByReviewId(reviewId) {
 }
 
 export function postCommentByReviewId(reviewId, newComment) {
-  console.log('newComment: ', newComment);
-  return ncgamesApi.post(`/reviews/${reviewId}/comments`, newComment).then(({ data }) => {
+  console.log('reviewId: ', reviewId);
+  return ncgamesApi.post(`/reviews/${reviewId}/comments`, newComment).then((data) => {
     console.log(data);
   });
 }

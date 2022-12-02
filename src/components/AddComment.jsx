@@ -1,22 +1,21 @@
 import { useState } from "react";
 import { postCommentByReviewId } from "../utils/api";
 
-const AddComment = ({reviewId}) => {
-  const [comment, setComment] = useState({});
+const AddComment = ({reviewId, addCommentRender}) => {
   const [commentBody, setCommentBody] = useState("")
 
   const changeHandler = (event) => {
     setCommentBody(event.target.value);
   }
 
+  
   const clickHandler = () => {
-    if (comment === "" || comment === " ") return;
     const newComment = {
-      "username": "bainesface",
+      "username": "happyamy2016",
       "body": commentBody,
     };
-    setComment(newComment);
-    postCommentByReviewId(reviewId, comment);
+    addCommentRender(newComment)
+    postCommentByReviewId(reviewId, newComment);
   };
 
   return (

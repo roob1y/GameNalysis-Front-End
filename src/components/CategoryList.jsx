@@ -29,7 +29,6 @@ const CategoryList = () => {
   } else {
     return <p>is loading...</p>;
   }
-  // })
 };
 
 export default CategoryList;

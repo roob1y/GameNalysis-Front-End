@@ -10,6 +10,7 @@ import AddComment from "./AddComment";
 const UserReview = () => {
   const { reviewId } = useParams();
   const [userReview, setUserReview] = useState(null);
+  const [newCommentData, setNewCommentData] = useState(null)
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     setIsLoading(true);
@@ -18,6 +19,10 @@ const UserReview = () => {
       setIsLoading(false);
     });
   }, [reviewId]);
+
+  const addCommentRender = (commentData) => {
+    setNewCommentData(commentData);
+  }
 
   if (!isLoading) {
     return (
@@ -34,10 +39,10 @@ const UserReview = () => {
           </section>
           <section>
             <h2>Comments</h2>
-            <ListComments reviewId={userReview.review_id} />
+            <ListComments reviewId={userReview.review_id} newCommentData={newCommentData}/>
           </section>
           <section>
-            <AddComment reviewId={userReview.review_id}/>
+            <AddComment reviewId={userReview.review_id} addCommentRender={addCommentRender} />
           </section>
         </main>
       </>

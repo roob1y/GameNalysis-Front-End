@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { getCommentsByReviewId } from "../utils/api";
 import CardComments from "./CardComments";
 
-const ListComments = ({reviewId}) => {  
+const ListComments = ({reviewId, newCommentData}) => {  
   const [comments, setComments] = useState([])
   const [isLoading, setIsLoading] = useState(true);
 
@@ -18,6 +18,8 @@ const ListComments = ({reviewId}) => {
       }
     })
   }, [reviewId])
+
+  console.log(newCommentData);
 
   if (!isLoading && comments.length > 0) {
     return (
