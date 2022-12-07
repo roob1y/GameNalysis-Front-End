@@ -5,20 +5,22 @@ const ncgamesApi = axios.create({
 });
 
 export function getAllReviews(sort_by, order, category) {
-  return ncgamesApi.get(`/reviews`, {params: {sort_by, order, category}}).then((res) => {
-    return res.data;
-  });
+  return ncgamesApi
+    .get(`/reviews`, { params: { sort_by, order, category } })
+    .then(({ data }) => {
+      return data;
+    });
 }
 
 export function getAllCategories() {
-  return ncgamesApi.get(`/categories`).then((res) => {
-    return res.data;
+  return ncgamesApi.get(`/categories`).then(({ data }) => {
+    return data;
   });
 }
 
 export function getUserReview(reviewId) {
-  return ncgamesApi.get(`/reviews/${reviewId}`).then((res) => {
-    return res.data;
+  return ncgamesApi.get(`/reviews/${reviewId}`).then(({ data }) => {
+    return data;
   });
 }
 
@@ -33,8 +35,13 @@ export function getCommentsByReviewId(reviewId) {
 }
 
 export function postCommentByReviewId(reviewId, newComment) {
-  console.log('reviewId: ', reviewId);
-  return ncgamesApi.post(`/reviews/${reviewId}/comments`, newComment)
+  return ncgamesApi.post(`/reviews/${reviewId}/comments`, newComment);
+}
+
+export function getUsers() {
+  return ncgamesApi.get(`/users`).then(({ data }) => {
+    return data;
+  });
 }
 
 export default ncgamesApi;

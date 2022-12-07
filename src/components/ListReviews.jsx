@@ -2,13 +2,13 @@ import CardReviews from "./CardReviews";
 import CategoryList from "./CategoryList";
 import SortByReviews from "./SortByReviews";
 
+
 import { getAllReviews } from "../utils/api";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
 const ListReviews = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-
   const [reviewsData, setReviewsData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
