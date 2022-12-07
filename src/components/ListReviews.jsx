@@ -4,42 +4,46 @@ import SortByReviews from "./SortByReviews";
 
 import { getAllReviews } from "../utils/api";
 import { useState, useEffect } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 const ListReviews = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [reviewsData, setReviewsData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const { category } = useParams();
   useEffect(() => {
     setIsLoading(true);
     getAllReviews(
       searchParams.get("sort_by"),
       searchParams.get("order"),
-      // searchParams.get("category")
+      searchParams.get("category")
     ).then(({ reviews }) => {
-      if (category) {
-        const filteredReviews = reviews.filter(
-          (review) => review.category === category
-        );
-        setReviewsData(filteredReviews);
-      } else {
-        setReviewsData(reviews);
-      }
+      setReviewsData(reviews);
       setIsLoading(false);
     });
-  }, [searchParams, category]);
+  }, [searchParams]);
 
-  // useEffect(() => {
-  //   const currParams = Object.fromEntries([...searchParams]);
-  //   setSearchParams(currParams);
-  // }, [searchParams, setSearchParams])
-
-  if (!isLoading) {
+  if (isLoading) {
     return (
       <>
-        <CategoryList />
+        <CategoryList
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
+        />
+        <SortByReviews
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
+        />
+        <p>is loading...</p>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <CategoryList
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
+        />
         <SortByReviews
           searchParams={searchParams}
           setSearchParams={setSearchParams}
@@ -52,8 +56,6 @@ const ListReviews = () => {
         </ul>
       </>
     );
-  } else {
-    return <p>is loading...</p>;
   }
 };
 

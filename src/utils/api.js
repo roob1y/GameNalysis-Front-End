@@ -4,10 +4,8 @@ const ncgamesApi = axios.create({
   baseURL: "https://nc-reviews-games.cyclic.app/api",
 });
 
-export function getAllReviews(sort_by, order) {
-  console.log('sortBy: ', sort_by);
-  console.log('order: ', order);
-  return ncgamesApi.get(`/reviews`, {params: {sort_by, order}}).then((res) => {
+export function getAllReviews(sort_by, order, category) {
+  return ncgamesApi.get(`/reviews`, {params: {sort_by, order, category}}).then((res) => {
     return res.data;
   });
 }
