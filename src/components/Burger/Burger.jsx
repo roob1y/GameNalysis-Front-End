@@ -3,11 +3,12 @@ import { StyledBurger } from './Burger.styled';
 import { bool, func } from 'prop-types';
 
 const Burger = ({open, setOpen}) => {
+  const isExpanded = open ? true : false
   return (
-    <StyledBurger open={open} onClick={() => setOpen(!open)}>
-      <div />
-      <div />
-      <div />
+    <StyledBurger aria-label="Toggle Sidebar" aria-expanded={isExpanded} open={open} onClick={() => setOpen(!open)}>
+      <span />
+      <span />
+      <span />
     </StyledBurger>
   )
 }

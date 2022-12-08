@@ -3,10 +3,11 @@ import { bool } from 'prop-types';
 import { StyledMenu } from './Menu.styled';
 
 const Menu = ({open}) => {
+  const isHidden = open ? true : false;
   return (
-    <StyledMenu open={open}>
+    <StyledMenu open={open} aria-hidden={!isHidden}>
       <a href="/">
-        <span role="img" aria-label="about us">&#x1f481;&#x1f3fb;&#x200d;&#x2642;&#xfe0f;</span>
+        <span aria-hidden="true">&#x1f481;&#x1f3fb;&#x200d;&#x2642;&#xfe0f;</span>
         Sign Out
       </a>
     </StyledMenu>

@@ -17,11 +17,10 @@ import { useOnClickOutside } from './hooks';
 
 
 function App() {
-  
   const [user, setUser] = useState();
   const [open, setOpen] = useState(false);
-
   const node = useRef(); 
+  const menuId = "main-menu"
   
   useOnClickOutside(node, () => setOpen(false));
 
@@ -32,8 +31,8 @@ function App() {
         <div className="App">
           <Header />
           <div ref={node}>
-            <Burger open={open} setOpen={setOpen} />
-            <Menu open={open} setOpen={setOpen}/>
+            <Burger open={open} setOpen={setOpen} aria-controls={menuId}/>
+            <Menu open={open} setOpen={setOpen} id={menuId}/>
           </div>
           <Routes>
             <Route
