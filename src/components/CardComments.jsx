@@ -1,14 +1,21 @@
 import { useState, useContext } from "react";
 import { UserContext } from "../contexts/User";
+import { deleteCommentById } from "../utils/api";
 
 const CardComments = ({ comments }) => {
   const [commentDel, setCommentDel] = useState(false);
   const { loggedUser } = useContext(UserContext);
+
+  function handleOnClick(){
+    setCommentDel(true)
+    deleteCommentById(comments.comment_id)
+  }
+  
   return (
     !commentDel && (
       <li className="userCommentCard">
         {comments.author === loggedUser && (
-          <button onClick={() => setCommentDel(true)}>X</button>
+          <button onClick={handleOnClick}>X</button>
         )}
         <h3>{comments.author}</h3>
         <p>{comments.body}</p>
