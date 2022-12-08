@@ -1,15 +1,13 @@
 const UserCard = ({ user }) => {
-  console.log("user: ", user);
   const altText = `profile of ${user.username}`;
+
   return (
     <div>
       <section
         style={{
           display: "flex",
-          backgroundColor: "black",
           width: "20vh",
           height: "20vh",
-          border: "1px black solid",
           justifyContent: "center",
           alignItems: "center",
         }}
@@ -31,7 +29,7 @@ const UserCard = ({ user }) => {
           alt={altText}
         />
       </section>
-      <section>
+      <section style={{ backgroundColor:"green", margin: "5px", padding: "1px"}}>
         <p>{user.username}</p>
         <p>{user.name}</p>
       </section>
