@@ -30,10 +30,6 @@ const ListComments = ({ reviewId, newCommentData, idInc }) => {
     }
   }, [newCommentData, maxId, idInc]);
 
-  // useEffect(() => {
-  //   setComments([...comments] + newCommentData)
-  // }, [newCommentData])
-
   if (!isLoading && comments.length > 0) {
     return (
       <ul className="commentList">

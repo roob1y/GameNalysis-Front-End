@@ -1,11 +1,28 @@
+import { useState, useContext } from "react";
+import { UserContext } from "../contexts/User";
+import { deleteCommentById } from "../utils/api";
+
 const CardComments = ({ comments }) => {
+  const [commentDel, setCommentDel] = useState(false);
+  const { loggedUser } = useContext(UserContext);
+
+  function handleOnClick(){
+    setCommentDel(true)
+    deleteCommentById(comments.comment_id)
+  }
+  
   return (
-    <li className="userCommentCard">
-      <h3>{comments.author}</h3>
-      <p>{comments.body}</p>
-      <p>votes: {comments.votes}</p>
-      <p>posted: {new Date(comments.created_at).toLocaleDateString()}</p>
-    </li>
+    !commentDel && (
+      <li className="userCommentCard">
+        {comments.author === loggedUser && (
+          <button onClick={handleOnClick}>X</button>
+        )}
+        <h3>{comments.author}</h3>
+        <p>{comments.body}</p>
+        <p>votes: {comments.votes}</p>
+        <p>posted: {new Date(comments.created_at).toLocaleDateString()}</p>
+      </li>
+    )
   );
 };
 export default CardComments;

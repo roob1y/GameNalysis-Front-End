@@ -17,7 +17,7 @@ import { useOnClickOutside } from './hooks';
 
 
 function App() {
-  const [user, setUser] = useState();
+  const [loggedUser, setLoggedUser] = useState();
   const [open, setOpen] = useState(false);
   const node = useRef(); 
   const menuId = "main-menu"
@@ -26,7 +26,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <UserContext.Provider value={{ user, setUser }}>
+      <UserContext.Provider value={{ loggedUser, setLoggedUser }}>
         <GlobalStyles />
         <div className="App">
           <Header />
@@ -38,16 +38,16 @@ function App() {
             <Route
               path="/"
               element={
-                user ? <ListReviews /> : <Navigate to="/welcome" replace />
+                loggedUser ? <ListReviews /> : <Navigate to="/welcome" replace />
               }
             />
             <Route
               path="/review/id:reviewId"
-              element={user ? <UserReview /> : <Navigate to="/" replace />}
+              element={loggedUser ? <UserReview /> : <Navigate to="/" replace />}
             />
             <Route
               path="/welcome"
-              element={!user ? <UserPage /> : <Navigate to="/" replace />}
+              element={!loggedUser ? <UserPage /> : <Navigate to="/" replace />}
             />
           </Routes>
         </div>

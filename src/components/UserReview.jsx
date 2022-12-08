@@ -1,13 +1,14 @@
 import { Link, useParams } from "react-router-dom";
 import { getUserReview } from "../utils/api";
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
+
 import { BsChevronLeft } from "react-icons/bs";
 
 import UserCardReview from "./UserCardReview";
-import ListComments from "./ListComments";
-import AddComment from "./AddComment";
+import Comments from "./Comments";
 
 const UserReview = () => {
+
   const { reviewId } = useParams();
   const [userReview, setUserReview] = useState(null);
   const [newCommentData, setNewCommentData] = useState(null)
@@ -42,10 +43,7 @@ const UserReview = () => {
           </section>
             <h2>Comments</h2>
           <section>
-            <AddComment reviewId={userReview.review_id} addCommentRender={addCommentRender} />
-          </section>
-          <section>
-            <ListComments reviewId={userReview.review_id} newCommentData={newCommentData} idInc={idInc}/>
+            <Comments userReview={userReview} addCommentRender={addCommentRender} newCommentData={newCommentData} idInc={idInc}/>
           </section>
         </main>
       </>
