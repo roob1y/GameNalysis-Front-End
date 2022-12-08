@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { postCommentByReviewId } from "../utils/api";
 
-const AddComment = ({ reviewId, addCommentRender }) => {
+const AddComment = ({ reviewId, addCommentRender, loggedUser}) => {
   const [commentBody, setCommentBody] = useState("");
 
   const changeHandler = (event) => {
@@ -10,12 +10,12 @@ const AddComment = ({ reviewId, addCommentRender }) => {
 
   const clickHandler = () => {
     const newComment = {
-      username: "happyamy2016",
+      username: loggedUser,
       body: commentBody,
     };
 
     addCommentRender({
-      author: "happyamy2016",
+      author: loggedUser,
       body: commentBody,
       comment_id: null,
       created_at: new Date().toLocaleDateString(),

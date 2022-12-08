@@ -4,7 +4,7 @@ import UserCard from "../components/UserCard";
 import { UserContext } from "../contexts/User";
 
 const UserPage = () => {
-  const {setUser} = useContext(UserContext);
+  const {setLoggedUser} = useContext(UserContext);
   const [users, setUsers] = useState([]);
   useEffect(() => {
     getUsers().then(({ users }) => {
@@ -24,7 +24,7 @@ const UserPage = () => {
       >
         {users.map((user) => (
           <div
-            onClick={() => setUser(user.username)}
+            onClick={() => setLoggedUser(user.username)}
             key={user.name}
             style={{ width: "20vh", backgroundColor: "gray" }}
           >

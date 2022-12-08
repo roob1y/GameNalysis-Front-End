@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { getUserReview } from "../utils/api";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { UserContext } from "../contexts/User"
 import { BsChevronLeft } from "react-icons/bs";
 
 import UserCardReview from "./UserCardReview";
@@ -8,6 +9,8 @@ import ListComments from "./ListComments";
 import AddComment from "./AddComment";
 
 const UserReview = () => {
+  const {loggedUser} = useContext(UserContext)
+
   const { reviewId } = useParams();
   const [userReview, setUserReview] = useState(null);
   const [newCommentData, setNewCommentData] = useState(null)
@@ -42,7 +45,7 @@ const UserReview = () => {
           </section>
             <h2>Comments</h2>
           <section>
-            <AddComment reviewId={userReview.review_id} addCommentRender={addCommentRender} />
+            <AddComment reviewId={userReview.review_id} addCommentRender={addCommentRender} loggedUser={loggedUser}/>
           </section>
           <section>
             <ListComments reviewId={userReview.review_id} newCommentData={newCommentData} idInc={idInc}/>
