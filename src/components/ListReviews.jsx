@@ -2,7 +2,6 @@ import CardReviews from "./CardReviews";
 import CategoryList from "./CategoryList";
 import SortByReviews from "./SortByReviews";
 
-
 import { getAllReviews } from "../utils/api";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
