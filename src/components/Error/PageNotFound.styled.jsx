@@ -4,7 +4,7 @@ export const MainContainer = styled.main`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: calc(100% - 4em);
+  height: calc(100% - 6em);
   justify-content: center`;
 
 export const ErrorIcon = styled.div`
