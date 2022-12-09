@@ -1,4 +1,5 @@
 import React from "react";
+
 import cryingSnakeAndLadder from "../../assets/sad_snake&sad_ladder.png";
 import dice_zero from "../../assets/dice_zero.png";
 import dice_four from "../../assets/dice_four.png";
@@ -19,7 +20,7 @@ const PageNotFound = () => {
     <MainContainer>
       <TextAndImagesContainer>
         <HeroImage>
-          <img src={cryingSnakeAndLadder} alt="Crying Snake and Ladders" style={{maxWidth: "90%"}} />
+          <img src={cryingSnakeAndLadder} alt="Crying Snake and Ladders" style={{maxWidth: "80%"}} />
         </HeroImage>
         <TextContainer>
           <ErrorIcon>

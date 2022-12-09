@@ -36,14 +36,15 @@ export const TextContainer = styled.div`
 `;
 
 export const HeaderTwo = styled.h2`
-
+  margin-top: 2em;
 `;
 
 export const Paragraph = styled.p`
   font-size: 1em;
+  margin: 0;
 `;
 
 export const HeroImage = styled.div`
-padding: 0 2em;
+padding: 0 1em;
 
 `;
