@@ -1,6 +1,19 @@
 import { useState, useRef } from "react";
+import styled from "styled-components";
 import { Burger, Menu } from "../components";
 import { useOnClickOutside } from "../hooks";
+
+const HeaderContainer = styled.header`
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 10px 2%;
+height: 4em;
+`;
+
+const HeaderTitle = styled.h1`
+
+`;
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -10,11 +23,12 @@ const Header = () => {
   useOnClickOutside(node, () => setOpen(false));
 
   return (
-    <header ref={node}>
-      <h1>GameNalysis</h1>
+    <HeaderContainer ref={node}>
       <Burger open={open} setOpen={setOpen} aria-controls={menuId} />
       <Menu open={open} setOpen={setOpen} id={menuId} />
-    </header>
+      <HeaderTitle>GameNalysis</HeaderTitle>
+      <br />
+    </HeaderContainer>
   );
 };
 

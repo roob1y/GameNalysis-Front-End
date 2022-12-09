@@ -1,53 +1,49 @@
 import styled from "styled-components";
 
-export const MainContainer = styled.div`
-  border: 1px solid black;
-  height: 100vh;
+export const MainContainer = styled.main`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100% - 4em);
+  justify-content: center`;
+
+export const ErrorIcon = styled.div`
+  display: flex;
+  width: 100%;
+  gap: 1em;
+`;
+
+export const Dice = styled.img`
+  height: 5em;
+  margin-top: 0.1em;
 `;
 
 export const TextAndImagesContainer = styled.div`
   display: flex;
-  width: fit-content;
+  margin: 0 auto;
+  align-items: center;
+  width: 90%;
   justify-content: center;
 `;
 
 export const TextContainer = styled.div`
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
-  border: 1px solid gray;
-  width: 60%;
-  height: 60vh;
-  justify-content: center;
+  padding: 0 2em;
+  text-align: left;
+  border-radius: 1em;
+  max-width: 45%;
+`;
+
+export const HeaderTwo = styled.h2`
+
 `;
 
 export const Paragraph = styled.p`
-  font-size: 2em;
-  text-align: right;
-  margin: 1.5em;
+  font-size: 1em;
 `;
 
-export const ErrorIcon = styled.div`
-  display: flex;
-  margin-top: 1em;
-  width: 100%;
-  height: 10%;
-  justify-content: center;
-  gap: 1em;
-`;
+export const HeroImage = styled.div`
+padding: 0 2em;
 
-export const Dice = styled.img``;
-
-export const ImgContainer = styled.div`
-  z-index: 1;
-  display: inline-flex;
-  position: relative;
-  left: 5em;
-  align-items: flex-end;
-`;
-
-export const CryingSnake = styled.img`
-  display: flex;
-  flex-wrap: wrap;
-  width: 15em;
-  height: 15em;
 `;

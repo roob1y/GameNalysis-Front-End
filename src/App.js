@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import ListReviews from "./components/ListReviews";
 import UserReview from "./components/UserReview";
 import UserPage from "./components/UserPage";
-import ErrorPage from "./components/Error/PageNotFound";
+import PageNotFound from "./components/Error/PageNotFound";
 
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./global";
@@ -44,7 +44,7 @@ function App() {
               path="/welcome"
               element={!loggedUser ? <UserPage /> : <Navigate to="/" replace />}
             />
-            <Route path="/404" element={<ErrorPage />} />
+            <Route path="/404" element={<PageNotFound />} />
             <Route path="/*" element={<Navigate to="/404" />} />
           </Routes>
         </div>
