@@ -5,7 +5,7 @@ import { bool, func } from 'prop-types';
 const Burger = ({open, setOpen}) => {
   const isExpanded = open ? true : false
   return (
-    <StyledBurger aria-label="Toggle Sidebar" aria-expanded={isExpanded} open={open} onClick={() => setOpen(!open)}>
+    <StyledBurger open={open} onClick={() => setOpen(!open)} aria-label="Toggle Sidebar" aria-expanded={isExpanded}>
       <span />
       <span />
       <span />
