@@ -5,25 +5,49 @@ export const MainContainer = styled.div`
   height: 100vh;
 `;
 
-export const Container = styled.div`
+export const TextAndImagesContainer = styled.div`
+  display: flex;
+  width: fit-content;
+  justify-content: center;
+`;
+
+export const TextContainer = styled.div`
   display: inline-flex;
-  border: 1px solid black;
+  flex-direction: column;
+  border: 1px solid gray;
   width: 60%;
-  height: 50vh;
+  height: 60vh;
+  justify-content: center;
+`;
+
+export const Paragraph = styled.p`
+  font-size: 2em;
+  text-align: right;
+  margin: 1.5em;
 `;
 
 export const ErrorIcon = styled.div`
   display: flex;
   margin-top: 1em;
   width: 100%;
-  height: 20%;
+  height: 10%;
   justify-content: center;
   gap: 1em;
 `;
 
+export const Dice = styled.img``;
+
+export const ImgContainer = styled.div`
+  z-index: 1;
+  display: inline-flex;
+  position: relative;
+  left: 5em;
+  align-items: flex-end;
+`;
+
 export const CryingSnake = styled.img`
-  z-index: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  width: 15em;
+  height: 15em;
 `;
