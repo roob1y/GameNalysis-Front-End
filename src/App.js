@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import ListReviews from "./components/ListReviews";
 import UserReview from "./components/UserReview";
 import UserPage from "./components/UserPage";
+import ErrorPage from "./components/PageNotFound"
 import { Burger, Menu } from "./components";
 
 import { ThemeProvider } from "styled-components";
@@ -48,6 +49,14 @@ function App() {
             <Route
               path="/welcome"
               element={!loggedUser ? <UserPage /> : <Navigate to="/" replace />}
+            />
+            <Route
+              path="/404"
+              element={<ErrorPage />}
+            />
+            <Route
+              path="/*"
+              element={<Navigate to="/404" />}
             />
           </Routes>
         </div>
