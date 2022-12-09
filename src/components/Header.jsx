@@ -7,12 +7,13 @@ const HeaderContainer = styled.header`
 display: flex;
 justify-content: space-between;
 align-items: center;
-padding: 10px 2%;
-height: 4em;
+padding: 10px 30px;
+height: 6em;
 `;
 
 const HeaderTitle = styled.h1`
-
+  position: relative;
+  right: 1.4rem;
 `;
 
 const Header = () => {

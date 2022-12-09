@@ -4,7 +4,7 @@ export const MainContainer = styled.main`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: calc(100% - 4em);
+  height: calc(100% - 6em);
   justify-content: center`;
 
 export const ErrorIcon = styled.div`
@@ -36,14 +36,15 @@ export const TextContainer = styled.div`
 `;
 
 export const HeaderTwo = styled.h2`
-
+  margin-top: 2em;
 `;
 
 export const Paragraph = styled.p`
   font-size: 1em;
+  margin: 0;
 `;
 
 export const HeroImage = styled.div`
-padding: 0 2em;
+padding: 0 1em;
 
 `;
