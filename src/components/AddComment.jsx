@@ -25,7 +25,7 @@ const AddComment = ({ reviewId, addCommentRender, setErr }) => {
       review_id: reviewId,
       votes: 0,
     });
-    
+
     postCommentByReviewId(reviewId, newComment)
       .then(() => {})
       .catch((err) => {
@@ -33,7 +33,7 @@ const AddComment = ({ reviewId, addCommentRender, setErr }) => {
       });
   };
   return (
-    <div className="add-comment">
+    <article className="add-comment">
       <textarea
         className="comment-input"
         placeholder="Add a comment"
@@ -44,7 +44,7 @@ const AddComment = ({ reviewId, addCommentRender, setErr }) => {
           send
         </button>
       </div>
-    </div>
+    </article>
   );
 };
 

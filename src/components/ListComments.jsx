@@ -34,7 +34,7 @@ const ListComments = ({ reviewId, newCommentData, idInc }) => {
   if (err) return <p>{err.response.data.msg}. Please try again...</p>;
   if (!isLoading && comments.length > 0) {
     return (
-      <div className="commentList">
+      <article className="commentList">
         <ul>
           {comments.map((comment) => {
             return <CardComments key={comment.comment_id} comments={comment} />;
@@ -46,7 +46,7 @@ const ListComments = ({ reviewId, newCommentData, idInc }) => {
           <Link to="/">
             <BsChevronRight title="Home Button" size="2em" />
           </Link>
-      </div>
+      </article>
     );
   } else if (comments.length === 0) {
     return <p>No Comments</p>;

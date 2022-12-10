@@ -43,15 +43,14 @@ const UserReview = () => {
             <h2>Reviewed By {userReview.owner}</h2>
             <UserCardReview userReview={userReview} />
           </section>
+          <section className="comments">
           <h2>Comments</h2>
-          <section>
             <Comments
               userReview={userReview}
               addCommentRender={addCommentRender}
               newCommentData={newCommentData}
               idInc={idInc}
             />
-            
           </section>
         </main>
       </>
