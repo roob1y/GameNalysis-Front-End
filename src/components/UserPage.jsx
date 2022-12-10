@@ -39,11 +39,11 @@ const UserPage = () => {
         >
           {users.map((user) => (
             <div
-              onClick={() => setLoggedUser(user.username)}
+              onClick={() => setLoggedUser(user)}
               key={user.name}
               style={{ width: "20vh", backgroundColor: "gray" }}
             >
-              <UserCard user={user}></UserCard>
+              <UserCard user={user} />
             </div>
           ))}
         </section>

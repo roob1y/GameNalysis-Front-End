@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { getCommentsByReviewId } from "../utils/api";
 import CardComments from "./CardComments";
+import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const ListComments = ({ reviewId, newCommentData, idInc }) => {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [err, setErr] = useState(null)
+  const [err, setErr] = useState(null);
   const [maxId, setMaxId] = useState(null);
 
   useEffect(() => {
@@ -18,7 +20,7 @@ const ListComments = ({ reviewId, newCommentData, idInc }) => {
         setIsLoading(false);
       })
       .catch((err) => {
-        setErr(err)
+        setErr(err);
       });
   }, [reviewId]);
 
@@ -29,16 +31,22 @@ const ListComments = ({ reviewId, newCommentData, idInc }) => {
     }
   }, [newCommentData, maxId, idInc]);
 
-  
-  
   if (err) return <p>{err.response.data.msg}. Please try again...</p>;
   if (!isLoading && comments.length > 0) {
     return (
-      <ul className="commentList">
-        {comments.map((comment) => {
-          return <CardComments key={comment.comment_id} comments={comment} />;
-        })}
-      </ul>
+      <div className="commentList">
+        <ul>
+          {comments.map((comment) => {
+            return <CardComments key={comment.comment_id} comments={comment} />;
+          })}
+        </ul>
+          <Link to="/">
+            <BsChevronLeft title="Home Button" size="2em" />
+          </Link>
+          <Link to="/">
+            <BsChevronRight title="Home Button" size="2em" />
+          </Link>
+      </div>
     );
   } else if (comments.length === 0) {
     return <p>No Comments</p>;

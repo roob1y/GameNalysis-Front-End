@@ -20,7 +20,7 @@ const PageNotFound = ({code = 404, message}) => {
     <MainContainer>
       <TextAndImagesContainer>
         <HeroImage>
-          <img src={cryingSnakeAndLadder} alt="Crying Snake and Ladders" style={{maxWidth: "80%"}} />
+          <img src={cryingSnakeAndLadder} alt="Crying Snake and Ladders" style={{maxWidth: "70%"}} />
         </HeroImage>
         <TextContainer>
           {typeof code === 'number' ?

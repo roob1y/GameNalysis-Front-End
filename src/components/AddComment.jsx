@@ -13,12 +13,12 @@ const AddComment = ({ reviewId, addCommentRender, setErr }) => {
 
   const clickHandler = () => {
     const newComment = {
-      username: loggedUser,
+      username: loggedUser.username,
       body: commentBody,
     };
 
     addCommentRender({
-      author: loggedUser,
+      author: loggedUser.username,
       body: commentBody,
       comment_id: null,
       created_at: new Date().toLocaleDateString(),
