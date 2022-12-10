@@ -1,9 +1,9 @@
 import { useState, useContext } from "react";
 import { postCommentByReviewId } from "../utils/api";
-import { UserContext } from "../contexts/User"
+import { UserContext } from "../contexts/User";
 
-const AddComment = ({ reviewId, addCommentRender}) => {
-  const {loggedUser} = useContext(UserContext)
+const AddComment = ({ reviewId, addCommentRender, setErr }) => {
+  const { loggedUser } = useContext(UserContext);
 
   const [commentBody, setCommentBody] = useState("");
 
@@ -25,9 +25,13 @@ const AddComment = ({ reviewId, addCommentRender}) => {
       review_id: reviewId,
       votes: 0,
     });
-    postCommentByReviewId(reviewId, newComment);
+    
+    postCommentByReviewId(reviewId, newComment)
+      .then(() => {})
+      .catch((err) => {
+        setErr(err);
+      });
   };
-
   return (
     <div className="add-comment">
       <textarea

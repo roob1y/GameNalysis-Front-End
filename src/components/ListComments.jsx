@@ -5,6 +5,7 @@ import CardComments from "./CardComments";
 const ListComments = ({ reviewId, newCommentData, idInc }) => {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [err, setErr] = useState(null)
   const [maxId, setMaxId] = useState(null);
 
   useEffect(() => {
@@ -17,9 +18,7 @@ const ListComments = ({ reviewId, newCommentData, idInc }) => {
         setIsLoading(false);
       })
       .catch((err) => {
-        if (err.response.status === 404) {
-          setIsLoading(false);
-        }
+        setErr(err)
       });
   }, [reviewId]);
 
@@ -30,6 +29,9 @@ const ListComments = ({ reviewId, newCommentData, idInc }) => {
     }
   }, [newCommentData, maxId, idInc]);
 
+  
+  
+  if (err) return <p>{err.response.data.msg}. Please try again...</p>;
   if (!isLoading && comments.length > 0) {
     return (
       <ul className="commentList">

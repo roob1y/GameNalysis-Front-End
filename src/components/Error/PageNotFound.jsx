@@ -15,7 +15,7 @@ import {
   Dice,
 } from "./PageNotFound.styled";
 
-const PageNotFound = () => {
+const PageNotFound = ({code = 404, message}) => {
   return (
     <MainContainer>
       <TextAndImagesContainer>
@@ -23,11 +23,13 @@ const PageNotFound = () => {
           <img src={cryingSnakeAndLadder} alt="Crying Snake and Ladders" style={{maxWidth: "80%"}} />
         </HeroImage>
         <TextContainer>
+          {typeof code === 'number' ?
           <ErrorIcon>
             <Dice src={dice_four} alt="A Die of 4" />
             <Dice src={dice_zero} alt="A Die of 0" />
             <Dice src={dice_four} alt="A Die of 4" />
-          </ErrorIcon>
+          </ErrorIcon> : <h1>{code}</h1>
+}
           <HeaderTwo>Hello Adventurer</HeaderTwo>
           <Paragraph>
             You look around and see you have entered a dark and gloomy forest... it appears you have stumbled across something you shouldn't've. There are enemies approaching, you

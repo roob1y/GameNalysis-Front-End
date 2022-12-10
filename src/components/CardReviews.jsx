@@ -5,7 +5,7 @@ const CardReviews = ({ review }) => {
     <>
       <li className="reviewCards grid">
         <div className="gridItem g1">
-          <Link to={`/review/id${review.review_id}`}>
+          <Link to={`/review/${review.review_id}`}>
             <h3>{review.title}</h3>
           </Link>
         </div>
