@@ -62,7 +62,7 @@ const Votes = ({ review_id, votes }) => {
     });
   }, [review_id, vote]);
   
-  if (err) return <p>{err.response.data.msg}. please try again...</p>;
+  if (err) return <p>{err.response.data.msg}. Please try again...</p>;
 
   return (
     <>

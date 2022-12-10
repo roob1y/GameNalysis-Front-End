@@ -45,7 +45,6 @@ export function getUsers() {
 }
 
 export function deleteCommentById(id) {
-  console.log('id: ', id);
   return ncgamesApi.delete(`/comments/${id}`).then(({ data }) => {
     return data;
   });

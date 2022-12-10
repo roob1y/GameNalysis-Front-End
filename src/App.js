@@ -35,7 +35,7 @@ function App() {
               }
             />
             <Route
-              path="/review/id:reviewId"
+              path="/review/:reviewId"
               element={
                 loggedUser ? <UserReview /> : <Navigate to="/" replace />
               }
