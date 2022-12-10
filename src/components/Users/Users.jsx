@@ -1,10 +1,10 @@
 import { useState, useEffect, useContext } from "react";
-import { getUsers } from "../utils/api";
-import UserCard from "../components/UserCard";
-import { UserContext } from "../contexts/User";
-import PageNotFound from "./Error/PageNotFound";
+import { getUsers } from "../../utils/api";
+import UserCard from "./UserCard";
+import { UserContext } from "../../contexts/User";
+import PageNotFound from "../Error/PageNotFound";
 
-const UserPage = () => {
+const Users = () => {
   const { setLoggedUser } = useContext(UserContext);
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -54,4 +54,4 @@ const UserPage = () => {
   }
 };
 
-export default UserPage;
+export default Users;

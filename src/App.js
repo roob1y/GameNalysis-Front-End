@@ -1,10 +1,10 @@
 import "./App.css";
 
 import Header from "./components/Header";
-import ListReviews from "./components/ListReviews";
+import ListReviews from "./components/Reviews";
 import UserReview from "./components/UserReview";
-import UserPage from "./components/UserPage";
-import PageNotFound from "./components/Error/PageNotFound";
+import Users from "./components/Users";
+import PageNotFound from "./components/Error";
 
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./global";
@@ -42,7 +42,7 @@ function App() {
             />
             <Route
               path="/welcome"
-              element={!loggedUser ? <UserPage /> : <Navigate to="/" replace />}
+              element={!loggedUser ? <Users /> : <Navigate to="/" replace />}
             />
             <Route path="/404" element={<PageNotFound />} />
             <Route path="/*" element={<Navigate to="/404" />} />

@@ -1,10 +1,9 @@
 import { useState, useContext } from "react";
-import { postCommentByReviewId } from "../utils/api";
-import { UserContext } from "../contexts/User";
+import { postCommentByReviewId } from "../../../utils/api";
+import { UserContext } from "../../../contexts/User";
 
 const AddComment = ({ reviewId, addCommentRender, setErr }) => {
   const { loggedUser } = useContext(UserContext);
-
   const [commentBody, setCommentBody] = useState("");
 
   const changeHandler = (event) => {

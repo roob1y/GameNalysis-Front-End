@@ -1,4 +1,4 @@
-import Votes from "./Votes";
+import Votes from "../Votes";
 
 const UserCardReview = ({ userReview }) => {
   return (

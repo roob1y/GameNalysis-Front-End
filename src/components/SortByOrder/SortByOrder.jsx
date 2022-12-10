@@ -1,6 +1,6 @@
 import React from "react";
 
-function SortByReviews({ searchParams, setSearchParams }) {
+function SortByOrder({ searchParams, setSearchParams }) {
   function handleParamChange(key, val) {
     searchParams.set(key, val);
     setSearchParams(searchParams);
@@ -45,4 +45,4 @@ function SortByReviews({ searchParams, setSearchParams }) {
   );
 }
 
-export default SortByReviews;
+export default SortByOrder;

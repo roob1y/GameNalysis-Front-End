@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { getCommentsByReviewId } from "../utils/api";
-import CardComments from "./CardComments";
+import { getCommentsByReviewId } from "../../../utils/api";
+import CardComments from "../CardComments";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { number } from "prop-types";
 
 const ListComments = ({ reviewId, newCommentData, idInc }) => {
   const [comments, setComments] = useState([]);
@@ -40,12 +41,12 @@ const ListComments = ({ reviewId, newCommentData, idInc }) => {
             return <CardComments key={comment.comment_id} comments={comment} />;
           })}
         </ul>
-          <Link to="/">
-            <BsChevronLeft title="Home Button" size="2em" />
-          </Link>
-          <Link to="/">
-            <BsChevronRight title="Home Button" size="2em" />
-          </Link>
+        <Link to="/">
+          <BsChevronLeft title="Home Button" size="2em" />
+        </Link>
+        <Link to="/">
+          <BsChevronRight title="Home Button" size="2em" />
+        </Link>
       </article>
     );
   } else if (comments.length === 0) {
@@ -53,6 +54,11 @@ const ListComments = ({ reviewId, newCommentData, idInc }) => {
   } else {
     return <p>is loading...</p>;
   }
+};
+
+ListComments.propTypes = {
+  idInc: number.isRequired,
+  reviewId: number.isRequired,
 };
 
 export default ListComments;

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
-import { getAllCategories } from "../utils/api";
+import { getAllCategories } from "../../utils/api";
 
-const CategoryList = ({ searchParams, setSearchParams }) => {
+const CategoryFilter = ({ searchParams, setSearchParams }) => {
   const [closed, setClosed] = useState(true);
   const [categoryItems, setCategoryItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -60,4 +60,4 @@ const CategoryList = ({ searchParams, setSearchParams }) => {
   }
 };
 
-export default CategoryList;
+export default CategoryFilter;

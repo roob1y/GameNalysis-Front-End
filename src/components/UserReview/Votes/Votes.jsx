@@ -1,7 +1,7 @@
 import { AiFillUpSquare, AiFillDownSquare } from "react-icons/ai";
 import { useEffect, useState } from "react";
 
-import { patchUserReview } from "../utils/api";
+import { patchUserReview } from "../../../utils/api";
 
 const Votes = ({ review_id, votes }) => {
   const [vote, setVote] = useState(0);

@@ -1,13 +1,13 @@
 import CardReviews from "./CardReviews";
-import CategoryList from "./CategoryList";
-import SortByReviews from "./SortByReviews";
+import CategoryList from "../Filter";
+import SortByReviews from "../SortByOrder";
 
-import { getAllReviews } from "../utils/api";
+import { getAllReviews } from "../../utils/api";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import PageNotFound from "./Error/PageNotFound";
+import PageNotFound from "../Error/PageNotFound";
 
-const ListReviews = () => {
+const Reviews = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [reviewsData, setReviewsData] = useState([]);
   const [err, setErr] = useState(null);
@@ -34,7 +34,7 @@ const ListReviews = () => {
     return (
       <>
         {err ? (
-          <PageNotFound status={err.response.status}/>
+          <PageNotFound status={err.response.status} />
         ) : (
           <>
             <CategoryList
@@ -72,4 +72,4 @@ const ListReviews = () => {
   }
 };
 
-export default ListReviews;
+export default Reviews;

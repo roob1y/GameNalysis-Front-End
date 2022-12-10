@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import { UserContext } from "../contexts/User";
+import { UserContext } from "../../contexts/User";
 
 import { useState, useRef } from "react";
 import styled from "styled-components";
-import { Burger, Menu } from "../components";
-import { useOnClickOutside } from "../hooks";
+import { Burger, Menu } from "../Header/BurgerMenu";
+import { useOnClickOutside } from "../../hooks";
 
 const HeaderContainer = styled.header`
   display: flex;

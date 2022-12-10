@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
-import { getUserReview } from "../utils/api";
+import { getUserReview } from "../../utils/api";
 import { useState, useEffect } from "react";
 
 import UserCardReview from "./UserCardReview";
-import Comments from "./Comments";
-import PageNotFound from "./Error/PageNotFound";
+import Comments from "../Comments";
+import PageNotFound from "../Error/PageNotFound";
 
 const UserReview = () => {
   const { reviewId } = useParams();
@@ -12,7 +12,6 @@ const UserReview = () => {
   const [newCommentData, setNewCommentData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [err, setErr] = useState(null);
-  console.log("err: ", err);
   const [idInc, setIdInc] = useState(0);
 
   useEffect(() => {
@@ -44,7 +43,7 @@ const UserReview = () => {
             <UserCardReview userReview={userReview} />
           </section>
           <section className="comments">
-          <h2>Comments</h2>
+            <h2>Comments</h2>
             <Comments
               userReview={userReview}
               addCommentRender={addCommentRender}
