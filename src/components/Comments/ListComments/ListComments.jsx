@@ -11,11 +11,11 @@ const ListComments = ({ reviewId, newCommentData, idInc, commentCount }) => {
   const [maxId, setMaxId] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
 
-  let PageSize = 10;
+  let pageSize = 5;
 
   useEffect(() => {
     setIsLoading(true);
-    getCommentsByReviewId(reviewId)
+    getCommentsByReviewId(reviewId, currentPage, pageSize)
       .then(({ comments }) => {
         const idArr = comments.map((comment) => comment.comment_id);
         setMaxId(Math.max(...idArr));
@@ -25,7 +25,7 @@ const ListComments = ({ reviewId, newCommentData, idInc, commentCount }) => {
       .catch((err) => {
         setErr(err);
       });
-  }, [reviewId]);
+  }, [reviewId, currentPage, pageSize]);
 
   useEffect(() => {
     if (newCommentData) {
@@ -43,7 +43,7 @@ const ListComments = ({ reviewId, newCommentData, idInc, commentCount }) => {
             return <CardComments key={comment.comment_id} comments={comment} />;
           })}
         </ul>
-        <Pagination onPageChange={page => setCurrentPage(page)} totalCount={commentCount} currentPage={currentPage} pageSize={PageSize} />
+        <Pagination onPageChange={page => setCurrentPage(page)} totalCount={commentCount} currentPage={currentPage} pageSize={pageSize} />
       </article>
     );
   } else if (comments.length === 0) {
