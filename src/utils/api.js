@@ -28,8 +28,10 @@ export function patchUserReview(reviewId, voteCount) {
   return ncgamesApi.patch(`/reviews/${reviewId}`, { inc_votes: voteCount });
 }
 
-export function getCommentsByReviewId(reviewId) {
-  return ncgamesApi.get(`/reviews/${reviewId}/comments`).then(({ data }) => {
+export function getCommentsByReviewId(reviewId, p, limit) {
+  return ncgamesApi
+  .get(`/reviews/${reviewId}/comments`, { params: { p, limit } })
+  .then(({ data }) => {
     return data;
   });
 }

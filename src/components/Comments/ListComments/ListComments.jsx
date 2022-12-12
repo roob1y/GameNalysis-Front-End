@@ -1,19 +1,21 @@
 import { useState, useEffect } from "react";
 import { getCommentsByReviewId } from "../../../utils/api";
 import CardComments from "../CardComments";
-import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
-import { Link } from "react-router-dom";
 import { number } from "prop-types";
+import Pagination from "../Pagination/Pagination";
 
-const ListComments = ({ reviewId, newCommentData, idInc }) => {
+const ListComments = ({ reviewId, newCommentData, idInc, commentCount }) => {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [err, setErr] = useState(null);
   const [maxId, setMaxId] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  let pageSize = 5;
 
   useEffect(() => {
     setIsLoading(true);
-    getCommentsByReviewId(reviewId)
+    getCommentsByReviewId(reviewId, currentPage, pageSize)
       .then(({ comments }) => {
         const idArr = comments.map((comment) => comment.comment_id);
         setMaxId(Math.max(...idArr));
@@ -23,7 +25,7 @@ const ListComments = ({ reviewId, newCommentData, idInc }) => {
       .catch((err) => {
         setErr(err);
       });
-  }, [reviewId]);
+  }, [reviewId, currentPage, pageSize]);
 
   useEffect(() => {
     if (newCommentData) {
@@ -41,12 +43,7 @@ const ListComments = ({ reviewId, newCommentData, idInc }) => {
             return <CardComments key={comment.comment_id} comments={comment} />;
           })}
         </ul>
-        <Link to="/">
-          <BsChevronLeft title="Home Button" size="2em" />
-        </Link>
-        <Link to="/">
-          <BsChevronRight title="Home Button" size="2em" />
-        </Link>
+        <Pagination onPageChange={page => setCurrentPage(page)} totalCount={commentCount} currentPage={currentPage} pageSize={pageSize} />
       </article>
     );
   } else if (comments.length === 0) {

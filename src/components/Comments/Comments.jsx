@@ -18,6 +18,7 @@ const Comments = ({ userReview, addCommentRender, newCommentData, idInc }) => {
         reviewId={userReview.review_id}
         newCommentData={newCommentData}
         idInc={idInc}
+        commentCount={userReview.comment_count}
       />
     </>
   );
