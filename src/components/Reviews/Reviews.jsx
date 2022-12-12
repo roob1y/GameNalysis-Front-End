@@ -6,12 +6,17 @@ import { getAllReviews } from "../../utils/api";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import PageNotFound from "../Error/PageNotFound";
+import Pagination from "../Comments/Pagination/Pagination";
 
 const Reviews = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [reviewsData, setReviewsData] = useState([]);
   const [err, setErr] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  let PageSize = 10;
+  let reviewCount = 5;
 
   useEffect(() => {
     setIsLoading(true);
@@ -67,6 +72,7 @@ const Reviews = () => {
             <CardReviews key={review.review_id} review={review} />
           ))}
         </ul>
+        <Pagination onPageChange={page => setCurrentPage(page)} totalCount={reviewCount} currentPage={currentPage} pageSize={PageSize}/>
       </>
     );
   }

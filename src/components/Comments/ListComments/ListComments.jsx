@@ -1,15 +1,17 @@
 import { useState, useEffect } from "react";
 import { getCommentsByReviewId } from "../../../utils/api";
 import CardComments from "../CardComments";
-import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
-import { Link } from "react-router-dom";
 import { number } from "prop-types";
+import Pagination from "../Pagination/Pagination";
 
-const ListComments = ({ reviewId, newCommentData, idInc }) => {
+const ListComments = ({ reviewId, newCommentData, idInc, commentCount }) => {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [err, setErr] = useState(null);
   const [maxId, setMaxId] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  let PageSize = 10;
 
   useEffect(() => {
     setIsLoading(true);
@@ -41,12 +43,7 @@ const ListComments = ({ reviewId, newCommentData, idInc }) => {
             return <CardComments key={comment.comment_id} comments={comment} />;
           })}
         </ul>
-        <Link to="/">
-          <BsChevronLeft title="Home Button" size="2em" />
-        </Link>
-        <Link to="/">
-          <BsChevronRight title="Home Button" size="2em" />
-        </Link>
+        <Pagination onPageChange={page => setCurrentPage(page)} totalCount={commentCount} currentPage={currentPage} pageSize={PageSize} />
       </article>
     );
   } else if (comments.length === 0) {
