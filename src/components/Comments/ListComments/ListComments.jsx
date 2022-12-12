@@ -11,7 +11,8 @@ const ListComments = ({ reviewId, newCommentData, idInc, commentCount }) => {
   const [maxId, setMaxId] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
 
-  let pageSize = 5;
+  // change page size to change amount of comments displayed
+  const pageSize = 5;
 
   useEffect(() => {
     setIsLoading(true);

@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
 export const PaginationContainer = styled.ul`
-  display: flex;
+  display: inline-flex;
+  justify-content: center;
   list-style-type: none;
-`;
+  margin: 1em auto;
+  `;
 
 export const PaginationItem = styled.li`
   padding: 0 12px;
