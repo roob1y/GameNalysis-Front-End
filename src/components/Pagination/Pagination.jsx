@@ -1,5 +1,5 @@
 import React from "react";
-import { usePagination, DOTS } from "../../../hooks";
+import { usePagination, DOTS } from "../../hooks";
 
 import {
   PaginationContainer,
@@ -47,6 +47,7 @@ const Pagination = (props) => {
         <Arrow className="left" />
       </PaginationItem>
       {paginationRange.map((pageNumber, index) => {
+        console.log('i: ', index);
         // If the pageItem is a DOT, render the DOTS unicode character
         if (pageNumber === DOTS) {
           return <PaginationItem key={index} className="dots">&#8230;</PaginationItem>;
