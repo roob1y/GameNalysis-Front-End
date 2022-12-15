@@ -4,7 +4,7 @@ import { UserContext } from "../../contexts/User";
 import { useState, useRef } from "react";
 import styled from "styled-components";
 import { Burger, Menu } from "../Header/BurgerMenu";
-import { useOnClickOutside } from "../../hooks";
+import { useOnClickOutside } from "../../hooks/useOnClickOutside";
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -34,7 +34,7 @@ const NavProfile = styled.div`
   `;
 
   const Wrapper = styled.div`
- 
+
   `;
   
   const Header = () => {

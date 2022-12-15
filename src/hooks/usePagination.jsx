@@ -1,19 +1,4 @@
-import { useEffect, useMemo } from "react";
-
-export const useOnClickOutside = (ref, handler) => {
-  useEffect(() => {
-    const listener = (event) => {
-      if (ref.current.contains(event.target)) {
-        return;
-      }
-      handler();
-    };
-    document.addEventListener("mousedown", listener);
-    return () => {
-      document.removeEventListener("mousedown", listener);
-    };
-  }, [ref, handler]);
-};
+import { useMemo } from "react";
 
 export const DOTS = '...';
 
