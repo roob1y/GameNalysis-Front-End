@@ -3,10 +3,11 @@ import { postCommentByReviewId } from "../../../utils/api";
 import { UserContext } from "../../../contexts/User";
 import AddCommentError from "./AddCommentError";
 
+
 const AddComment = ({ reviewId, addCommentRender, setErr }) => {
   const { loggedUser } = useContext(UserContext);
   const [commentBody, setCommentBody] = useState("");
-  const [invalidComment, setInvalidComment] = useState(false);
+  const [invalidCommentTrig, setInvalidCommentTrig] = useState(false);
 
   const changeHandler = (event) => {
     setCommentBody(event.target.value);
@@ -14,7 +15,9 @@ const AddComment = ({ reviewId, addCommentRender, setErr }) => {
 
   const clickHandler = () => {
     if (!/\w/.test(commentBody)) {
-      setInvalidComment(true);
+      setInvalidCommentTrig(true);
+      setTimeout(() => setInvalidCommentTrig(false), 1000);
+
       return;
     }
     const newComment = {
@@ -39,7 +42,7 @@ const AddComment = ({ reviewId, addCommentRender, setErr }) => {
   };
   return (
     <>
-      {invalidComment ? <AddCommentError /> : null}
+      <AddCommentError invalidCommentTrig={invalidCommentTrig}/>
 
       <article className="add-comment">
         <textarea
