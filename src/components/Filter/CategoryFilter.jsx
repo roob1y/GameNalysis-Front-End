@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { getAllCategories } from "../../utils/api";
 
-const CategoryFilter = ({ searchParams, setSearchParams }) => {
+const CategoryFilter = ({ searchParams, setSearchParams, setCurrentPage}) => {
   const [closed, setClosed] = useState(true);
   const [categoryItems, setCategoryItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -10,6 +10,7 @@ const CategoryFilter = ({ searchParams, setSearchParams }) => {
   function handleParamChange(e) {
     searchParams.set("category", e.target.value );
     setSearchParams(searchParams);
+    setCurrentPage(1)
     setClosed(true)
   }
 

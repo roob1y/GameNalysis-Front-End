@@ -1,5 +1,5 @@
 import CardReviews from "./CardReviews";
-import CategoryList from "../Filter";
+import CategoryFilter from "../Filter";
 import SortByReviews from "../SortByOrder";
 
 import { getAllReviews } from "../../utils/api";
@@ -14,9 +14,9 @@ const Reviews = () => {
   const [err, setErr] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
+  const [reviewCount, setReviewCount] = useState(null);
 
-  let PageSize = 10;
-  let reviewCount = 5;
+  let limit = 3;
 
   useEffect(() => {
     setIsLoading(true);
@@ -24,16 +24,19 @@ const Reviews = () => {
     getAllReviews(
       searchParams.get("sort_by"),
       searchParams.get("order"),
-      searchParams.get("category")
+      searchParams.get("category"),
+      currentPage,
+      limit
     )
       .then(({ reviews }) => {
+        setReviewCount(reviews[0].review_count);
         setReviewsData(reviews);
         setIsLoading(false);
       })
       .catch((err) => {
         setErr(err);
       });
-  }, [searchParams]);
+  }, [searchParams, currentPage, limit]);
 
   if (isLoading) {
     return (
@@ -42,7 +45,7 @@ const Reviews = () => {
           <PageNotFound status={err.response.status} />
         ) : (
           <>
-            <CategoryList
+            <CategoryFilter
               searchParams={searchParams}
               setSearchParams={setSearchParams}
             />
@@ -58,7 +61,8 @@ const Reviews = () => {
   } else {
     return (
       <>
-        <CategoryList
+        <CategoryFilter
+          setCurrentPage={setCurrentPage}
           searchParams={searchParams}
           setSearchParams={setSearchParams}
         />
@@ -72,7 +76,12 @@ const Reviews = () => {
             <CardReviews key={review.review_id} review={review} />
           ))}
         </ul>
-        <Pagination onPageChange={page => setCurrentPage(page)} totalCount={reviewCount} currentPage={currentPage} pageSize={PageSize}/>
+        <Pagination
+          onPageChange={(page) => setCurrentPage(page)}
+          totalCount={reviewCount}
+          currentPage={currentPage}
+          pageSize={limit}
+        />
       </>
     );
   }
