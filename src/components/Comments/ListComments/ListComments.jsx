@@ -36,7 +36,9 @@ const ListComments = ({ reviewId, newCommentData, idInc, commentCount }) => {
   }, [newCommentData, maxId, idInc]);
 
   if (err) return <p>{err.response.data.msg}. Please try again...</p>;
-  if (!isLoading && comments.length > 0) {
+  if (comments.length === 0) {
+    return <p>No Comments</p>;
+  } else if (!isLoading && comments.length > 0) {
     return (
       <article className="commentList">
         <ul>
@@ -44,11 +46,14 @@ const ListComments = ({ reviewId, newCommentData, idInc, commentCount }) => {
             return <CardComments key={comment.comment_id} comments={comment} />;
           })}
         </ul>
-        <Pagination onPageChange={page => setCurrentPage(page)} totalCount={commentCount} currentPage={currentPage} pageSize={pageSize} />
+        <Pagination
+          onPageChange={(page) => setCurrentPage(page)}
+          totalCount={commentCount}
+          currentPage={currentPage}
+          pageSize={pageSize}
+        />
       </article>
     );
-  } else if (comments.length === 0) {
-    return <p>No Comments</p>;
   } else {
     return <p>is loading...</p>;
   }
