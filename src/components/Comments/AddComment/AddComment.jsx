@@ -29,7 +29,7 @@ const AddComment = ({ reviewId, addCommentRender, setErr }) => {
       author: loggedUser.username,
       body: commentBody,
       comment_id: null,
-      created_at: new Date().toLocaleDateString(),
+      created_at: new Date(),
       review_id: reviewId,
       votes: 0,
     });

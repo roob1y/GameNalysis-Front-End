@@ -5,6 +5,7 @@ import { useState, useRef } from "react";
 import styled from "styled-components";
 import { Burger, Menu } from "../Header/BurgerMenu";
 import { useOnClickOutside } from "../../hooks/useOnClickOutside";
+import { Link } from "react-router-dom";
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -22,7 +23,7 @@ const HeaderTitle = styled.h1`
 const NavProfile = styled.div`
   width: 5em;
   height: 5em;
-  background: ${({loggedUser}) => `url(${loggedUser.avatar_url})`};
+  background: ${({ loggedUser }) => `url(${loggedUser.avatar_url})`};
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -33,31 +34,40 @@ const NavProfile = styled.div`
   margin 0 auto;
   `;
 
-  const Wrapper = styled.div`
+const Profile = styled.div``;
 
-  `;
-  
-  const Header = () => {
-    const [open, setOpen] = useState(false);
-    const node = useRef();
-    const menuId = "main-menu";
-    
-    const { loggedUser } = useContext(UserContext);
-    
+const Header = () => {
+  const [open, setOpen] = useState(false);
+  const node = useRef();
+  const menuId = "main-menu";
+
+  const { loggedUser } = useContext(UserContext);
+
   useOnClickOutside(node, () => setOpen(false));
 
   return (
     <HeaderContainer ref={node}>
-      <Burger style={{border: "1px black solid"}} open={open} setOpen={setOpen} aria-controls={menuId} />
+      <Burger
+        style={{ border: "1px black solid" }}
+        open={open}
+        setOpen={setOpen}
+        aria-controls={menuId}
+      />
       <Menu open={open} setOpen={setOpen} id={menuId} />
-      <HeaderTitle>GameNalysis</HeaderTitle>
+      <HeaderTitle>
+        <Link to="/" style={{ color: "black", textDecoration: "none" }}>
+          GameNalysis
+        </Link>
+      </HeaderTitle>
       {loggedUser ? (
-        <Wrapper>
-          <NavProfile loggedUser={loggedUser} alt="user profile" style={{}} />
-            <p style={{ margin: "0", paddingTop: "0.2em" }}>{loggedUser.username}</p>
-        </Wrapper>
+        <Profile>
+          <NavProfile loggedUser={loggedUser} alt="user profile" />
+          <p style={{ margin: "0", paddingTop: "0.2em" }}>
+            {loggedUser.username}
+          </p>
+        </Profile>
       ) : (
-        <span style={{ width: "7em" }}/>
+        <span style={{ width: "7em" }} />
       )}
     </HeaderContainer>
   );
