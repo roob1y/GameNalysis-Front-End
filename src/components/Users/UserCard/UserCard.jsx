@@ -29,7 +29,9 @@ const UserCard = ({ user }) => {
           alt={altText}
         />
       </section>
-      <section style={{ backgroundColor:"green", margin: "5px", padding: "1px"}}>
+      <section
+        style={{ backgroundColor: "green", margin: "5px", padding: "1px" }}
+      >
         <p>{user.username}</p>
         <p>{user.name}</p>
       </section>
