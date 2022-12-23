@@ -16,7 +16,7 @@ const Reviews = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [reviewCount, setReviewCount] = useState(null);
 
-  let limit = 3;
+  let limit = 10;
 
   useEffect(() => {
     setIsLoading(true);
