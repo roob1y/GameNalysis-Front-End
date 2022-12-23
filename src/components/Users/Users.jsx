@@ -41,7 +41,7 @@ const Users = () => {
             <div
               onClick={() => setLoggedUser(user)}
               key={user.name}
-              style={{ width: "20vh", backgroundColor: "gray" }}
+              style={{ width: "20vh", backgroundColor: "gray", cursor: "pointer"}}
             >
               <UserCard user={user} />
             </div>

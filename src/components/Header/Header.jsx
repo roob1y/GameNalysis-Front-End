@@ -16,8 +16,14 @@ const HeaderContainer = styled.header`
 `;
 
 const HeaderTitle = styled.h1`
-  position: relative;
+  position: absolute;
+  transform: translate(-50%, 0);
+  left: 50%;
   cursor: pointer;
+
+  &:active {
+    background-color: none;
+  }
 `;
 
 const NavProfile = styled.div`
@@ -43,6 +49,7 @@ const NavProfile = styled.div`
   const ProfileSignOut = styled.p`
   display: flex;
   align-items: center;
+  margin: 0;
   color: white;
   opacity: 0;
 
