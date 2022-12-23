@@ -21,6 +21,8 @@ const HeaderTitle = styled.h1`
 `;
 
 const NavProfile = styled.div`
+  display: flex;
+  justify-content: center;
   width: 5em;
   height: 5em;
   background: ${({ loggedUser }) => `url(${loggedUser.avatar_url})`};
@@ -32,7 +34,22 @@ const NavProfile = styled.div`
   border: 1px black solid;
   background-color: white;
   margin 0 auto;
+
+  &:hover {
+    background: black;
+  }
   `;
+
+  const ProfileSignOut = styled.p`
+  display: flex;
+  align-items: center;
+  color: white;
+  opacity: 0;
+
+  &:hover {
+    opacity: 1;
+  }
+  `
 
 const Profile = styled.div``;
 
@@ -41,7 +58,7 @@ const Header = () => {
   const node = useRef();
   const menuId = "main-menu";
 
-  const { loggedUser } = useContext(UserContext);
+  const { loggedUser, setLoggedUser } = useContext(UserContext);
 
   useOnClickOutside(node, () => setOpen(false));
 
@@ -61,7 +78,9 @@ const Header = () => {
       </HeaderTitle>
       {loggedUser ? (
         <Profile>
-          <NavProfile loggedUser={loggedUser} alt="user profile" />
+            <NavProfile onClick={() => setLoggedUser(null)} loggedUser={loggedUser} alt="user profile" >
+              <ProfileSignOut style={{ }}>Sign Out</ProfileSignOut>
+            </NavProfile>
           <p style={{ margin: "0", paddingTop: "0.2em" }}>
             {loggedUser.username}
           </p>
