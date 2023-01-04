@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Button, CategoryIcon, Box } from "./CategoryFilter.styled";
 import { getAllCategories } from "../../utils/api";
-import {CategoryChildrenButton, CategoryButton} from "./CategoryButton";
+import { capitaliseEachWord } from "../../hooks/capitaliseEachWord";
+import { CategoryChildrenButton, CategoryButton } from "./CategoryButton";
 
 const CategoryFilter = ({ searchParams, setSearchParams, setCurrentPage }) => {
   const [closed, setClosed] = useState(true);
@@ -32,25 +32,35 @@ const CategoryFilter = ({ searchParams, setSearchParams, setCurrentPage }) => {
       setIsLoading(false);
     });
   }, []);
-
+  
+  console.log(searchParams.get("category"));
   if (closed) {
-    return (
-      <>
-        <h1>
-          {searchParams.get("category")
-            ? searchParams.get("category")
-            : `all reviews`}
-        </h1>
-        <CategoryButton onClick={handleClick}/>
-      </>
-    );
+    if (searchParams.get("category")) {
+      const outputStr = capitaliseEachWord(searchParams.get("category"));
+      return (
+        <>
+          <p>
+            {searchParams.get("category") ? outputStr.split("") : `All Reviews`}
+          </p>
+          <CategoryButton onClick={handleClick} />
+        </>
+      );
+    }
+    return <CategoryButton onClick={handleClick} />
   } else if (!isLoading) {
     return (
       <>
-        <CategoryChildrenButton children={"all reviews"} onClick={categoryRemoveHandler}/>
+        <CategoryChildrenButton
+          children={"All Reviews"}
+          onClick={categoryRemoveHandler}
+        />
         {categoryItems.map((category) => {
           return (
-            <CategoryChildrenButton key={category.slug} children={category.slug} onClick={() => handleParamChange(category)} />
+            <CategoryChildrenButton
+              key={category.slug}
+              children={category.slug}
+              onClick={() => handleParamChange(category)}
+            />
           );
         })}
       </>

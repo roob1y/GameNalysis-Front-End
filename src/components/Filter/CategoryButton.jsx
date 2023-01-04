@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import { capitaliseEachWord } from "../../hooks/capitaliseEachWord";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee, faGamepad } from '@fortawesome/free-solid-svg-icons'
+import { faGamepad } from '@fortawesome/free-solid-svg-icons'
 
 const Buttons = styled.button`
   /* Add your button styles here */
@@ -17,9 +18,10 @@ const Buttons = styled.button`
   cursor: pointer;
 `;
 
-export const CategoryChildrenButton = ({ children, onClick }) => (
-  <Buttons onClick={onClick}>{children.replaceAll("-", " ")}</Buttons>
-);
+export const CategoryChildrenButton = ({ children, onClick }) => {
+  const outputStr = capitaliseEachWord(children)
+  return <Buttons onClick={onClick}>{outputStr}</Buttons>
+}
 
 const Button = styled.button`
   /* Add your button styles here */
