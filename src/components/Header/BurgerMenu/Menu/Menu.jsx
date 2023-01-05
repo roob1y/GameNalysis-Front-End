@@ -17,7 +17,7 @@ const Menu = ({ open }) => {
           src={linkedinIcon}
           aria-hidden="true"
           alt="Linkedin Logo"
-          style={{ width: "8%", marginRight: "8px" }}
+          style={{ width: "8%", marginRight: "8px", borderRadius: "50%" }}
         />
         My LinkedIn
       </a>
@@ -26,7 +26,7 @@ const Menu = ({ open }) => {
           src={githubIcon}
           aria-hidden="true"
           alt="Linkedin Logo"
-          style={{ width: "8%", backgroundColor: "white", marginRight: "8px" }}
+          style={{ width: "8%", backgroundColor: "white", marginRight: "8px", borderRadius: "50%" }}
         />
         My Github
       </a>

@@ -36,21 +36,6 @@
   align-items: center;
 }
 
-.reviewCards {
-  border: solid 1px rgb(150, 150, 150);
-  margin: 10px 10px;
-  width: 45%;
-  height: auto;
-  background-color: #EFFFFA;
-}
-
-.reviewList {
-  margin-top: 3vh;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
 .gameImg {
   max-width: 70%;
 }

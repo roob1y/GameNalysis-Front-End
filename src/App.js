@@ -28,8 +28,7 @@ function App() {
               path="/"
               element={
                 loggedUser ? (
-                  <Reviews
-                  />
+                    <Reviews />
                 ) : (
                   <Navigate to="/welcome" replace />
                 )
