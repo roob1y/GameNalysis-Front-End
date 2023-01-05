@@ -26,7 +26,7 @@ export const NavProfile = styled.div`
   height: 5em;
   background: ${({ loggedUser }) => `url(${loggedUser.avatar_url})`};
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 80%;
   background-position: center;
   cursor: pointer;
   border-radius: 50%;

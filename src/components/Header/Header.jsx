@@ -36,7 +36,7 @@ const Header = () => {
           <NavProfile
             onClick={() => setLoggedUser(null)}
             loggedUser={loggedUser}
-            alt="user profile"
+            alt={`user profile picture of ${loggedUser.username}`}
           >
             <ProfileSignOut style={{}}>Sign Out</ProfileSignOut>
           </NavProfile>
