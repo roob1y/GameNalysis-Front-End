@@ -1,48 +1,134 @@
-import React from "react";
+import React, { useState, useRef } from "react";
+import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import { useOnClickOutside } from "../../hooks/useOnClickOutside";
 
-function SortByOrder({ searchParams, setSearchParams }) {
-  function handleParamChange(key, val) {
-    searchParams.set(key, val);
+const AccordionContainer = styled.div`
+  position: relative;
+  max-width: 12em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+`;
+
+const AccordionHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f7f7f7;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+
+  &:hover {
+    background-color: #ddd;
+  }
+`;
+
+const AccordionPanel = styled.div`
+  max-height: 0;
+  position: absolute;
+  top: 3.5em;
+  width: 100%;
+  padding: 0 10px;
+  background-color: white;
+  overflow: auto;
+  max-height: 0;
+  transition: max-height 0.2s ease-out;
+  border: ${(props) => (props.isOpen ? "#ccc 1px solid" : "none")}
+`;
+
+const HeaderTitle = styled.div`
+  font-weight: bold;
+`;
+
+const HeaderIcon = styled.div`
+  margin-left: 1em;
+  transform: ${(props) => (props.isOpen ? "rotate(180deg)" : "rotate(0)")};
+  transition: transform 0.2s ease-out;
+`;
+
+const Title = styled.div`
+  margin-bottom: 12px;
+  font-weight: bold;
+  cursor: default;
+`;
+
+const SortbyOrderOptions = styled.li`
+  cursor: pointer;
+  &:hover {
+    background-color: #eee;
+  }
+  background-color: ${(props) => (props.isActive ? "#ddd" : "transparent")};
+`;
+
+const SortByOrder = ({ searchParams, setSearchParams }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const node = useRef();
+  useOnClickOutside(node, () => setIsOpen(false));
+
+  function handleSortChange(val) {
+    searchParams.set("sort_by", val);
     setSearchParams(searchParams);
   }
 
+  function handleOrderChange(val) {
+    searchParams.set("sort_by", val);
+    setSearchParams(searchParams);
+  }
+
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <form>
-      <fieldset>
-        <label htmlFor="sort_by">
-          Sorted By
-          <select
-            name="sort_by"
-            id="sort_by"
-            type="dropdown"
-            onChange={(event) => {
-              handleParamChange("sort_by", event.target.value);
-            }}
-            defaultValue={searchParams.get("sort_by")}
-          >
-            <option value="created_at">Date Added</option>
-            <option value="comment_count">Comment Count</option>
-            <option value="votes">Votes</option>
-            <option value="designer">Designer</option>
-            <option value="owner">Owner</option>
-          </select>
-        </label>
-        <label htmlFor="sort_by">
-          Order
-          <select
-            name="order"
-            id="order"
-            type="dropdown"
-            onChange={(event) => handleParamChange("order", event.target.value)}
-            defaultValue={searchParams.get("order")}
-          >
-            <option value="desc">Descending</option>
-            <option value="asc">Ascending</option>
-          </select>
-        </label>
-      </fieldset>
-    </form>
+    <AccordionContainer>
+      <AccordionHeader ref={node} onClick={handleClick}>
+        <HeaderTitle>Sort and Filter</HeaderTitle>
+        <HeaderIcon isOpen={isOpen}>
+          <FontAwesomeIcon size={"xs"} icon={faChevronUp} />
+        </HeaderIcon>
+      </AccordionHeader>
+      <AccordionPanel
+        isOpen={isOpen}
+        style={{ maxHeight: isOpen ? "10em" : "0" }}
+      >
+        <Title>Sort By</Title>
+        <ul>
+          <SortbyOrderOptions onClick={() => handleSortChange("created_at")}>
+            Date Added
+          </SortbyOrderOptions>
+          <SortbyOrderOptions onClick={() => handleSortChange("comment_count")}>
+            Comment Count
+          </SortbyOrderOptions>
+          <SortbyOrderOptions onClick={() => handleSortChange("votes")}>
+            Votes
+          </SortbyOrderOptions>
+          <SortbyOrderOptions onClick={() => handleSortChange("designer")}>
+            Designer
+          </SortbyOrderOptions>
+          <SortbyOrderOptions onClick={() => handleSortChange("owner")}>
+            Owner
+          </SortbyOrderOptions>
+        </ul>
+        <br />
+        <Title>Order</Title>
+        <ul>
+          <SortbyOrderOptions onClick={() => handleOrderChange("desc")}>
+            Descending
+          </SortbyOrderOptions>
+          <SortbyOrderOptions onClick={() => handleOrderChange("asc")}>
+            Ascending
+          </SortbyOrderOptions>
+        </ul>
+      </AccordionPanel>
+    </AccordionContainer>
   );
-}
+};
 
 export default SortByOrder;

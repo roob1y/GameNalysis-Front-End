@@ -1,7 +1,7 @@
 import "./App.css";
 
 import Header from "./components/Header";
-import ListReviews from "./components/Reviews";
+import Reviews from "./components/Reviews";
 import UserReview from "./components/UserReview";
 import Users from "./components/Users";
 import PageNotFound from "./components/Error";
@@ -28,7 +28,8 @@ function App() {
               path="/"
               element={
                 loggedUser ? (
-                  <ListReviews />
+                  <Reviews
+                  />
                 ) : (
                   <Navigate to="/welcome" replace />
                 )

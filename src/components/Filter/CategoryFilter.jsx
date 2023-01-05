@@ -1,12 +1,16 @@
-import { useEffect, useState } from "react";
-import { getAllCategories } from "../../utils/api";
+import { useState, useEffect, useRef } from "react";
 import { capitaliseEachWord } from "../../hooks/capitaliseEachWord";
 import { CategoryChildrenButton, CategoryButton } from "./CategoryButton";
+import { getAllCategories } from "../../utils/api";
+import { useOnClickOutside } from "../../hooks/useOnClickOutside";
 
 const CategoryFilter = ({ searchParams, setSearchParams, setCurrentPage }) => {
   const [closed, setClosed] = useState(true);
-  const [categoryItems, setCategoryItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [categoryItems, setCategoryItems] = useState([]);
+
+  const node = useRef();
+  useOnClickOutside(node, () => setClosed(true));
 
   function handleParamChange(category) {
     searchParams.set("category", category.slug);
@@ -32,24 +36,20 @@ const CategoryFilter = ({ searchParams, setSearchParams, setCurrentPage }) => {
       setIsLoading(false);
     });
   }, []);
-  
-  console.log(searchParams.get("category"));
-  if (closed) {
-    if (searchParams.get("category")) {
-      const outputStr = capitaliseEachWord(searchParams.get("category"));
+
+if (closed) {
+    const outputStr = searchParams.get("category")
+      ? capitaliseEachWord(searchParams.get("category"))
+      : "All Reviews";
       return (
         <>
-          <p>
-            {searchParams.get("category") ? outputStr.split("") : `All Reviews`}
-          </p>
+          <p>{outputStr}</p>
           <CategoryButton onClick={handleClick} />
         </>
       );
-    }
-    return <CategoryButton onClick={handleClick} />
   } else if (!isLoading) {
     return (
-      <>
+      <div ref={node}>
         <CategoryChildrenButton
           children={"All Reviews"}
           onClick={categoryRemoveHandler}
@@ -63,7 +63,7 @@ const CategoryFilter = ({ searchParams, setSearchParams, setCurrentPage }) => {
             />
           );
         })}
-      </>
+      </div>
     );
   } else {
     <p>is loading...</p>;

@@ -1,12 +1,14 @@
 import CardReviews from "./CardReviews";
 import CategoryFilter from "../Filter";
-import SortByReviews from "../SortByOrder";
+
+import SortByOrder from "../SortByOrder/SortByOrder";
 
 import { getAllReviews } from "../../utils/api";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import PageNotFound from "../Error/PageNotFound";
 import Pagination from "../Comments/Pagination/Pagination";
+import styled from "styled-components";
 
 const Reviews = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -38,38 +40,45 @@ const Reviews = () => {
       });
   }, [searchParams, currentPage, limit]);
 
+  const FilterAndSortBy = styled.section`
+    display: flex;
+  `;
+
   if (isLoading) {
     return (
       <>
         {err ? (
           <PageNotFound status={err.response.status} />
         ) : (
-          <>
+          <FilterAndSortBy>
             <CategoryFilter
               searchParams={searchParams}
               setSearchParams={setSearchParams}
             />
-            <SortByReviews
+            <SortByOrder
               searchParams={searchParams}
               setSearchParams={setSearchParams}
             />
             <p>is loading...</p>
-          </>
+          </FilterAndSortBy>
         )}
       </>
     );
   } else {
     return (
       <>
-        <CategoryFilter
-          setCurrentPage={setCurrentPage}
-          searchParams={searchParams}
-          setSearchParams={setSearchParams}
-        />
-        <SortByReviews
-          searchParams={searchParams}
-          setSearchParams={setSearchParams}
-        />
+        <FilterAndSortBy>
+          <CategoryFilter
+            setCurrentPage={setCurrentPage}
+            searchParams={searchParams}
+            setSearchParams={setSearchParams}
+          />
+          <SortByOrder
+            searchParams={searchParams}
+            setSearchParams={setSearchParams}
+          />
+        </FilterAndSortBy>
+
         <h2>Reviews</h2>
         <ul className="reviewList">
           {reviewsData.map((review) => (

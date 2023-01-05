@@ -2,10 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { capitaliseEachWord } from "../../hooks/capitaliseEachWord";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGamepad } from '@fortawesome/free-solid-svg-icons'
+import { faCubes } from '@fortawesome/free-solid-svg-icons'
 
 const Buttons = styled.button`
-  /* Add your button styles here */
   background-color: #4caf50;
   border: none;
   color: white;
@@ -16,6 +15,8 @@ const Buttons = styled.button`
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+  min-width: 10em;
+  min-height: 4em;
 `;
 
 export const CategoryChildrenButton = ({ children, onClick }) => {
@@ -24,7 +25,6 @@ export const CategoryChildrenButton = ({ children, onClick }) => {
 }
 
 const Button = styled.button`
-  /* Add your button styles here */
   background-color: #f3f3f3;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -44,8 +44,8 @@ const Button = styled.button`
   }
 `;
 
-export const CategoryButton = ({ children, onClick }) => (
+export const CategoryButton = ({ onClick }) => (
   <Button onClick={onClick}>
-    <FontAwesomeIcon size="2x" icon={faGamepad} />
+    <FontAwesomeIcon size="2x" icon={faCubes} />
   </Button>
 );
