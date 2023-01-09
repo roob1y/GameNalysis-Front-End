@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledMenu } from "./Menu.styled";
+import { StyledMenu, Note } from "./Menu.styled";
 import { bool } from "prop-types";
 import linkedinIcon from "../../../../assets/linkedin-icon.png";
 import githubIcon from "../../../../assets/github-icon.png";
@@ -26,7 +26,12 @@ const Menu = ({ open }) => {
           src={githubIcon}
           aria-hidden="true"
           alt="Linkedin Logo"
-          style={{ width: "8%", backgroundColor: "white", marginRight: "8px", borderRadius: "50%" }}
+          style={{
+            width: "8%",
+            backgroundColor: "white",
+            marginRight: "8px",
+            borderRadius: "50%",
+          }}
         />
         My Github
       </a>
@@ -34,6 +39,9 @@ const Menu = ({ open }) => {
         <span aria-hidden="true">📄</span>
         My CV
       </a>
+      <Note href="https://www.freepik.com/free-vector/diagonal-motion-lines-white-background_17564647.htm#query=gray%20background&position=29&from_view=keyword">
+        <p>Background Image by starline on Freepik</p>
+      </Note>
     </StyledMenu>
   );
 };

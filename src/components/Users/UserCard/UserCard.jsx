@@ -1,3 +1,5 @@
+import { theme } from "../../../theme";
+
 const UserCard = ({ user }) => {
   const altText = `profile of ${user.username}`;
 
@@ -30,7 +32,7 @@ const UserCard = ({ user }) => {
         />
       </section>
       <section
-        style={{ backgroundColor: "green", margin: "5px", padding: "1px" }}
+        style={{ backgroundColor: theme.primaryLight, margin: "5px", padding: "1px" }}
       >
         <p>{user.username}</p>
         <p>{user.name}</p>

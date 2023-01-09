@@ -3,6 +3,7 @@ import { getUsers } from "../../utils/api";
 import UserCard from "./UserCard";
 import { UserContext } from "../../contexts/User";
 import PageNotFound from "../Error/PageNotFound";
+import { theme } from "../../theme";
 
 const Users = () => {
   const { setLoggedUser } = useContext(UserContext);
@@ -32,9 +33,8 @@ const Users = () => {
         <h1>Welcome!</h1>
         <section
           style={{
-            display: "inline-flex",
-            justifyContent: "space-around",
-            width: "85%",
+            display: "flex",
+            justifyContent: "center",
           }}
         >
           {users.map((user) => (
@@ -42,9 +42,11 @@ const Users = () => {
               onClick={() => setLoggedUser(user)}
               key={user.name}
               style={{
-                width: "20vh",
-                backgroundColor: "gray",
+                backgroundColor: theme.primaryPop,
                 cursor: "pointer",
+                borderRadius: "10px",
+                padding: "0.5em",
+                margin: "0 0.5em",
               }}
             >
               <UserCard user={user} />

@@ -38,4 +38,19 @@ export const StyledMenu = styled.nav`
       color: ${({ theme }) => theme.primaryHover};
     }
   }
+  
 `;
+
+export const Note = styled.a`
+p {
+
+  font-size: 12px;
+  position: absolute;
+  bottom: 0;
+  text-transform: none;
+  letter-spacing: normal;
+
+
+}
+color: white;
+`

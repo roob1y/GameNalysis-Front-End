@@ -7,7 +7,6 @@ import { useOnClickOutside } from "../../hooks/useOnClickOutside";
 const AccordionContainer = styled.div`
   position: relative;
   max-width: 12em;
-  border: 1px solid #ccc;
   border-radius: 5px;
 `;
 
@@ -15,13 +14,13 @@ const AccordionHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #f7f7f7;
+  background-color: ${({ theme }) => theme.buttonColor};
   color: #444;
   cursor: pointer;
   padding: 18px;
   width: 100%;
   border: 5px solid #424242;
-  border-radius: 20px;  
+  border-radius: 20px;
   font-size: 15px;
   transition: 0.4s;
 
@@ -31,16 +30,19 @@ const AccordionHeader = styled.div`
 `;
 
 const AccordionPanel = styled.div`
-  max-height: 0;
   position: absolute;
-  top: 3.5em;
+  left: 50%;
+  transform: translate(-50%, 0);
+  max-height: 0;
+  border-radius: 20px;
   width: 100%;
   padding: 0 10px;
   background-color: white;
   overflow: auto;
   max-height: 0;
-  transition: max-height 0.2s ease-out;
-  border: ${props => (props.isOpen ? `${props.theme.textDark} 3px solid` : "none")};
+  transition: max-height 0.2s ease-out, opacity 0.2s ease-out;
+  opacity: ${props => props.isOpen ? 1 : 0};
+  border: ${props => props.isOpen ? `${props.theme.textDark} 1px solid` : "none"};
 `;
 
 const HeaderTitle = styled.div`
@@ -73,7 +75,7 @@ const SortByOrder = ({ searchParams, setSearchParams }) => {
   useOnClickOutside(node, () => setIsOpen(false));
 
   function handleSortChange(val) {
-    console.log('val: ', val);
+    console.log("val: ", val);
     searchParams.set("sort_by", val);
     setSearchParams(searchParams);
   }
