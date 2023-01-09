@@ -16,7 +16,7 @@ const ReviewCard = styled.li`
 
   margin: 10px 10px;
   height: auto;
-  outline: 5px solid #42424250;
+  outline: ${({theme}) => theme.outline};
   border-radius: 20px;
   background: linear-gradient(
     0deg,

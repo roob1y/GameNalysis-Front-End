@@ -4,6 +4,7 @@ import UserCard from "./UserCard";
 import { UserContext } from "../../contexts/User";
 import PageNotFound from "../Error/PageNotFound";
 import { theme } from "../../theme";
+import styled from "styled-components";
 
 const Users = () => {
   const { setLoggedUser } = useContext(UserContext);
@@ -24,6 +25,20 @@ const Users = () => {
       });
   }, []);
 
+  const CardContainer = styled.div`
+  background-color: ${theme.primaryPop};
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 0.5em;
+  margin: 0 0.5em;
+  outline: ${theme.outline};
+
+  :hover {
+    box-shadow: 0 0 12px 7px ${({theme}) => theme.primaryHover};
+  }
+  `
+
+
   if (err) {
     return <PageNotFound status={err.response.status} />;
   }
@@ -38,19 +53,12 @@ const Users = () => {
           }}
         >
           {users.map((user) => (
-            <div
+            <CardContainer
               onClick={() => setLoggedUser(user)}
               key={user.name}
-              style={{
-                backgroundColor: theme.primaryPop,
-                cursor: "pointer",
-                borderRadius: "10px",
-                padding: "0.5em",
-                margin: "0 0.5em",
-              }}
             >
               <UserCard user={user} />
-            </div>
+            </CardContainer>
           ))}
         </section>
       </>

@@ -6,5 +6,6 @@ export const theme = {
   primaryPop: '#FFB74D',
   buttonColor:'#FFF',
   textDark: '#333',
+  outline: "5px solid #42424250",
   mobile: '576px',
 }
