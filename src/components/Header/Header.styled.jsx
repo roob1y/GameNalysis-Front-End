@@ -6,6 +6,9 @@ export const HeaderContainer = styled.header`
   align-items: center;
   padding: 10px 30px;
   height: 7em;
+  border-bottom: 1px solid ${({theme}) => theme.primaryNeutral};
+  background-color: ${({theme}) => theme.primaryPop};
+
 `;
 
 export const HeaderTitle = styled.h1`

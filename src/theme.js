@@ -4,5 +4,6 @@ export const theme = {
   primaryHover: '#0B5394',
   primaryNeutral: '#424242',
   primaryPop: '#FFB74D',
+  textDark: '#333',
   mobile: '576px',
 }

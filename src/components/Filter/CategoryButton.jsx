@@ -5,8 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCubes } from '@fortawesome/free-solid-svg-icons'
 
 const Buttons = styled.button`
-  background-color: #4caf50;
-  border: none;
+background-color: ${({theme}) => theme.primaryPop};
+border: none;
   color: white;
   padding: 15px 32px;
   text-align: center;
@@ -25,9 +25,9 @@ export const CategoryChildrenButton = ({ children, onClick }) => {
 }
 
 const Button = styled.button`
-  background-color: #f3f3f3;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+background-color: white;
+border: 5px solid #424242;
+  border-radius: 20px;
   color: #333;
   padding: 10px 15px;
   text-align: center;

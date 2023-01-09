@@ -10,8 +10,10 @@ import PageNotFound from "../Error/PageNotFound";
 import Pagination from "../Comments/Pagination/Pagination";
 import styled from "styled-components";
 
+const MainBody = styled.body``
+
 const ReviewsContainer = styled.div`
-background: linear-gradient(0deg, hsla(203, 100%, 89%, 1) 14%, hsla(202, 80%, 81%, 1) 76%);`
+`
 
 const ReviewList = styled.ul`
   margin-top: 3vh;
@@ -56,7 +58,7 @@ const Reviews = () => {
 
   if (isLoading) {
     return (
-      <>
+      <MainBody>
         {err ? (
           <PageNotFound status={err.response.status} />
         ) : (
@@ -72,7 +74,7 @@ const Reviews = () => {
             <p>is loading...</p>
           </FilterAndSortBy>
         )}
-      </>
+      </MainBody>
     );
   } else {
     return (
@@ -89,7 +91,6 @@ const Reviews = () => {
           />
         </FilterAndSortBy>
         <ReviewsContainer>
-        <h2>Reviews</h2>
         <ReviewList className="reviewList">
           {reviewsData.map((review) => (
             <CardReviews key={review.review_id} review={review} />
@@ -102,6 +103,7 @@ const Reviews = () => {
           currentPage={currentPage}
           pageSize={limit}
         />
+        <a href="https://www.freepik.com/free-vector/diagonal-motion-lines-white-background_17564647.htm#query=gray%20background&position=29&from_view=keyword">Image by starline on Freepik</a>
         </ReviewsContainer>
       </>
     );

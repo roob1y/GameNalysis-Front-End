@@ -20,8 +20,8 @@ const AccordionHeader = styled.div`
   cursor: pointer;
   padding: 18px;
   width: 100%;
-  border: none;
-  outline: none;
+  border: 5px solid #424242;
+  border-radius: 20px;  
   font-size: 15px;
   transition: 0.4s;
 
@@ -40,7 +40,7 @@ const AccordionPanel = styled.div`
   overflow: auto;
   max-height: 0;
   transition: max-height 0.2s ease-out;
-  border: ${(props) => (props.isOpen ? "#ccc 1px solid" : "none")}
+  border: ${props => (props.isOpen ? `${props.theme.textDark} 3px solid` : "none")};
 `;
 
 const HeaderTitle = styled.div`
@@ -73,12 +73,13 @@ const SortByOrder = ({ searchParams, setSearchParams }) => {
   useOnClickOutside(node, () => setIsOpen(false));
 
   function handleSortChange(val) {
+    console.log('val: ', val);
     searchParams.set("sort_by", val);
     setSearchParams(searchParams);
   }
 
   function handleOrderChange(val) {
-    searchParams.set("sort_by", val);
+    searchParams.set("order", val);
     setSearchParams(searchParams);
   }
 
