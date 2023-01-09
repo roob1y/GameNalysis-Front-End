@@ -23,19 +23,6 @@
   }
 }
 
-.grid {
-  display: grid;
-  grid-template-areas:
-    "title"
-    "designer"
-    "gameImg"
-    "owner"
-    "created_at votes";
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 2fr 1fr 1fr;
-  align-items: center;
-}
-
 .gameImg {
   max-width: 70%;
 }
@@ -66,7 +53,6 @@ ul {
 }
 
 li {
-  
   list-style: none;
 }
 

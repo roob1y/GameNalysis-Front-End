@@ -20,4 +20,16 @@ export const GlobalStyles = createGlobalStyle`
     justify-content: center;
     text-rendering: optimizeLegibility;
   }
+  a {
+    text-decoration: none;
+    
+    @media (max-width: ${({ theme }) => theme.mobile}) {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    &:hover {
+      color: ${({ theme }) => theme.primaryHover};
+    }
+  }
   `;

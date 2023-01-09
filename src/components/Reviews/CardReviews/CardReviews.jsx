@@ -2,8 +2,19 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const ReviewCard = styled.li`
+  width: 100%;
+  display: grid;
+  grid-template-areas:
+    "title"
+    "designer"
+    "gameImg"
+    "owner"
+    "created_at votes";
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 2fr 1fr 1fr;
+  align-items: center;
+
   margin: 10px 10px;
-  width: 45%;
   height: auto;
   outline: 5px solid #42424250;
   border-radius: 20px;
@@ -21,6 +32,10 @@ const ReviewCard = styled.li`
   padding: 20px;
   backdrop-filter: "blur(10px)";
 
+:hover {
+  box-shadow: 0 0 12px 7px ${({theme}) => theme.primaryHover};
+}
+
   h3 {
     font-size: 1.5em;
   }
@@ -28,18 +43,25 @@ const ReviewCard = styled.li`
   & h3,
   & h4,
   & h5 {
-    color: ${({theme}) => theme.textDark};
+    color: ${({ theme }) => theme.textDark};
   }
 `;
 
+const linkStyle = {
+  margin: "1rem",
+  textDecoration: "none",
+  color: "blue",
+  display: "flex",
+  flexWrap: "wrap",
+  flex: "0 0 45%",
+};
+
 const CardReviews = ({ review }) => {
   return (
-    <>
+    <Link style={linkStyle} to={`/review/${review.review_id}`}>
       <ReviewCard className="reviewCards grid">
         <div className="gridItem g1">
-          <Link to={`/review/${review.review_id}`}>
-            <h3>{review.title}</h3>
-          </Link>
+          <h3>{review.title}</h3>
         </div>
         <div className="gridItem g2">
           <h4 className="owner">Reviewed by: {review.owner}</h4>
@@ -61,7 +83,7 @@ const CardReviews = ({ review }) => {
           <h5>Upvotes: {review.votes}</h5>
         </div>
       </ReviewCard>
-    </>
+    </Link>
   );
 };
 

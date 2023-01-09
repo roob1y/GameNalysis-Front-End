@@ -51,7 +51,7 @@ const HeaderTitle = styled.div`
 
 const HeaderIcon = styled.div`
   margin-left: 1em;
-  transform: ${(props) => (props.isOpen ? "rotate(180deg)" : "rotate(0)")};
+  transform: ${(props) => (props.isOpen ? "rotate(0)" : "rotate(180deg)")};
   transition: transform 0.2s ease-out;
 `;
 
