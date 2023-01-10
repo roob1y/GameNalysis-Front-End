@@ -4,7 +4,13 @@ import { CategoryChildrenButton, CategoryButton } from "./CategoryButton";
 import { getAllCategories } from "../../utils/api";
 import { useOnClickOutside } from "../../hooks/useOnClickOutside";
 
-const CategoryFilter = ({ searchParams, setSearchParams, setCurrentPage }) => {
+const CategoryFilter = ({
+  searchParams,
+  setSearchParams,
+  setCurrentPage,
+  outputStr,
+  setOutputStr,
+}) => {
   const [closed, setClosed] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [categoryItems, setCategoryItems] = useState([]);
@@ -37,16 +43,16 @@ const CategoryFilter = ({ searchParams, setSearchParams, setCurrentPage }) => {
     });
   }, []);
 
-if (closed) {
-    const outputStr = searchParams.get("category")
+  if (closed) {
+    const newOutputStr = searchParams.get("category")
       ? capitaliseEachWord(searchParams.get("category"))
       : "All Reviews";
-      return (
-        <>
-          <p>{outputStr}</p>
-          <CategoryButton onClick={handleClick} />
-        </>
-      );
+      setOutputStr(newOutputStr)
+    return (
+      <>
+        <CategoryButton onClick={handleClick} />
+      </>
+    );
   } else if (!isLoading) {
     return (
       <div ref={node}>

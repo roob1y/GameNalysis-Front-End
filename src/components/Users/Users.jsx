@@ -30,7 +30,7 @@ const Users = () => {
   cursor: pointer;
   border-radius: 10px;
   padding: 0.5em;
-  margin: 0 0.5em;
+  margin: 0 2em;
   outline: ${theme.outline};
 
   :hover {

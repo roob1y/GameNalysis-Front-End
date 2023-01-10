@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faComment, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 
 const ReviewCard = styled.li`
   width: 100%;
@@ -11,12 +13,12 @@ const ReviewCard = styled.li`
     "owner"
     "created_at votes";
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 2fr 1fr 1fr;
+  grid-template-rows: auto auto auto auto auto;
   align-items: center;
 
   margin: 10px 10px;
   height: auto;
-  outline: ${({theme}) => theme.outline};
+  outline: ${({ theme }) => theme.outline};
   border-radius: 20px;
   background: linear-gradient(
     0deg,
@@ -32,9 +34,9 @@ const ReviewCard = styled.li`
   padding: 20px;
   backdrop-filter: "blur(10px)";
 
-:hover {
-  box-shadow: 0 0 12px 7px ${({theme}) => theme.primaryHover};
-}
+  :hover {
+    box-shadow: 0 0 12px 7px ${({ theme }) => theme.primaryHover};
+  }
 
   h3 {
     font-size: 1.5em;
@@ -48,12 +50,12 @@ const ReviewCard = styled.li`
 `;
 
 const linkStyle = {
-  margin: "1rem",
+  margin: "0.5em",
   textDecoration: "none",
   color: "blue",
   display: "flex",
   flexWrap: "wrap",
-  flex: "0 0 45%",
+  flex: "0 0 30%",
 };
 
 const CardReviews = ({ review }) => {
@@ -77,9 +79,12 @@ const CardReviews = ({ review }) => {
           <h4>Designed by {review.designer}</h4>
         </div>
         <div className="gridItem g5">
-          <h5>created: {new Date(review.created_at).toLocaleDateString()}</h5>
+          <FontAwesomeIcon style={{color: "black"}} size={"l"} icon={faComment} />
+          <h5>comments: {review.comment_count}</h5>
         </div>
         <div className="gridItem g6">
+        <FontAwesomeIcon style={{color: "black"}} size={"l"} icon={faThumbsUp} />
+
           <h5>Upvotes: {review.votes}</h5>
         </div>
       </ReviewCard>

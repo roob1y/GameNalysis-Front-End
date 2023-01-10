@@ -31,6 +31,7 @@ const Reviews = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [reviewCount, setReviewCount] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("All Reviews");
 
   let limit = 10;
 
@@ -62,8 +63,11 @@ const Reviews = () => {
         ) : (
           <FilterAndSortBy>
             <CategoryFilter
+              setCurrentPage={setCurrentPage}
               searchParams={searchParams}
               setSearchParams={setSearchParams}
+              outputStr={selectedCategory}
+              setOutputStr={setSelectedCategory}
             />
             <SortByOrder
               searchParams={searchParams}
@@ -82,6 +86,8 @@ const Reviews = () => {
             setCurrentPage={setCurrentPage}
             searchParams={searchParams}
             setSearchParams={setSearchParams}
+            outputStr={selectedCategory}
+            setOutputStr={setSelectedCategory}
           />
           <SortByOrder
             searchParams={searchParams}
@@ -89,6 +95,7 @@ const Reviews = () => {
           />
         </FilterAndSortBy>
         <ReviewsContainer>
+          <h1>{selectedCategory}</h1>
           <ReviewList className="reviewList">
             {reviewsData.map((review) => (
               <CardReviews key={review.review_id} review={review} />
