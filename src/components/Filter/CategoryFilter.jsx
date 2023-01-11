@@ -16,7 +16,7 @@ const CategoryFilter = ({
   const [categoryItems, setCategoryItems] = useState([]);
 
   const node = useRef();
-  useOnClickOutside(node, () => setClosed(true));
+  useOnClickOutside(node, () => handleClick(true));
 
   function handleParamChange(category) {
     searchParams.set("category", category.slug);
@@ -27,12 +27,13 @@ const CategoryFilter = ({
 
   }
 
-  function handleClick() {
-    setClosed(false);
-    setSortByDisplay(false)
+  function handleClick(boolean) {
+    setClosed(boolean);
+    setSortByDisplay(boolean)
   }
 
   function categoryRemoveHandler() {
+    setSortByDisplay(true)
     searchParams.delete("category");
     setSearchParams(searchParams);
     setClosed(true);
@@ -61,7 +62,7 @@ const CategoryFilter = ({
     
     return (
       <>
-        <CategoryButton onClick={handleClick} />
+        <CategoryButton onClick={() => handleClick(false)} />
       </>
     );
   } else if (!isLoading) {
