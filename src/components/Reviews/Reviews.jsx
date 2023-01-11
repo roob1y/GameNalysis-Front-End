@@ -10,13 +10,21 @@ import PageNotFound from "../Error/PageNotFound";
 import Pagination from "../Comments/Pagination/Pagination";
 import styled from "styled-components";
 
-const ReviewsContainer = styled.div``;
+const CategoryTitle = styled.h1`
+  font-size: 3em;
+  font-weight: 200;
+  margin: 1.5em 0;
+`
+
+const ReviewsContainer = styled.div`
+`;
 
 const ReviewList = styled.ul`
-  margin-top: 3vh;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin: 0.5em 0;
+
 `;
 
 const FilterAndSortBy = styled.section`
@@ -75,7 +83,7 @@ const Reviews = () => {
   } else {
     return (
       <>
-        <h1>{selectedCategory}</h1>
+        <CategoryTitle>{selectedCategory}</CategoryTitle>
         <ReviewsContainer>
           <FilterAndSortBy>
             <CategoryFilter
