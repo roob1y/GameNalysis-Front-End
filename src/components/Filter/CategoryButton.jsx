@@ -34,13 +34,13 @@ const Button = styled.button`
   background-color: ${({ theme }) => theme.buttonColor};
   border: 5px solid #424242;
   border-radius: 20px;
-  color: #333;
-  padding: 10px 15px;
+  color: ${({ theme }) => theme.textDark};
+  padding: 5px 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 14px;
-  margin: 4px 2px;
+  margin: 0 2px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 
@@ -52,6 +52,6 @@ const Button = styled.button`
 export const CategoryButton = ({ onClick }) => (
   <Button onClick={onClick}>
     <FontAwesomeIcon size="2x" icon={faCubes} />
-    <p style={{fontWeight: "bold", marginBottom: "0"}}>Categories</p>
+    <p style={{ fontWeight: "bold", marginBottom: "0" }}>Categories</p>
   </Button>
 );

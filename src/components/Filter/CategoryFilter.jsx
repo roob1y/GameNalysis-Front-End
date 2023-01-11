@@ -8,7 +8,6 @@ const CategoryFilter = ({
   searchParams,
   setSearchParams,
   setCurrentPage,
-  outputStr,
   setOutputStr,
 }) => {
   const [closed, setClosed] = useState(true);
@@ -43,11 +42,19 @@ const CategoryFilter = ({
     });
   }, []);
 
+  let newOutputStr = "";
+
+  useEffect(() => {
+    setOutputStr(newOutputStr);
+  }, [searchParams, setOutputStr, newOutputStr]);
+
+
+  
   if (closed) {
-    const newOutputStr = searchParams.get("category")
-      ? capitaliseEachWord(searchParams.get("category"))
-      : "All Reviews";
-      setOutputStr(newOutputStr)
+    newOutputStr = searchParams.get("category")
+    ? capitaliseEachWord(searchParams.get("category"))
+    : "All Reviews";
+    
     return (
       <>
         <CategoryButton onClick={handleClick} />

@@ -79,11 +79,11 @@ const CardReviews = ({ review }) => {
           <h4>Designed by {review.designer}</h4>
         </div>
         <div className="gridItem g5">
-          <FontAwesomeIcon style={{color: "black"}} size={"l"} icon={faComment} />
+          <FontAwesomeIcon style={{color: "black"}} size={"lg"} icon={faComment} />
           <h5>comments: {review.comment_count}</h5>
         </div>
         <div className="gridItem g6">
-        <FontAwesomeIcon style={{color: "black"}} size={"l"} icon={faThumbsUp} />
+        <FontAwesomeIcon style={{color: "black"}} size={"lg"} icon={faThumbsUp} />
 
           <h5>Upvotes: {review.votes}</h5>
         </div>

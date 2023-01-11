@@ -16,7 +16,7 @@ const UserCard = ({ user }) => {
   border-radius: 50%;
   padding: 15px;
   background-origin: content-box;
-  `;
+`;
 
   return (
     <>

@@ -5,6 +5,7 @@ import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { useOnClickOutside } from "../../hooks/useOnClickOutside";
 
 const AccordionContainer = styled.div`
+  display: inline-block;
   position: relative;
   max-width: 12em;
   border-radius: 5px;

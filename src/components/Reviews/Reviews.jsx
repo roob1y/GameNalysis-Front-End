@@ -10,7 +10,9 @@ import PageNotFound from "../Error/PageNotFound";
 import Pagination from "../Comments/Pagination/Pagination";
 import styled from "styled-components";
 
-const ReviewsContainer = styled.div``;
+const ReviewsContainer = styled.div`
+
+`;
 
 const ReviewList = styled.ul`
   margin-top: 3vh;
@@ -20,8 +22,12 @@ const ReviewList = styled.ul`
 `;
 
 const FilterAndSortBy = styled.section`
-  display: inline-block;
-  width: 100%;
+  display: flex;
+  width: fit-content;
+  justify-content: flex-end;
+  align-items: flex-end;
+  position: relative;
+  left: 7em;
 `;
 
 const Reviews = () => {
@@ -61,7 +67,7 @@ const Reviews = () => {
         {err ? (
           <PageNotFound status={err.response.status} />
         ) : (
-          <FilterAndSortBy>
+          <>
             <CategoryFilter
               setCurrentPage={setCurrentPage}
               searchParams={searchParams}
@@ -74,28 +80,27 @@ const Reviews = () => {
               setSearchParams={setSearchParams}
             />
             <p>is loading...</p>
-          </FilterAndSortBy>
+          </>
         )}
       </>
     );
   } else {
     return (
       <>
-        <FilterAndSortBy>
-          <CategoryFilter
-            setCurrentPage={setCurrentPage}
-            searchParams={searchParams}
-            setSearchParams={setSearchParams}
-            outputStr={selectedCategory}
-            setOutputStr={setSelectedCategory}
-          />
-          <SortByOrder
-            searchParams={searchParams}
-            setSearchParams={setSearchParams}
-          />
-        </FilterAndSortBy>
+        <h1>{selectedCategory}</h1>
         <ReviewsContainer>
-          <h1>{selectedCategory}</h1>
+          <FilterAndSortBy>
+            <CategoryFilter
+              setCurrentPage={setCurrentPage}
+              searchParams={searchParams}
+              setSearchParams={setSearchParams}
+              setOutputStr={setSelectedCategory}
+            />
+            <SortByOrder
+              searchParams={searchParams}
+              setSearchParams={setSearchParams}
+            />
+          </FilterAndSortBy>
           <ReviewList className="reviewList">
             {reviewsData.map((review) => (
               <CardReviews key={review.review_id} review={review} />
