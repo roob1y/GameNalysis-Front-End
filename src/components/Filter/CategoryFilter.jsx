@@ -9,26 +9,31 @@ const CategoryFilter = ({
   setSearchParams,
   setCurrentPage,
   setOutputStr,
+  setSortByDisplay
 }) => {
   const [closed, setClosed] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [categoryItems, setCategoryItems] = useState([]);
 
   const node = useRef();
-  useOnClickOutside(node, () => setClosed(true));
+  useOnClickOutside(node, () => handleClick(true));
 
   function handleParamChange(category) {
     searchParams.set("category", category.slug);
     setSearchParams(searchParams);
     setCurrentPage(1);
     setClosed(true);
+    setSortByDisplay(true)
+
   }
 
-  function handleClick() {
-    setClosed(false);
+  function handleClick(boolean) {
+    setClosed(boolean);
+    setSortByDisplay(boolean)
   }
 
   function categoryRemoveHandler() {
+    setSortByDisplay(true)
     searchParams.delete("category");
     setSearchParams(searchParams);
     setClosed(true);
@@ -57,7 +62,7 @@ const CategoryFilter = ({
     
     return (
       <>
-        <CategoryButton onClick={handleClick} />
+        <CategoryButton onClick={() => handleClick(false)} />
       </>
     );
   } else if (!isLoading) {
