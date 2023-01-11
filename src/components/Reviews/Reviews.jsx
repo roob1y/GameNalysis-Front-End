@@ -68,17 +68,6 @@ const Reviews = () => {
           <PageNotFound status={err.response.status} />
         ) : (
           <>
-            <CategoryFilter
-              setCurrentPage={setCurrentPage}
-              searchParams={searchParams}
-              setSearchParams={setSearchParams}
-              outputStr={selectedCategory}
-              setOutputStr={setSelectedCategory}
-            />
-            <SortByOrder
-              searchParams={searchParams}
-              setSearchParams={setSearchParams}
-            />
             <p>is loading...</p>
           </>
         )}
