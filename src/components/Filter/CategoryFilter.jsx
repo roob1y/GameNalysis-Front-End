@@ -9,6 +9,7 @@ const CategoryFilter = ({
   setSearchParams,
   setCurrentPage,
   setOutputStr,
+  setSortByDisplay
 }) => {
   const [closed, setClosed] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
@@ -22,10 +23,13 @@ const CategoryFilter = ({
     setSearchParams(searchParams);
     setCurrentPage(1);
     setClosed(true);
+    setSortByDisplay(true)
+
   }
 
   function handleClick() {
     setClosed(false);
+    setSortByDisplay(false)
   }
 
   function categoryRemoveHandler() {

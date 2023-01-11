@@ -10,9 +10,7 @@ import PageNotFound from "../Error/PageNotFound";
 import Pagination from "../Comments/Pagination/Pagination";
 import styled from "styled-components";
 
-const ReviewsContainer = styled.div`
-
-`;
+const ReviewsContainer = styled.div``;
 
 const ReviewList = styled.ul`
   margin-top: 3vh;
@@ -38,6 +36,7 @@ const Reviews = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [reviewCount, setReviewCount] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("All Reviews");
+  const [sortByDisplay, setSortByDisplay] = useState(true);
 
   let limit = 10;
 
@@ -84,11 +83,14 @@ const Reviews = () => {
               searchParams={searchParams}
               setSearchParams={setSearchParams}
               setOutputStr={setSelectedCategory}
+              setSortByDisplay={setSortByDisplay}
             />
-            <SortByOrder
-              searchParams={searchParams}
-              setSearchParams={setSearchParams}
-            />
+            {sortByDisplay ? (
+              <SortByOrder
+                searchParams={searchParams}
+                setSearchParams={setSearchParams}
+              />
+            ) : null}
           </FilterAndSortBy>
           <ReviewList className="reviewList">
             {reviewsData.map((review) => (
