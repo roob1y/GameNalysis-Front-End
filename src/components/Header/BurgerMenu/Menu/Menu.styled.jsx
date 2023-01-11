@@ -25,7 +25,7 @@ export const StyledMenu = styled.nav`
     padding: 2rem 0;
     font-weight: bold;
     letter-spacing: 0.5rem;
-    color: ${({ theme }) => theme.primaryLight};
+    color: white;
     text-decoration: none;
     transition: color 0.3s linear;
 
@@ -38,4 +38,19 @@ export const StyledMenu = styled.nav`
       color: ${({ theme }) => theme.primaryHover};
     }
   }
+  
 `;
+
+export const Note = styled.a`
+p {
+
+  font-size: 12px;
+  position: absolute;
+  bottom: 0;
+  text-transform: none;
+  letter-spacing: normal;
+
+
+}
+color: white;
+`

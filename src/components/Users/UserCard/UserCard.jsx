@@ -1,8 +1,25 @@
+import { theme } from "../../../theme";
+import styled from "styled-components";
+
 const UserCard = ({ user }) => {
   const altText = `profile of ${user.username}`;
 
+  const ProfileImg = styled.div`
+  background: url(${user.avatar_url});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: white;
+  background-size: contain;
+  width: 100%;
+  height: 100%;
+  border: 3px ${theme.primaryNeutral} solid;
+  border-radius: 50%;
+  padding: 15px;
+  background-origin: content-box;
+`;
+
   return (
-    <div>
+    <>
       <section
         style={{
           display: "flex",
@@ -12,28 +29,19 @@ const UserCard = ({ user }) => {
           alignItems: "center",
         }}
       >
-        <div
-          style={{
-            background: `url(${user.avatar_url})`,
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
-            backgroundColor: "white",
-            backgroundSize: "contain",
-            width: "100%",
-            height: "100%",
-            border: "1px black solid",
-            borderRadius: "50%",
-            padding: "15px",
-            backgroundOrigin: "content-box",
-          }}
-          alt={altText}
-        />
+        <ProfileImg alt={altText} />
       </section>
-      <section style={{ backgroundColor:"green", margin: "5px", padding: "1px"}}>
+      <section
+        style={{
+          backgroundColor: theme.primaryLight,
+          margin: "5px",
+          padding: "1px",
+        }}
+      >
         <p>{user.username}</p>
         <p>{user.name}</p>
       </section>
-    </div>
+    </>
   );
 };
 

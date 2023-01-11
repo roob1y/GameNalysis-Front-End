@@ -2,46 +2,18 @@ import { useContext } from "react";
 import { UserContext } from "../../contexts/User";
 
 import { useState, useRef } from "react";
-import styled from "styled-components";
 import { Burger, Menu } from "../Header/BurgerMenu";
 import { useOnClickOutside } from "../../hooks/useOnClickOutside";
 import { Link } from "react-router-dom";
+import { HeaderContainer, HeaderTitle, Profile, NavProfile, ProfileSignOut } from "./Header.styled"
 
-const HeaderContainer = styled.header`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 30px;
-  height: 7em;
-`;
-
-const HeaderTitle = styled.h1`
-  position: relative;
-  cursor: pointer;
-`;
-
-const NavProfile = styled.div`
-  width: 5em;
-  height: 5em;
-  background: ${({ loggedUser }) => `url(${loggedUser.avatar_url})`};
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  cursor: pointer;
-  border-radius: 50%;
-  border: 1px black solid;
-  background-color: white;
-  margin 0 auto;
-  `;
-
-const Profile = styled.div``;
 
 const Header = () => {
   const [open, setOpen] = useState(false);
   const node = useRef();
   const menuId = "main-menu";
 
-  const { loggedUser } = useContext(UserContext);
+  const { loggedUser, setLoggedUser } = useContext(UserContext);
 
   useOnClickOutside(node, () => setOpen(false));
 
@@ -61,7 +33,13 @@ const Header = () => {
       </HeaderTitle>
       {loggedUser ? (
         <Profile>
-          <NavProfile loggedUser={loggedUser} alt="user profile" />
+          <NavProfile
+            onClick={() => setLoggedUser(null)}
+            loggedUser={loggedUser}
+            alt={`user profile picture of ${loggedUser.username}`}
+          >
+            <ProfileSignOut style={{}}>Sign Out</ProfileSignOut>
+          </NavProfile>
           <p style={{ margin: "0", paddingTop: "0.2em" }}>
             {loggedUser.username}
           </p>

@@ -2,6 +2,9 @@ import { useEffect } from "react";
 
 export const useOnClickOutside = (ref, handler) => {
   useEffect(() => {
+    if (!ref.current) {
+      return;
+    }
     const listener = (event) => {
       if (ref.current.contains(event.target)) {
         return;

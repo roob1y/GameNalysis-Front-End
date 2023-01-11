@@ -1,27 +1,37 @@
-import { useEffect, useState } from "react";
-
+import { useState, useEffect, useRef } from "react";
+import { capitaliseEachWord } from "../../hooks/capitaliseEachWord";
+import { CategoryChildrenButton, CategoryButton } from "./CategoryButton";
 import { getAllCategories } from "../../utils/api";
+import { useOnClickOutside } from "../../hooks/useOnClickOutside";
 
-const CategoryFilter = ({ searchParams, setSearchParams, setCurrentPage}) => {
+const CategoryFilter = ({
+  searchParams,
+  setSearchParams,
+  setCurrentPage,
+  setOutputStr,
+}) => {
   const [closed, setClosed] = useState(true);
-  const [categoryItems, setCategoryItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [categoryItems, setCategoryItems] = useState([]);
 
-  function handleParamChange(e) {
-    searchParams.set("category", e.target.value );
+  const node = useRef();
+  useOnClickOutside(node, () => setClosed(true));
+
+  function handleParamChange(category) {
+    searchParams.set("category", category.slug);
     setSearchParams(searchParams);
-    setCurrentPage(1)
-    setClosed(true)
+    setCurrentPage(1);
+    setClosed(true);
   }
 
   function handleClick() {
     setClosed(false);
   }
 
-  function categoryRemoveHandler(){
-    searchParams.delete("category")
-    setSearchParams(searchParams)
-    setClosed(true)
+  function categoryRemoveHandler() {
+    searchParams.delete("category");
+    setSearchParams(searchParams);
+    setClosed(true);
   }
 
   useEffect(() => {
@@ -32,32 +42,44 @@ const CategoryFilter = ({ searchParams, setSearchParams, setCurrentPage}) => {
     });
   }, []);
 
+  let newOutputStr = "";
+
+  useEffect(() => {
+    setOutputStr(newOutputStr);
+  }, [searchParams, setOutputStr, newOutputStr]);
+
+
+  
   if (closed) {
+    newOutputStr = searchParams.get("category")
+    ? capitaliseEachWord(searchParams.get("category"))
+    : "All Reviews";
+    
     return (
       <>
-        <h1>{searchParams.get("category") ? searchParams.get("category") : `all reviews`}</h1>
-        <button onClick={handleClick}>Category</button>
+        <CategoryButton onClick={handleClick} />
       </>
     );
   } else if (!isLoading) {
     return (
-      <>
-      <button onClick={categoryRemoveHandler}>all reviews</button>
+      <div ref={node}>
+        <CategoryChildrenButton
+          children={"All Reviews"}
+          onClick={categoryRemoveHandler}
+        />
         {categoryItems.map((category) => {
           return (
-            <button
+            <CategoryChildrenButton
               key={category.slug}
-              value={category.slug}
-              onClick={handleParamChange}
-            >
-              {category.slug.replaceAll("-", " ")}
-            </button>
+              children={category.slug}
+              onClick={() => handleParamChange(category)}
+            />
           );
         })}
-      </>
+      </div>
     );
   } else {
-    <p>is loading...</p>
+    <p>is loading...</p>;
   }
 };
 
