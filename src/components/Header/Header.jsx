@@ -25,7 +25,7 @@ const Header = () => {
         setOpen={setOpen}
         aria-controls={menuId}
       />
-      <Menu open={open} setOpen={setOpen} id={menuId} />
+      <Menu open={open} id={menuId} />
       <HeaderTitle>
         <Link to="/" style={{ color: "black", textDecoration: "none" }}>
           GameNalysis

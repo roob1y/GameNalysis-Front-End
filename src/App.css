@@ -11,17 +11,6 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .gameImg {
   max-width: 70%;
 }
@@ -63,10 +52,6 @@ li {
 .userCommentCard{
   border: #282c34 1px solid;
   margin: 1% 2%;
-}
-
-.comments {
-  margin: 2em auto;
 }
 
 .commentList {

@@ -4,11 +4,12 @@ import AddComment from "./AddComment";
 import ListComments from "./ListComments";
 import { func, number } from "prop-types";
 
-const Comments = ({ userReview, addCommentRender, newCommentData, idInc }) => {
+const Comments = ({ userReview, addCommentRender, newCommentData, idInc, setOpenComments }) => {
   const [err, setErr] = useState(null);
   if (err) return <p>{err.message}. Please try again...</p>;
   return (
     <>
+    <button onClick={() => setOpenComments(false)}>X</button>
       <AddComment
         reviewId={userReview.review_id}
         addCommentRender={addCommentRender}

@@ -28,12 +28,11 @@ const ReviewCard = styled.li`
   );
   background-image: linear-gradient(
     to bottom left,
-    #ffb74d 70%,
-    rgba(255, 255, 255, 0) 100%
+    #ffb74d 1%,
+    rgba(255, 255, 255, 0.01) 100%
   );
   box-shadow: 0 0 12px rgba(0, 0, 0, 1);
   padding: 20px;
-  backdrop-filter: "blur(10px)";
 
   :hover {
     box-shadow: 0 0 12px 7px ${({ theme }) => theme.primaryHover};

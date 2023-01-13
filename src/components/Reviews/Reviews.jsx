@@ -11,7 +11,7 @@ import Pagination from "../Comments/Pagination/Pagination";
 import styled from "styled-components";
 
 const CategoryTitle = styled.h1`
-  margin: 1.5em 0;
+  margin-top: 1.5em;
 `
 
 const ReviewsContainer = styled.div`
@@ -103,7 +103,6 @@ const Reviews = () => {
               <CardReviews key={review.review_id} review={review} />
             ))}
           </ReviewList>
-
           <Pagination
             onPageChange={(page) => setCurrentPage(page)}
             totalCount={reviewCount}

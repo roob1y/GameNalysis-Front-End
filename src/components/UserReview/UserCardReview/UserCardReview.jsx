@@ -1,22 +1,17 @@
 import styled from "styled-components";
 
-const CardContainer = styled.article`
-
-`;
+const ReviewBody = styled.div`text-align: left`;
 
 const UserCardReview = ({ userReview }) => {
   return (
-    <CardContainer className="">
-      <div className="">
+    <>
+      <ReviewBody>
         <p>{userReview.review_body}</p>
+      </ReviewBody>
+      <div>
+        <h6 style={{margin: "0px", marginBottom: "1em", float: "right"}}>created: {new Date(userReview.created_at).toLocaleDateString()}</h6>
       </div>
-      <div className="">
-        <h5>Comments: {userReview.comment_count}</h5>
-      </div>
-      <div className="">
-        <h6>created: {new Date(userReview.created_at).toLocaleDateString()}</h6>
-      </div>
-    </CardContainer>
+    </>
   );
 };
 

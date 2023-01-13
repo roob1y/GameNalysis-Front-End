@@ -41,6 +41,9 @@ const ListComments = ({ reviewId, newCommentData, idInc, commentCount }) => {
   } else if (!isLoading && comments.length > 0) {
     return (
       <article className="commentList">
+        <div>
+          <h5>Comments: {commentCount}</h5>
+        </div>
         <ul>
           {comments.map((comment) => {
             return <CardComments key={comment.comment_id} comments={comment} />;
