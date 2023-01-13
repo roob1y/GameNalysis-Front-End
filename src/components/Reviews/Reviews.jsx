@@ -11,8 +11,6 @@ import Pagination from "../Comments/Pagination/Pagination";
 import styled from "styled-components";
 
 const CategoryTitle = styled.h1`
-  font-size: 3em;
-  font-weight: 200;
   margin: 1.5em 0;
 `
 

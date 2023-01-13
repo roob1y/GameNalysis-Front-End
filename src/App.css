@@ -60,35 +60,6 @@ li {
   margin: 0 auto;
 }
 
-.votes {
-  display: flex;
-  justify-content: center;
-}
-
-.upvote {
-  color: green;
-}
-
-.upvoteEnable {
-  color: rgb(1, 79, 1);
-}
-
-.downvote {
-  color: red;
-}
-
-.downvoteEnable {
-  color: rgb(133, 0, 0)
-}
-
-.upvote,
-  .downvote,
-    .upvoteEnable,
-      .downvoteEnable {
-  width: 6em;
-  height: 6em;
-}
-
 .userCommentCard{
   border: #282c34 1px solid;
   margin: 1% 2%;

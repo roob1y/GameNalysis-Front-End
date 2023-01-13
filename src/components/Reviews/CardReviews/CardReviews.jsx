@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faComment, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
+import { faComment, faHeart } from "@fortawesome/free-solid-svg-icons";
+
 
 const ReviewCard = styled.li`
   width: 100%;
@@ -83,7 +84,7 @@ const CardReviews = ({ review }) => {
           <h5>comments: {review.comment_count}</h5>
         </div>
         <div className="gridItem g6">
-        <FontAwesomeIcon style={{color: "black"}} size={"lg"} icon={faThumbsUp} />
+        <FontAwesomeIcon style={{color: "black"}} size="lg" icon={faHeart} />
 
           <h5>Upvotes: {review.votes}</h5>
         </div>
