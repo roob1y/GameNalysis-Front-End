@@ -1,17 +1,32 @@
-import { AiFillUpSquare, AiFillDownSquare } from "react-icons/ai";
+import "boxicons";
 import { useEffect, useState } from "react";
-
+import styled from "styled-components";
 import { patchUserReview } from "../../../utils/api";
+
+const VoteBtn = styled.button`
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+`;
 
 const Votes = ({ review_id, votes }) => {
   const [vote, setVote] = useState(0);
   const [displayCount, setDisplayCount] = useState(0);
 
   const [err, setErr] = useState(null);
-
   const [likeActive, setLikeActive] = useState(false);
-
   const [dislikeActive, setDislikeActive] = useState(false);
+
+  let likeSelectedArrow = "regular";
+  let dislikeSelectedArrow = "regular";
+
+  if (likeActive) {
+    likeSelectedArrow = "solid";
+  }
+  if (dislikeActive) {
+    dislikeSelectedArrow = "solid";
+  }
 
   const handleLikeClick = () => {
     if (likeActive) {
@@ -46,41 +61,36 @@ const Votes = ({ review_id, votes }) => {
       setLikeActive(false);
     }
   };
-  let upvoteClassName = "upvote";
-  if (likeActive) {
-    upvoteClassName += " upvoteEnable";
-  }
-
-  let downvoteClassName = "downvote";
-  if (dislikeActive) {
-    downvoteClassName += " downvoteEnable";
-  }
 
   useEffect(() => {
     patchUserReview(review_id, vote).catch((err) => {
-      setErr(err)
+      setErr(err);
     });
   }, [review_id, vote]);
-  
+
   if (err) return <p>{err.response.data.msg}. Please try again...</p>;
 
   return (
     <>
-      <div className="">
-        <h5 aria-label={`vote count ${votes}`}>
-          votes: {votes + displayCount}
-        </h5>
-      </div>
-      <div>
-        <button onClick={handleLikeClick}>
-          <AiFillUpSquare className={upvoteClassName} />
-        </button>
-      </div>
-      <div>
-        <button onClick={handleDislikeClick}>
-          <AiFillDownSquare className={downvoteClassName} />
-        </button>
-      </div>
+      <VoteBtn>
+        <box-icon
+          name="upvote"
+          color="green"
+          size="lg"
+          type={likeSelectedArrow}
+          onClick={handleLikeClick}
+        />
+      </VoteBtn>
+      <p style={{color: "black", margin: "0"}} aria-label={`vote count ${votes}`}>{votes + displayCount}</p>
+      <VoteBtn>
+        <box-icon
+          name="downvote"
+          color="red"
+          size="lg"
+          type={dislikeSelectedArrow}
+          onClick={handleDislikeClick}
+        />
+      </VoteBtn>
     </>
   );
 };

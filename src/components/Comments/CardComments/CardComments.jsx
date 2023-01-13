@@ -13,7 +13,7 @@ const CardComments = ({ comments }) => {
 
   return (
     !commentDel && (
-      <li className="userCommentCard">
+      <li style={{backgroundColor: "white"}} className="userCommentCard">
         {comments.author === loggedUser.username && (
           <button onClick={handleOnClick}>X</button>
         )}

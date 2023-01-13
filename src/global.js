@@ -20,6 +20,10 @@ export const GlobalStyles = createGlobalStyle`
     justify-content: center;
     text-rendering: optimizeLegibility;
   }
+  h1 {
+    font-size: 3em;
+    font-weight: 400;
+  }
   a {
     text-decoration: none;
     

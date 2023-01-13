@@ -11,17 +11,6 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .gameImg {
   max-width: 70%;
 }
@@ -60,42 +49,9 @@ li {
   margin: 0 auto;
 }
 
-.votes {
-  display: flex;
-  justify-content: center;
-}
-
-.upvote {
-  color: green;
-}
-
-.upvoteEnable {
-  color: rgb(1, 79, 1);
-}
-
-.downvote {
-  color: red;
-}
-
-.downvoteEnable {
-  color: rgb(133, 0, 0)
-}
-
-.upvote,
-  .downvote,
-    .upvoteEnable,
-      .downvoteEnable {
-  width: 6em;
-  height: 6em;
-}
-
 .userCommentCard{
   border: #282c34 1px solid;
   margin: 1% 2%;
-}
-
-.comments {
-  margin: 2em auto;
 }
 
 .commentList {
