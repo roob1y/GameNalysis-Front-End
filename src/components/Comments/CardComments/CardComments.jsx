@@ -1,6 +1,17 @@
 import { useState, useContext } from "react";
+import styled from "styled-components";
 import { UserContext } from "../../../contexts/User";
 import { deleteCommentById } from "../../../utils/api";
+
+const CommentCard = styled.li`
+  border: #282c34 1px solid;
+  margin: 1% 2%;
+
+  h3,
+    p {
+      color: white;
+  }
+`;
 
 const CardComments = ({ comments }) => {
   const [commentDel, setCommentDel] = useState(false);
@@ -13,7 +24,7 @@ const CardComments = ({ comments }) => {
 
   return (
     !commentDel && (
-      <li style={{backgroundColor: "white"}} className="userCommentCard">
+      <CommentCard style={{ backgroundColor: "teal" }}>
         {comments.author === loggedUser.username && (
           <button onClick={handleOnClick}>X</button>
         )}
@@ -21,7 +32,7 @@ const CardComments = ({ comments }) => {
         <p>{comments.body}</p>
         <p>votes: {comments.votes}</p>
         <p>posted: {new Date(comments.created_at).toLocaleDateString()}</p>
-      </li>
+      </CommentCard>
     )
   );
 };

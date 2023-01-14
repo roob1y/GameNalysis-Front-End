@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import GameNalysisLogo from "../../assets/GameNalysisLogoWhite.png"
 
 export const HeaderContainer = styled.header`
   display: flex;
@@ -6,14 +7,21 @@ export const HeaderContainer = styled.header`
   align-items: center;
   padding: 10px 30px;
   height: 7em;
-  border-bottom: 1px solid ${({theme}) => theme.primaryNeutral};
+  border-bottom: 1px solid ${({ theme }) => theme.primaryNeutral};
   background-color: teal;
-  `
-export const HeaderTitle = styled.h1`
+`;
+export const HeaderLogo = styled.div`
   position: absolute;
-  transform: translate(-50%, 0);
+  transform: translate(-50%, -35%);
   left: 50%;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  height: 10em;
+  width: 20em;
+  background-image: url(${GameNalysisLogo});
+  background-size: contain;
+  background-repeat: no-repeat;
 
   &:active {
     background-color: none;

@@ -33,7 +33,6 @@ const UserCard = ({ user }) => {
       <section
         style={{
           backgroundColor: theme.primaryLight,
-          margin: "5px",
           padding: "1px",
         }}
       >

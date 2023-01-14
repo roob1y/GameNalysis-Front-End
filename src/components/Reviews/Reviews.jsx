@@ -9,6 +9,7 @@ import Pagination from "../Comments/Pagination/Pagination";
 import styled from "styled-components";
 
 const CategoryTitle = styled.h1`
+  margin: 0;
   margin-top: 1.5em;
 `;
 

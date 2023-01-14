@@ -79,6 +79,7 @@ const CommentSection = styled.div`
     rgba(255, 255, 255, 0.8) 100%
   );
   backdrop-filter: blur(10px);
+  z-index: 999999;
 
   top: 0;
   left: 0;

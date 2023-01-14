@@ -37,16 +37,5 @@ main {
 }
 
 .userCommentCard {
-  border: #282c34 1px solid;
-  margin: 1% 2%;
-}
 
-.commentList {
-  border: #282c34 1px solid;
-}
-
-@media screen and (max-width: 1232px) {
-  .reviewCards {
-    width: 70%;
-  }
 }

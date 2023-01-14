@@ -9,13 +9,12 @@ const Buttons = styled.button`
   background-color: ${({ theme }) => theme.buttonColor};
   border: none;
   color: ${({ theme }) => theme.textDark};
-  padding: 15px 32px;
   text-align: center;
   text-decoration: none;
-  border: 5px solid #424242;
+  outline: ${({ theme }) => theme.outline};
   border-radius: 20px;
   font-size: 16px;
-  margin: 4px 2px;
+  margin: 4px 10px;
   cursor: pointer;
 
   @media (min-width: 600px) {
@@ -38,7 +37,6 @@ const Button = styled.button`
   border: ${({theme}) => theme.outline};
   border-radius: 20px;
   color: ${({ theme }) => theme.textDark};
-  padding: 5px 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;

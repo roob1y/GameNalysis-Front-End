@@ -1,12 +1,16 @@
 import { useContext } from "react";
 import { UserContext } from "../../contexts/User";
-
 import { useState, useRef } from "react";
 import { Burger, Menu } from "../Header/BurgerMenu";
 import { useOnClickOutside } from "../../hooks/useOnClickOutside";
 import { Link } from "react-router-dom";
-import { HeaderContainer, HeaderTitle, Profile, NavProfile, ProfileSignOut } from "./Header.styled"
-
+import {
+  HeaderContainer,
+  HeaderLogo,
+  Profile,
+  NavProfile,
+  ProfileSignOut,
+} from "./Header.styled";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -19,17 +23,11 @@ const Header = () => {
 
   return (
     <HeaderContainer ref={node}>
-      <Burger
-        open={open}
-        setOpen={setOpen}
-        aria-controls={menuId}
-      />
+      <Burger open={open} setOpen={setOpen} aria-controls={menuId} />
       <Menu open={open} id={menuId} />
-      <HeaderTitle>
-        <Link to="/" style={{ color: "white", textDecoration: "none" }}>
-          GameNalysis
-        </Link>
-      </HeaderTitle>
+      <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+        <HeaderLogo />
+      </Link>
       {loggedUser ? (
         <Profile>
           <NavProfile
