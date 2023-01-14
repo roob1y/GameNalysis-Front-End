@@ -3,37 +3,21 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment, faHeart } from "@fortawesome/free-solid-svg-icons";
 
-
-const ReviewCard = styled.li`
+const ReviewCard = styled.div`
   width: 100%;
   display: grid;
-  grid-template-areas:
-    "title"
-    "designer"
-    "gameImg"
-    "owner"
-    "created_at votes";
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto auto auto auto;
   align-items: center;
-
   margin: 10px 10px;
-  height: auto;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 2fr 1fr 4fr 2fr;
   outline: ${({ theme }) => theme.outline};
   border-radius: 20px;
-  background: linear-gradient(
-    0deg,
-    hsla(0, 0%, 100%, 1) 0%,
-    hsla(36, 100%, 65%, 1) 43%
-  );
   background-image: linear-gradient(
     to bottom left,
     #ffb74d 1%,
     rgba(255, 255, 255, 0.01) 100%
   );
-  box-shadow: 0 0 12px rgba(0, 0, 0, 1);
-  padding: 20px;
-
+  box-shadow: ${({ theme }) => theme.boxShadow};
   :hover {
     box-shadow: 0 0 12px 7px ${({ theme }) => theme.primaryHover};
   }
@@ -46,7 +30,21 @@ const ReviewCard = styled.li`
   & h4,
   & h5 {
     color: ${({ theme }) => theme.textDark};
+    margin: 0;
+    padding: 1em;
+    padding-bottom: 0;
   }
+`;
+
+const GameImg = styled.div`
+  background: url(${({ review }) => review.review_img_url});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 75%;
+  height: 15em;
+  margin: 0 auto;
+  box-shadow: 0 10px 30px 0 gray;
 `;
 
 const linkStyle = {
@@ -69,22 +67,22 @@ const CardReviews = ({ review }) => {
           <h4 className="owner">Reviewed by: {review.owner}</h4>
         </div>
         <div className="gridItem g3">
-          <img
-            className="gameImg"
-            src={review.review_img_url}
-            alt={review.title}
+          <GameImg className="gameImg" review={review} alt={review.title} />
+        </div>
+        <div className="gridItem g4" style={{ marginTop: "1em" }}>
+          <FontAwesomeIcon
+            style={{ color: "black" }}
+            size={"lg"}
+            icon={faComment}
           />
-        </div>
-        <div className="gridItem g4">
-          <h4>Designed by {review.designer}</h4>
-        </div>
-        <div className="gridItem g5">
-          <FontAwesomeIcon style={{color: "black"}} size={"lg"} icon={faComment} />
           <h5>comments: {review.comment_count}</h5>
         </div>
-        <div className="gridItem g6">
-        <FontAwesomeIcon style={{color: "black"}} size="lg" icon={faHeart} />
-
+        <div className="gridItem g5" style={{ marginTop: "1em" }}>
+          <FontAwesomeIcon
+            style={{ color: "black" }}
+            size="lg"
+            icon={faHeart}
+          />
           <h5>Upvotes: {review.votes}</h5>
         </div>
       </ReviewCard>

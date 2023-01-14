@@ -3,13 +3,20 @@ import { capitaliseEachWord } from "../../hooks/capitaliseEachWord";
 import { CategoryChildrenButton, CategoryButton } from "./CategoryButton";
 import { getAllCategories } from "../../utils/api";
 import { useOnClickOutside } from "../../hooks/useOnClickOutside";
+import styled from "styled-components";
+
+const CategoryFilterContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+`;
 
 const CategoryFilter = ({
   searchParams,
   setSearchParams,
   setCurrentPage,
   setOutputStr,
-  setSortByDisplay
+  setSortByDisplay,
 }) => {
   const [closed, setClosed] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
@@ -23,17 +30,16 @@ const CategoryFilter = ({
     setSearchParams(searchParams);
     setCurrentPage(1);
     setClosed(true);
-    setSortByDisplay(true)
-
+    setSortByDisplay(true);
   }
 
   function handleClick(boolean) {
     setClosed(boolean);
-    setSortByDisplay(boolean)
+    setSortByDisplay(boolean);
   }
 
   function categoryRemoveHandler() {
-    setSortByDisplay(true)
+    setSortByDisplay(true);
     searchParams.delete("category");
     setSearchParams(searchParams);
     setClosed(true);
@@ -53,13 +59,11 @@ const CategoryFilter = ({
     setOutputStr(newOutputStr);
   }, [searchParams, setOutputStr, newOutputStr]);
 
-
-  
   if (closed) {
     newOutputStr = searchParams.get("category")
-    ? capitaliseEachWord(searchParams.get("category"))
-    : "All Reviews";
-    
+      ? capitaliseEachWord(searchParams.get("category"))
+      : "All Reviews";
+
     return (
       <>
         <CategoryButton onClick={() => handleClick(false)} />
@@ -67,7 +71,7 @@ const CategoryFilter = ({
     );
   } else if (!isLoading) {
     return (
-      <div ref={node}>
+      <CategoryFilterContainer ref={node}>
         <CategoryChildrenButton
           children={"All Reviews"}
           onClick={categoryRemoveHandler}
@@ -81,7 +85,7 @@ const CategoryFilter = ({
             />
           );
         })}
-      </div>
+      </CategoryFilterContainer>
     );
   } else {
     <p>is loading...</p>;

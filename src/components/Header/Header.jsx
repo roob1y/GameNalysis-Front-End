@@ -20,14 +20,13 @@ const Header = () => {
   return (
     <HeaderContainer ref={node}>
       <Burger
-        style={{ border: "1px black solid" }}
         open={open}
         setOpen={setOpen}
         aria-controls={menuId}
       />
       <Menu open={open} id={menuId} />
       <HeaderTitle>
-        <Link to="/" style={{ color: "black", textDecoration: "none" }}>
+        <Link to="/" style={{ color: "white", textDecoration: "none" }}>
           GameNalysis
         </Link>
       </HeaderTitle>
@@ -40,7 +39,7 @@ const Header = () => {
           >
             <ProfileSignOut style={{}}>Sign Out</ProfileSignOut>
           </NavProfile>
-          <p style={{ margin: "0", paddingTop: "0.2em" }}>
+          <p style={{ color: "white", margin: "0", paddingTop: "0.2em" }}>
             {loggedUser.username}
           </p>
         </Profile>

@@ -1,11 +1,8 @@
 import { theme } from "../../../theme";
 import styled from "styled-components";
 
-const UserCard = ({ user }) => {
-  const altText = `profile of ${user.username}`;
-
-  const ProfileImg = styled.div`
-  background: url(${user.avatar_url});
+const ProfileImg = styled.div`
+  background: url(${({ user }) => user.avatar_url});
   background-repeat: no-repeat;
   background-position: center;
   background-color: white;
@@ -18,6 +15,8 @@ const UserCard = ({ user }) => {
   background-origin: content-box;
 `;
 
+const UserCard = ({ user }) => {
+  const altText = `profile of ${user.username}`;
   return (
     <>
       <section
@@ -29,7 +28,7 @@ const UserCard = ({ user }) => {
           alignItems: "center",
         }}
       >
-        <ProfileImg alt={altText} />
+        <ProfileImg user={user} alt={altText} />
       </section>
       <section
         style={{

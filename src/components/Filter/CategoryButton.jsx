@@ -5,20 +5,23 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCubes } from "@fortawesome/free-solid-svg-icons";
 
 const Buttons = styled.button`
+
   background-color: ${({ theme }) => theme.buttonColor};
   border: none;
   color: ${({ theme }) => theme.textDark};
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
   border: 5px solid #424242;
   border-radius: 20px;
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
-  min-width: 10em;
-  min-height: 4em;
+
+  @media (min-width: 600px) {
+    width: 10em;
+    height: 5em;
+  }
 
   &:hover {
     background-color: #ddd;
@@ -32,7 +35,7 @@ export const CategoryChildrenButton = ({ children, onClick }) => {
 
 const Button = styled.button`
   background-color: ${({ theme }) => theme.buttonColor};
-  border: 5px solid #424242;
+  border: ${({theme}) => theme.outline};
   border-radius: 20px;
   color: ${({ theme }) => theme.textDark};
   padding: 5px 10px;
