@@ -40,7 +40,7 @@ const ListComments = ({ reviewId, newCommentData, idInc, commentCount }) => {
     return <p>No Comments</p>;
   } else if (!isLoading && comments.length > 0) {
     return (
-      <article className="commentList">
+      <article>
         <div>
           <h5>Comments: {commentCount}</h5>
         </div>

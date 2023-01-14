@@ -20,7 +20,7 @@ const AccordionHeader = styled.div`
   cursor: pointer;
   padding: 18px;
   width: 100%;
-  border: 5px solid #424242;
+  border: ${({theme}) => theme.outline};
   border-radius: 20px;
   font-size: 15px;
   transition: 0.4s;
@@ -33,9 +33,9 @@ const AccordionHeader = styled.div`
 const AccordionPanel = styled.div`
   position: absolute;
   left: 50%;
-  transform: translate(-50%, 0);
-  max-height: 0;
+  transform: translate(-50%, -3px);
   border-radius: 20px;
+  max-height: 0;
   width: 100%;
   padding: 0 10px;
   background-color: white;
@@ -43,7 +43,8 @@ const AccordionPanel = styled.div`
   max-height: 0;
   transition: max-height 0.2s ease-out, opacity 0.2s ease-out;
   opacity: ${props => props.isOpen ? 1 : 0};
-  border: ${props => props.isOpen ? `${props.theme.textDark} 1px solid` : "none"};
+  border: ${props => props.isOpen ? ({theme}) => theme.outline : "none"};
+
 `;
 
 const HeaderTitle = styled.div`

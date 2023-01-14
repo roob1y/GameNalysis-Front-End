@@ -26,7 +26,6 @@ export const GlobalStyles = createGlobalStyle`
   }
   a {
     text-decoration: none;
-    
     @media (max-width: ${({ theme }) => theme.mobile}) {
       font-size: 1.5rem;
       text-align: center;

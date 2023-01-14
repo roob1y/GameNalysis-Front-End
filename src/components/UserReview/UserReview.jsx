@@ -13,7 +13,6 @@ const HeaderImg = styled.div`
   left: 0;
   right: 0;
   top: 0;
-  max-width: 90vw;
   border: black 1px solid;
   height: 20em;
   background-size: cover;
@@ -26,7 +25,19 @@ const UserReviewTitle = styled.div`
   justify-content: center;
   align-items: center;
   height: 70%;
-  color: white;
+  color: black;
+`;
+
+const GameName = styled.h1`
+  box-shadow: ${({ theme }) => theme.boxShadow};
+  outline: ${({ theme }) => theme.outline};
+  padding: 0.5em;
+  box-shadow: ${({ theme }) => theme.boxShadow};
+  background-image: linear-gradient(
+    to bottom left,
+    #ffb74d 30%,
+    rgba(255, 255, 255, 0.8) 100%
+  );
 `;
 
 const HeadingContent = styled.div`
@@ -38,21 +49,24 @@ const HeadingContent = styled.div`
 `;
 
 const VotesContainer = styled.div`
-  position: absolute;
-  right: 5%;
-  top: 10%;
-  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  right: 0;
+  top: 0;
 `;
 
 const Review = styled.section`
-  margin: 3em 0;
+  display: flex;
+  gap: 10px;
 `;
 
 const UserReviewBody = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  border: 1px black solid;
+  outline: ${({ theme }) => theme.outline};
   padding: 0 1em;
   background-color: white;
 `;
@@ -65,6 +79,7 @@ const CommentSection = styled.div`
     rgba(255, 255, 255, 0.8) 100%
   );
   backdrop-filter: blur(10px);
+  z-index: 999999;
 
   top: 0;
   left: 0;
@@ -120,57 +135,56 @@ const UserReview = () => {
             alt={userReview.title}
           >
             <UserReviewTitle>
-              <h1 style={{ backgroundColor: "black", padding: "0 1em" }}>
-                {userReview.title}
-              </h1>
+              <GameName>{userReview.title}</GameName>
             </UserReviewTitle>
             <HeadingContent>
               <h2
                 style={{
-                  backgroundColor: "black",
+                  backgroundColor: "rgba(0, 0, 0, 0.75)",
                   margin: "0 10px",
-                  padding: "0 1em",
+                  padding: "0.5em 0.5em",
                 }}
               >
                 Reviewed By {userReview.owner}
               </h2>
               <h2
                 style={{
-                  backgroundColor: "black",
+                  backgroundColor: "rgba(0, 0, 0, 0.75)",
                   margin: "0 10px",
-                  padding: "0 1em",
+                  padding: "0.5em 0.5em",
                 }}
               >
                 Designed by {userReview.designer}
               </h2>
-              <VotesContainer>
-                <Votes
-                  review_id={userReview.review_id}
-                  votes={userReview.votes}
-                />
-              </VotesContainer>
             </HeadingContent>
           </HeaderImg>
         </header>
-        <main className="main">
+        <main>
+          <h2
+            style={{
+              width: "fit-content",
+              height: "100%",
+              margin: "0 auto",
+              padding: "0.5em 1em",
+              marginTop: "2em",
+            }}
+          >
+            Review
+          </h2>
           <Review>
-            <h2
-              style={{
-                width: "fit-content",
-                height: "100%",
-                margin: "0 auto",
-                padding: "0.5em 1em",
-              }}
-            >
-              Review
-            </h2>
             <UserReviewBody>
               <UserCardReview userReview={userReview} />
             </UserReviewBody>
-            <ShowCommentsBtn onClick={() => setOpenComments(!openComments)}>
-              Show Comments
-            </ShowCommentsBtn>
+            <VotesContainer>
+              <Votes
+                review_id={userReview.review_id}
+                votes={userReview.votes}
+              />
+            </VotesContainer>
           </Review>
+          <ShowCommentsBtn onClick={() => setOpenComments(!openComments)}>
+            Show Comments
+          </ShowCommentsBtn>
           <CommentSection openComments={openComments}>
             <h2>Comments</h2>
             <Comments

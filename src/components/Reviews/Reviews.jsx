@@ -1,8 +1,6 @@
 import CardReviews from "./CardReviews";
 import CategoryFilter from "../Filter";
-
 import SortByOrder from "../SortByOrder/SortByOrder";
-
 import { getAllReviews } from "../../utils/api";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
@@ -11,27 +9,27 @@ import Pagination from "../Comments/Pagination/Pagination";
 import styled from "styled-components";
 
 const CategoryTitle = styled.h1`
+  margin: 0;
   margin-top: 1.5em;
-`
-
-const ReviewsContainer = styled.div`
 `;
 
 const ReviewList = styled.ul`
   display: flex;
   flex-wrap: wrap;
+  flex: 1 100%;
   justify-content: center;
-  margin: 0.5em 0;
+`;
 
+const ReviewListItem = styled.li`
+  flex-basis: 33%;
 `;
 
 const FilterAndSortBy = styled.section`
   display: flex;
-  width: fit-content;
   justify-content: flex-end;
   align-items: flex-end;
   position: relative;
-  left: 7em;
+  margin-right: 4%;
 `;
 
 const Reviews = () => {
@@ -44,7 +42,7 @@ const Reviews = () => {
   const [selectedCategory, setSelectedCategory] = useState("All Reviews");
   const [sortByDisplay, setSortByDisplay] = useState(true);
 
-  let limit = 10;
+  let limit = 9;
 
   useEffect(() => {
     setIsLoading(true);
@@ -82,7 +80,7 @@ const Reviews = () => {
     return (
       <>
         <CategoryTitle>{selectedCategory}</CategoryTitle>
-        <ReviewsContainer>
+        <main>
           <FilterAndSortBy>
             <CategoryFilter
               setCurrentPage={setCurrentPage}
@@ -98,9 +96,11 @@ const Reviews = () => {
               />
             ) : null}
           </FilterAndSortBy>
-          <ReviewList className="reviewList">
+          <ReviewList>
             {reviewsData.map((review) => (
-              <CardReviews key={review.review_id} review={review} />
+              <ReviewListItem key={review.review_id}>
+                <CardReviews key={review.review_id} review={review} />
+              </ReviewListItem>
             ))}
           </ReviewList>
           <Pagination
@@ -109,7 +109,7 @@ const Reviews = () => {
             currentPage={currentPage}
             pageSize={limit}
           />
-        </ReviewsContainer>
+        </main>
       </>
     );
   }
