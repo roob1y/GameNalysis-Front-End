@@ -8,9 +8,6 @@ const UserCardReview = ({ userReview }) => {
       <ReviewBody>
         <p>{userReview.review_body}</p>
       </ReviewBody>
-      <div>
-        <h6 style={{margin: "0px", marginBottom: "1em", float: "right"}}>created: {new Date(userReview.created_at).toLocaleDateString()}</h6>
-      </div>
     </>
   );
 };

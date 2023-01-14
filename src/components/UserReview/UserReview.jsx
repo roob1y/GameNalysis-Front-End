@@ -6,6 +6,7 @@ import UserCardReview from "./UserCardReview";
 import Comments from "../Comments";
 import PageNotFound from "../Error/PageNotFound";
 import styled from "styled-components";
+import "boxicons";
 
 const HeaderImg = styled.div`
   margin: 0 auto;
@@ -13,7 +14,7 @@ const HeaderImg = styled.div`
   left: 0;
   right: 0;
   top: 0;
-  border: black 1px solid;
+  outline: ${({ theme }) => theme.primaryNeutral} 1px solid;
   height: 20em;
   background-size: cover;
   background-repeat: no-repeat;
@@ -46,6 +47,10 @@ const HeadingContent = styled.div`
   align-items: center;
   height: 30%;
   color: white;
+
+  h2 {
+    font-size: 1em;
+  }
 `;
 
 const VotesContainer = styled.div`
@@ -91,8 +96,9 @@ const CommentSection = styled.div`
     openComments ? "translateY(0)" : "translateY(100%)"};
 `;
 
-const ShowCommentsBtn = styled.button`
-  margin: 3em 0;
+const ShowCommentsBtn = styled.div`
+  cursor: pointer;
+  display: flex;
 `;
 
 const UserReview = () => {
@@ -174,7 +180,37 @@ const UserReview = () => {
           <Review>
             <UserReviewBody>
               <UserCardReview userReview={userReview} />
+              <ShowCommentsBtn>
+                <div style={{marginLeft: "1em", marginBottom: "10px"}}>
+                  <box-icon
+                    onClick={() => setOpenComments(true)}
+                    type="solid"
+                    color="teal"
+                    name="comment"
+                  />
+                  <h5 style={{ margin: "0" }}>{userReview.comment_count}</h5>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    width: "100%",
+                  }}
+                >
+                  <h6
+                    style={{
+                      margin: "10px 0px",
+                      display: "flex",
+                      alignItems: "flex-end",
+
+                    }}
+                  >
+                    {new Date(userReview.created_at).toLocaleDateString()}
+                  </h6>
+                </div>
+              </ShowCommentsBtn>
             </UserReviewBody>
+
             <VotesContainer>
               <Votes
                 review_id={userReview.review_id}
@@ -182,9 +218,6 @@ const UserReview = () => {
               />
             </VotesContainer>
           </Review>
-          <ShowCommentsBtn onClick={() => setOpenComments(!openComments)}>
-            Show Comments
-          </ShowCommentsBtn>
           <CommentSection openComments={openComments}>
             <h2>Comments</h2>
             <Comments

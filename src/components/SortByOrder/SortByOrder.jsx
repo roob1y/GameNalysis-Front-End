@@ -37,7 +37,7 @@ const AccordionPanel = styled.div`
   border-radius: 20px;
   max-height: 0;
   width: 100%;
-  padding: 0 10px;
+  padding: 10px 0;
   background-color: white;
   overflow: auto;
   max-height: 0;
@@ -92,8 +92,8 @@ const SortByOrder = ({ searchParams, setSearchParams }) => {
   };
 
   return (
-    <AccordionContainer>
-      <AccordionHeader ref={node} onClick={handleClick}>
+    <AccordionContainer ref={node}>
+      <AccordionHeader onClick={handleClick}>
         <HeaderTitle>Sort and Filter</HeaderTitle>
         <HeaderIcon isOpen={isOpen}>
           <FontAwesomeIcon size={"xs"} icon={faChevronUp} />
@@ -120,8 +120,8 @@ const SortByOrder = ({ searchParams, setSearchParams }) => {
           <SortbyOrderOptions onClick={() => handleSortChange("owner")}>
             Owner
           </SortbyOrderOptions>
-        </ul>
         <br />
+        </ul>
         <Title>Order</Title>
         <ul>
           <SortbyOrderOptions onClick={() => handleOrderChange("desc")}>

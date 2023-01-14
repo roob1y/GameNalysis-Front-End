@@ -4,8 +4,9 @@ import { UserContext } from "../../../contexts/User";
 import { deleteCommentById } from "../../../utils/api";
 
 const CommentCard = styled.li`
-  border: #282c34 1px solid;
+  outline: ${({theme}) => theme.outline};
   margin: 1% 2%;
+  padding: 0.5em;
 
   h3,
     p {
