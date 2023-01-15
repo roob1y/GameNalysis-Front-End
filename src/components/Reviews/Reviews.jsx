@@ -29,7 +29,7 @@ const FilterAndSortBy = styled.section`
   justify-content: flex-end;
   align-items: flex-end;
   position: relative;
-  margin-right: 4%;
+  margin: 0 auto;
 `;
 
 const Reviews = () => {

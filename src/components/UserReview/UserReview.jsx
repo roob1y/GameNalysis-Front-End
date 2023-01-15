@@ -1,11 +1,13 @@
 import { useParams } from "react-router-dom";
 import { getUserReview } from "../../utils/api";
 import { useState, useEffect } from "react";
+import { theme } from "../../theme";
 import Votes from "./Votes";
 import UserCardReview from "./UserCardReview";
 import Comments from "../Comments";
 import PageNotFound from "../Error/PageNotFound";
 import styled from "styled-components";
+import "boxicons";
 
 const HeaderImg = styled.div`
   margin: 0 auto;
@@ -13,7 +15,7 @@ const HeaderImg = styled.div`
   left: 0;
   right: 0;
   top: 0;
-  border: black 1px solid;
+  outline: ${({ theme }) => theme.primaryNeutral} 1px solid;
   height: 20em;
   background-size: cover;
   background-repeat: no-repeat;
@@ -46,6 +48,10 @@ const HeadingContent = styled.div`
   align-items: center;
   height: 30%;
   color: white;
+
+  h2 {
+    font-size: 1em;
+  }
 `;
 
 const VotesContainer = styled.div`
@@ -73,11 +79,6 @@ const UserReviewBody = styled.div`
 
 const CommentSection = styled.div`
   position: fixed;
-  background-image: linear-gradient(
-    to top,
-    #ffb74d 20%,
-    rgba(255, 255, 255, 0.8) 100%
-  );
   backdrop-filter: blur(10px);
   z-index: 999999;
 
@@ -91,8 +92,37 @@ const CommentSection = styled.div`
     openComments ? "translateY(0)" : "translateY(100%)"};
 `;
 
-const ShowCommentsBtn = styled.button`
-  margin: 3em 0;
+const CommentsHeader = styled.div`
+  z-index: 9999;
+  background-color: teal;
+  height: 7em;
+  border-bottom: ${({ theme }) => theme.primaryNeutral} 1px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  h2 {
+    margin: 0;
+    font-size: 1.5em;
+  }
+`;
+
+const BottomBar = styled.div`
+  display: flex;
+
+  h5 {
+    margin: 0;
+  }
+`;
+
+const CloseCommentsBtnContainer = styled.div`
+  position: absolute;
+  right: 5%;
 `;
 
 const UserReview = () => {
@@ -167,6 +197,8 @@ const UserReview = () => {
               margin: "0 auto",
               padding: "0.5em 1em",
               marginTop: "2em",
+              marginBottom: "1em"
+
             }}
           >
             Review
@@ -174,6 +206,42 @@ const UserReview = () => {
           <Review>
             <UserReviewBody>
               <UserCardReview userReview={userReview} />
+              <BottomBar>
+                <div
+                  onClick={() => setOpenComments(true)}
+                  style={{
+                    display: "flex",
+                    gap: "5px",
+                    marginBottom: "10px",
+                    cursor: "pointer",
+                    alignItems: "center",
+                  }}
+                >
+                  <box-icon
+                    type="solid"
+                    color={theme.primaryPop}
+                    name="comment"
+                  />
+                  <h5>{userReview.comment_count}</h5>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    width: "100%",
+                  }}
+                >
+                  <h6
+                    style={{
+                      margin: "10px 0px",
+                      display: "flex",
+                      alignItems: "flex-end",
+                    }}
+                  >
+                    {new Date(userReview.created_at).toLocaleDateString()}
+                  </h6>
+                </div>
+              </BottomBar>
             </UserReviewBody>
             <VotesContainer>
               <Votes
@@ -182,17 +250,24 @@ const UserReview = () => {
               />
             </VotesContainer>
           </Review>
-          <ShowCommentsBtn onClick={() => setOpenComments(!openComments)}>
-            Show Comments
-          </ShowCommentsBtn>
           <CommentSection openComments={openComments}>
-            <h2>Comments</h2>
+            <CommentsHeader>
+              <h2>Comments</h2>
+              <CloseCommentsBtnContainer>
+                <box-icon
+                  style={{ cursor: "pointer" }}
+                  color="white"
+                  size="lg"
+                  onClick={() => setOpenComments(false)}
+                  name="x"
+                />
+              </CloseCommentsBtnContainer>
+            </CommentsHeader>
             <Comments
               userReview={userReview}
               addCommentRender={addCommentRender}
               newCommentData={newCommentData}
               idInc={idInc}
-              setOpenComments={setOpenComments}
             />
           </CommentSection>
         </main>

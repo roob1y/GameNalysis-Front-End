@@ -10,7 +10,7 @@ const UsersContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 70px;
   margin-top: 5em;
 
 `;

@@ -19,7 +19,7 @@ const Buttons = styled.button`
 
   @media (min-width: 600px) {
     width: 10em;
-    height: 5em;
+    height: 3em;
   }
 
   &:hover {
@@ -44,6 +44,7 @@ const Button = styled.button`
   margin: 0 2px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  padding: 10px;
 
   &:hover {
     background-color: #ddd;
