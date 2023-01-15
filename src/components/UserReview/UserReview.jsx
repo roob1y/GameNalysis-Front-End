@@ -197,6 +197,8 @@ const UserReview = () => {
               margin: "0 auto",
               padding: "0.5em 1em",
               marginTop: "2em",
+              marginBottom: "1em"
+
             }}
           >
             Review

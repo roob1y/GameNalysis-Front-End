@@ -3,6 +3,10 @@ import GameNalysisLogo from "../../assets/GameNalysisLogoWhite.png";
 
 export const HeaderContainer = styled.header`
   display: flex;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
   justify-content: space-between;
   align-items: center;
   padding: 10px 30px;
@@ -12,12 +16,12 @@ export const HeaderContainer = styled.header`
 `;
 export const HeaderLogo = styled.div`
   position: absolute;
-  transform: translate(-50%, -35%);
+  transform: translate(-50%, -50%);
   left: 50%;
   cursor: pointer;
   display: flex;
   justify-content: center;
-  height: 10em;
+  height: 100%;
   width: 20em;
   background-image: url(${GameNalysisLogo});
   background-size: contain;

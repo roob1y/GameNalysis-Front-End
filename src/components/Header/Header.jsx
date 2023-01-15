@@ -41,9 +41,7 @@ const Header = () => {
             {loggedUser.username}
           </p>
         </Profile>
-      ) : (
-        <span style={{ width: "7em" }} />
-      )}
+      ) : null}
     </HeaderContainer>
   );
 };

@@ -7,13 +7,10 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 const CommentCard = styled.li`
   position: relative;
-  outline: ${({ theme }) => theme.outline};
   margin: 2% 2%;
   padding: 0.5em;
-  outline: ${({ theme }) => theme.outline};
   border-radius: 10px;
   background-color: #f5f5f5;
-  box-shadow: ${({ theme }) => theme.boxShadow};
 `;
 
 const VoteBtn = styled.div`
