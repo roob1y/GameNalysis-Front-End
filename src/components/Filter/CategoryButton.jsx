@@ -19,7 +19,7 @@ const Buttons = styled.button`
 
   @media (min-width: 600px) {
     width: 10em;
-    height: 5em;
+    height: 3em;
   }
 
   &:hover {

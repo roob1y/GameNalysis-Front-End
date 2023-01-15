@@ -75,7 +75,7 @@ const CardReviews = ({ review }) => {
             size={"lg"}
             icon={faComment}
           />
-          <h5>comments: {review.comment_count}</h5>
+          <h5>{review.comment_count}</h5>
         </div>
         <div className="gridItem g5" style={{ marginTop: "1em" }}>
           <FontAwesomeIcon
@@ -83,7 +83,7 @@ const CardReviews = ({ review }) => {
             size="lg"
             icon={faHeart}
           />
-          <h5>Upvotes: {review.votes}</h5>
+          <h5>{review.votes}</h5>
         </div>
       </ReviewCard>
     </Link>

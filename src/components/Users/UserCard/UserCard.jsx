@@ -9,7 +9,7 @@ const ProfileImg = styled.div`
   background-size: contain;
   width: 100%;
   height: 100%;
-  border: 3px ${theme.primaryNeutral} solid;
+  outline: ${theme.outline};
   border-radius: 50%;
   padding: 15px;
   background-origin: content-box;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import GameNalysisLogo from "../../assets/GameNalysisLogoWhite.png"
+import GameNalysisLogo from "../../assets/GameNalysisLogoWhite.png";
 
 export const HeaderContainer = styled.header`
   display: flex;
@@ -39,7 +39,7 @@ export const NavProfile = styled.div`
   background-position: center;
   cursor: pointer;
   border-radius: 50%;
-  border: 1px black solid;
+  outline: ${({theme}) => theme.outline};
   background-color: white;
   margin 0 auto;
 

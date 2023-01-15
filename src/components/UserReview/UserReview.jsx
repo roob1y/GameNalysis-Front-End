@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { getUserReview } from "../../utils/api";
 import { useState, useEffect } from "react";
+import { theme } from "../../theme";
 import Votes from "./Votes";
 import UserCardReview from "./UserCardReview";
 import Comments from "../Comments";
@@ -78,11 +79,6 @@ const UserReviewBody = styled.div`
 
 const CommentSection = styled.div`
   position: fixed;
-  background-image: linear-gradient(
-    to top,
-    #ffb74d 20%,
-    rgba(255, 255, 255, 0.8) 100%
-  );
   backdrop-filter: blur(10px);
   z-index: 999999;
 
@@ -96,9 +92,37 @@ const CommentSection = styled.div`
     openComments ? "translateY(0)" : "translateY(100%)"};
 `;
 
-const ShowCommentsBtn = styled.div`
-  cursor: pointer;
+const CommentsHeader = styled.div`
+  z-index: 9999;
+  background-color: teal;
+  height: 7em;
+  border-bottom: ${({ theme }) => theme.primaryNeutral} 1px solid;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  h2 {
+    margin: 0;
+    font-size: 1.5em;
+  }
+`;
+
+const BottomBar = styled.div`
+  display: flex;
+
+  h5 {
+    margin: 0;
+  }
+`;
+
+const CloseCommentsBtnContainer = styled.div`
+  position: absolute;
+  right: 5%;
 `;
 
 const UserReview = () => {
@@ -180,15 +204,23 @@ const UserReview = () => {
           <Review>
             <UserReviewBody>
               <UserCardReview userReview={userReview} />
-              <ShowCommentsBtn>
-                <div style={{marginLeft: "1em", marginBottom: "10px"}}>
+              <BottomBar>
+                <div
+                  onClick={() => setOpenComments(true)}
+                  style={{
+                    display: "flex",
+                    gap: "5px",
+                    marginBottom: "10px",
+                    cursor: "pointer",
+                    alignItems: "center",
+                  }}
+                >
                   <box-icon
-                    onClick={() => setOpenComments(true)}
                     type="solid"
-                    color="teal"
+                    color={theme.primaryPop}
                     name="comment"
                   />
-                  <h5 style={{ margin: "0" }}>{userReview.comment_count}</h5>
+                  <h5>{userReview.comment_count}</h5>
                 </div>
                 <div
                   style={{
@@ -202,15 +234,13 @@ const UserReview = () => {
                       margin: "10px 0px",
                       display: "flex",
                       alignItems: "flex-end",
-
                     }}
                   >
                     {new Date(userReview.created_at).toLocaleDateString()}
                   </h6>
                 </div>
-              </ShowCommentsBtn>
+              </BottomBar>
             </UserReviewBody>
-
             <VotesContainer>
               <Votes
                 review_id={userReview.review_id}
@@ -219,13 +249,23 @@ const UserReview = () => {
             </VotesContainer>
           </Review>
           <CommentSection openComments={openComments}>
-            <h2>Comments</h2>
+            <CommentsHeader>
+              <h2>Comments</h2>
+              <CloseCommentsBtnContainer>
+                <box-icon
+                  style={{ cursor: "pointer" }}
+                  color="white"
+                  size="lg"
+                  onClick={() => setOpenComments(false)}
+                  name="x"
+                />
+              </CloseCommentsBtnContainer>
+            </CommentsHeader>
             <Comments
               userReview={userReview}
               addCommentRender={addCommentRender}
               newCommentData={newCommentData}
               idInc={idInc}
-              setOpenComments={setOpenComments}
             />
           </CommentSection>
         </main>

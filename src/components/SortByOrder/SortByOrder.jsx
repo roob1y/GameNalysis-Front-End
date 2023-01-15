@@ -9,6 +9,7 @@ const AccordionContainer = styled.div`
   position: relative;
   max-width: 12em;
   border-radius: 5px;
+  margin-right: 4%;
 `;
 
 const AccordionHeader = styled.div`
