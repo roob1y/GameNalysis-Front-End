@@ -223,7 +223,7 @@ const UserReview = () => {
                     color={theme.primaryPop}
                     name="comment"
                   />
-                  <h5>{userReview.comment_count}</h5>
+                  <h3>{userReview.comment_count}</h3>
                 </div>
                 <div
                   style={{
@@ -232,7 +232,7 @@ const UserReview = () => {
                     width: "100%",
                   }}
                 >
-                  <h6
+                  <h4
                     style={{
                       margin: "10px 0px",
                       display: "flex",
@@ -240,7 +240,7 @@ const UserReview = () => {
                     }}
                   >
                     {new Date(userReview.created_at).toLocaleDateString()}
-                  </h6>
+                  </h4>
                 </div>
               </BottomBar>
             </UserReviewBody>

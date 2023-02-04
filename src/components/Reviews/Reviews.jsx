@@ -47,7 +47,7 @@ const Reviews = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [reviewCount, setReviewCount] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("All Reviews");
-  const [sortByDisplay, setSortByDisplay] = useState(true);
+  const [isHidden, setIsHidden] = useState(false);
 
   let limit = 9;
 
@@ -94,14 +94,13 @@ const Reviews = () => {
               searchParams={searchParams}
               setSearchParams={setSearchParams}
               setOutputStr={setSelectedCategory}
-              setSortByDisplay={setSortByDisplay}
+              setIsHidden={setIsHidden}
             />
-            {sortByDisplay ? (
               <SortByOrder
+                isHidden={isHidden}
                 searchParams={searchParams}
                 setSearchParams={setSearchParams}
               />
-            ) : null}
           </FilterAndSortBy>
           <ReviewList>
             {reviewsData.map((review) => (

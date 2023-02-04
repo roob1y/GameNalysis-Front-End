@@ -5,11 +5,11 @@ import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { useOnClickOutside } from "../../hooks/useOnClickOutside";
 
 const AccordionContainer = styled.div`
-  display: inline-block;
   position: relative;
   max-width: 12em;
   border-radius: 5px;
   margin-right: 4%;
+  display: ${props => props.isHidden ? "none" : "inline-block"};
 `;
 
 const AccordionHeader = styled.div`
@@ -89,7 +89,8 @@ const SortbyOrderOptions = styled.li`
   background-color: ${(props) => (props.isActive ? "#ddd" : "transparent")};
 `;
 
-const SortByOrder = ({ searchParams, setSearchParams }) => {
+const SortByOrder = ({ searchParams, setSearchParams, isHidden }) => {
+  console.log('isHidden: ', isHidden);
   const [isOpen, setIsOpen] = useState(false);
   const node = useRef();
   useOnClickOutside(node, () => setIsOpen(false));
@@ -110,7 +111,7 @@ const SortByOrder = ({ searchParams, setSearchParams }) => {
   };
 
   return (
-    <AccordionContainer ref={node}>
+    <AccordionContainer isHidden={isHidden} ref={node}>
       <AccordionHeader onClick={handleClick}>
         <FilterIcon>
           <box-icon size="52px" name="filter"></box-icon>
