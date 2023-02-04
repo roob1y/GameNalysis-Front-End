@@ -90,7 +90,6 @@ const SortbyOrderOptions = styled.li`
 `;
 
 const SortByOrder = ({ searchParams, setSearchParams, isHidden }) => {
-  console.log('isHidden: ', isHidden);
   const [isOpen, setIsOpen] = useState(false);
   const node = useRef();
   useOnClickOutside(node, () => setIsOpen(false));
