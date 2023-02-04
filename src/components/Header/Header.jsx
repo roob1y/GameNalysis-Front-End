@@ -6,10 +6,12 @@ import { useOnClickOutside } from "../../hooks/useOnClickOutside";
 import { Link } from "react-router-dom";
 import {
   HeaderContainer,
-  HeaderLogo,
+  LogoContainer,
+  Logo,
   Profile,
   NavProfile,
   ProfileSignOut,
+  ProfileUserName,
 } from "./Header.styled";
 
 const Header = () => {
@@ -26,7 +28,9 @@ const Header = () => {
       <Burger open={open} setOpen={setOpen} aria-controls={menuId} />
       <Menu open={open} id={menuId} />
       <Link to="/" style={{ color: "white", textDecoration: "none" }}>
-        <HeaderLogo />
+        <LogoContainer>
+          <Logo />
+        </LogoContainer>
       </Link>
       {loggedUser ? (
         <Profile>
@@ -37,9 +41,7 @@ const Header = () => {
           >
             <ProfileSignOut style={{}}>Sign Out</ProfileSignOut>
           </NavProfile>
-          <p style={{ color: "white", margin: "0", paddingTop: "0.2em" }}>
-            {loggedUser.username}
-          </p>
+          <ProfileUserName>{loggedUser.username}</ProfileUserName>
         </Profile>
       ) : null}
     </HeaderContainer>

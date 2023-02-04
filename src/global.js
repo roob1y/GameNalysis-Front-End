@@ -25,15 +25,14 @@ export const GlobalStyles = createGlobalStyle`
     font-weight: 400;
   }
   a {
-    text-decoration: none;
-    
-    @media (max-width: ${({ theme }) => theme.mobile}) {
-      font-size: 1.5rem;
-      text-align: center;
-    }
-
     &:hover {
       color: ${({ theme }) => theme.primaryHover};
     }
+  }
+
+  p {
+    font-size: 14px;
+    // @media (max-width: ${({ theme }) => theme.mobile}) {
+    // }
   }
   `;

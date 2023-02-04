@@ -45,10 +45,9 @@ const AccordionPanel = styled.div`
   transition: max-height 0.2s ease-out, opacity 0.2s ease-out;
   opacity: ${props => props.isOpen ? 1 : 0};
   border: ${props => props.isOpen ? ({theme}) => theme.outline : "none"};
-
 `;
 
-const HeaderTitle = styled.div`
+const HeaderTitle = styled.p`
   font-weight: bold;
 `;
 

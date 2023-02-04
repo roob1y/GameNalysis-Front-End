@@ -22,6 +22,13 @@ const ReviewList = styled.ul`
 
 const ReviewListItem = styled.li`
   flex-basis: 33%;
+
+  @media (max-width: 1300px) {
+    flex-basis: 50%;
+  }
+  @media (max-width: 856px) {
+    flex-basis: 100%;
+  }
 `;
 
 const FilterAndSortBy = styled.section`
