@@ -23,6 +23,10 @@ export const GlobalStyles = createGlobalStyle`
   h1 {
     font-size: 3em;
     font-weight: 400;
+    @media (max-width: ${({ theme }) => theme.mobile}) {
+      font-size: 2em;
+
+      }
   }
   a {
     &:hover {
@@ -31,8 +35,10 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   p {
-    font-size: 14px;
-    // @media (max-width: ${({ theme }) => theme.mobile}) {
-    // }
+    font-size: 16px;
+  }
+
+  textarea {
+    font-size: 16px;
   }
   `;

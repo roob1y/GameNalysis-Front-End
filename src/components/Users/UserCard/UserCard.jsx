@@ -26,6 +26,7 @@ const UserCard = ({ user }) => {
           height: "20vh",
           justifyContent: "center",
           alignItems: "center",
+          margin: "10px",
         }}
       >
         <ProfileImg user={user} alt={altText} />
@@ -34,10 +35,11 @@ const UserCard = ({ user }) => {
         style={{
           backgroundColor: theme.primaryLight,
           padding: "1px",
+          borderRadius: "10px"
         }}
       >
-        <p>{user.username}</p>
-        <p>{user.name}</p>
+        <p style={{color: "white", fontWeight: "bold"}}>{user.username}</p>
+        <p style={{color: "white"}}>{user.name}</p>
       </section>
     </>
   );

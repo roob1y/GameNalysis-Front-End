@@ -38,9 +38,7 @@ const Button = styled.button`
   border-radius: 20px;
   color: ${({ theme }) => theme.textDark};
   text-align: center;
-  text-decoration: none;
   display: inline-block;
-  font-size: 14px;
   margin: 0 2px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -51,9 +49,18 @@ const Button = styled.button`
   }
 `;
 
+const ButtonTitle = styled.p`
+  font-weight: bold;
+  margin-bottom: 0;
+
+  @media (max-width: 1100px) {
+    display: none;
+  }
+`;
+
 export const CategoryButton = ({ onClick }) => (
   <Button onClick={onClick}>
-    <FontAwesomeIcon size="2x" icon={faCubes} />
-    <p style={{ fontWeight: "bold", marginBottom: "0" }}>Categories</p>
+    <FontAwesomeIcon size="4x" icon={faCubes} />
+    <ButtonTitle>Categories</ButtonTitle>
   </Button>
 );

@@ -19,15 +19,28 @@ const AccordionHeader = styled.div`
   background-color: ${({ theme }) => theme.buttonColor};
   color: #444;
   cursor: pointer;
-  padding: 18px;
+  padding: 9px 25px;
   width: 100%;
-  border: ${({theme}) => theme.outline};
+  border: ${({ theme }) => theme.outline};
   border-radius: 20px;
   font-size: 15px;
   transition: 0.4s;
 
   &:hover {
     background-color: #ddd;
+  }
+
+  @media (max-width: 1100px) {
+    padding: 0 25px;
+  }
+`;
+
+const FilterIcon = styled.div`
+  display: none;
+
+  @media (max-width: 1100px) {
+    display: block;
+    padding: 0 25px;
   }
 `;
 
@@ -43,16 +56,21 @@ const AccordionPanel = styled.div`
   overflow: auto;
   max-height: 0;
   transition: max-height 0.2s ease-out, opacity 0.2s ease-out;
-  opacity: ${props => props.isOpen ? 1 : 0};
-  border: ${props => props.isOpen ? ({theme}) => theme.outline : "none"};
+  opacity: ${(props) => (props.isOpen ? 1 : 0)};
+  border: ${(props) => (props.isOpen ? ({ theme }) => theme.outline : "none")};
 `;
 
 const HeaderTitle = styled.p`
   font-weight: bold;
+  margin: 0;
+
+  @media (max-width: 1100px) {
+    display: none;
+  }
 `;
 
 const HeaderIcon = styled.div`
-  margin-left: 1em;
+  margin-left: 5px;
   transform: ${(props) => (props.isOpen ? "rotate(0)" : "rotate(180deg)")};
   transition: transform 0.2s ease-out;
 `;
@@ -94,6 +112,9 @@ const SortByOrder = ({ searchParams, setSearchParams }) => {
   return (
     <AccordionContainer ref={node}>
       <AccordionHeader onClick={handleClick}>
+        <FilterIcon>
+          <box-icon size="52px" name="filter"></box-icon>
+        </FilterIcon>
         <HeaderTitle>Sort and Filter</HeaderTitle>
         <HeaderIcon isOpen={isOpen}>
           <FontAwesomeIcon size={"xs"} icon={faChevronUp} />
@@ -101,7 +122,7 @@ const SortByOrder = ({ searchParams, setSearchParams }) => {
       </AccordionHeader>
       <AccordionPanel
         isOpen={isOpen}
-        style={{ maxHeight: isOpen ? "10em" : "0" }}
+        style={{ maxHeight: isOpen ? "15em" : "0" }}
       >
         <Title>Sort By</Title>
         <ul>
@@ -120,7 +141,7 @@ const SortByOrder = ({ searchParams, setSearchParams }) => {
           <SortbyOrderOptions onClick={() => handleSortChange("owner")}>
             Owner
           </SortbyOrderOptions>
-        <br />
+          <br />
         </ul>
         <Title>Order</Title>
         <ul>

@@ -36,7 +36,7 @@ const FilterAndSortBy = styled.section`
   justify-content: flex-end;
   align-items: flex-end;
   position: relative;
-  margin: 0 auto;
+  margin-top: 30px;
 `;
 
 const Reviews = () => {

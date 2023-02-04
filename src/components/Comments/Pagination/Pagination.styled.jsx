@@ -4,7 +4,9 @@ export const PaginationContainer = styled.ul`
   display: inline-flex;
   justify-content: center;
   list-style-type: none;
-  margin: 1em auto;
+  margin-top: 3em;
+  margin-bottom: 2em;
+
   `;
 
 export const PaginationItem = styled.li`
@@ -19,8 +21,12 @@ export const PaginationItem = styled.li`
   letter-spacing: 0.01071em;
   border-radius: 16px;
   line-height: 1.43;
-  font-size: 13px;
+  font-size: 15px;
   min-width: 32px;
+
+  @media (max-width: ${({theme}) => theme.mobile}) {
+    margin: 0 5px;
+  }
 
   &.dots:hover {
     background-color: transparent;

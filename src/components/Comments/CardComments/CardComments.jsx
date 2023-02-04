@@ -2,8 +2,6 @@ import { useState, useContext } from "react";
 import styled from "styled-components";
 import { UserContext } from "../../../contexts/User";
 import { deleteCommentById } from "../../../utils/api";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 const CommentCard = styled.li`
   position: relative;
@@ -34,8 +32,9 @@ const CardComments = ({ comments }) => {
       <CommentCard>
         {comments.author === loggedUser.username && (
           <box-icon
-            style={{ cursor: "pointer", position: "absolute", right: "2%" }}
-            size="md"
+            style={{cursor: "pointer", position: "absolute", right: "2%" }}
+            color="#C5C4C4"
+            size="sm"
             onClick={handleOnClick}
             name="x"
           />
@@ -43,12 +42,13 @@ const CardComments = ({ comments }) => {
         <h3>{comments.author}</h3>
         <p>{comments.body}</p>
         <VoteBtn>
-          <FontAwesomeIcon
-            style={{ color: "black" }}
-            size="lg"
-            icon={faHeart}
+        <box-icon
+            type="solid"
+            style={{cursor: "pointer", position: "relative", right: "2%" }}
+            size="md"
+            name="heart"
           />
-          <p style={{ margin: "0", marginTop: "10px" }}>{comments.votes}</p>
+          <p style={{ margin: "0", color: "white", position: "absolute", top: "43%", left: "48%", transform: "translate(-50%, -50%)", fontWeight: "bold", fontSize: "10px"}}>{comments.votes}</p>
         </VoteBtn>
         <p>posted: {new Date(comments.created_at).toLocaleDateString()}</p>
       </CommentCard>

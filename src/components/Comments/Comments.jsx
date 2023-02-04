@@ -6,7 +6,7 @@ import { func, number } from "prop-types";
 import styled from "styled-components";
 
 const CommentContainer = styled.div`
-  margin: 20px auto;
+  max-width: 100vw;
 `;
 
 const Comments = ({ userReview, addCommentRender, newCommentData, idInc }) => {

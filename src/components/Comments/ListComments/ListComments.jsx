@@ -3,6 +3,16 @@ import { getCommentsByReviewId } from "../../../utils/api";
 import CardComments from "../CardComments";
 import { number } from "prop-types";
 import Pagination from "../Pagination/Pagination";
+import styled from "styled-components";
+
+const CommentsWrapper = styled.ul`
+  margin: 0 auto;
+  width: 700px;
+
+  @media (max-width: 700px) {
+    width: 100%;
+  }
+`;
 
 const ListComments = ({ reviewId, newCommentData, idInc, commentCount }) => {
   const [comments, setComments] = useState([]);
@@ -41,11 +51,11 @@ const ListComments = ({ reviewId, newCommentData, idInc, commentCount }) => {
   } else if (!isLoading && comments.length > 0) {
     return (
       <article>
-        <ul style={{ margin: "0 auto", width: "700px"}}>
+        <CommentsWrapper>
           {comments.map((comment) => {
             return <CardComments key={comment.comment_id} comments={comment} />;
           })}
-        </ul>
+        </CommentsWrapper>
         <Pagination
           onPageChange={(page) => setCurrentPage(page)}
           totalCount={commentCount}

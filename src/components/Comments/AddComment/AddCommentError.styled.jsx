@@ -9,6 +9,8 @@ export const Container = styled.div`
   padding : 1em;
   background-color: red;
   color:  white;
+  z-index: 99999;
+
   
   // enter from
   &.fade-enter {
