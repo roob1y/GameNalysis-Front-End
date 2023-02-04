@@ -140,9 +140,10 @@ const AddComment = ({ reviewId, addCommentRender, setErr }) => {
               color={theme.primaryPop}
               onClick={clickHandler}
               name="send"
+              animation={isLoading ? "fade-right" : "none"}
             ></box-icon>
           </SendButton>
-          {/* {isLoading ? "Sending..." : "Send"} */}
+          
         </TextAreaContainer>
       </AddCommentContainer>
     </>
