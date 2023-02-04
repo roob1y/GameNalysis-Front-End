@@ -33,6 +33,7 @@ const UserReviewTitle = styled.div`
 const GameName = styled.h1`
   box-shadow: ${({ theme }) => theme.boxShadow};
   outline: ${({ theme }) => theme.outline};
+  border-radius: 5px;
   padding: 0.5em;
   box-shadow: ${({ theme }) => theme.boxShadow};
   background-image: linear-gradient(
